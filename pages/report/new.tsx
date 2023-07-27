@@ -1,11 +1,12 @@
 import { useRef, useState } from 'react';
-import styled from '@emotion/styled';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import Image from 'next/image';
+import Container from '@/pages/components/container';
 import HeaderBack from '@/pages/components/header';
 import Button from '@/pages/components/button';
-import ModalBottom from '@/pages/components/modalBottom';
+import Textarea from '@/pages/components/textarea';
+import ModalBottom from '@/pages/components/modal-bottom';
+import ShapedImage from '@/pages/components/shaped-image';
+import ImageUploadButton from '@/pages/components/image-upload-button';
+import * as styled from '@/pages/components/styles/new';
 
 export default function ReportNew() {
   const [showPhotoModal, setShowPhotoModal] = useState(false);
@@ -36,98 +37,72 @@ export default function ReportNew() {
   return (
     <>
       <HeaderBack title="신고하기" />
-      <main>
-        <StyledForm>
-          <div>
-            <StyledDiv>
-              <h2>발생 지역</h2>
-              <div>지도</div>
-              <StyledP>서울특별시 동작구 노량진로 10</StyledP>
-            </StyledDiv>
-            <StyledDiv>
-              <h2>사진 첨부</h2>
-              <ImageDiv>
-                {uploadedFiles?.urls.length !== 0 ? (
-                  <PhotoDiv size={'7.5rem'}>
-                    <Image
-                      src={uploadedFiles?.urls[0] || ''}
-                      width={100}
-                      height={100}
-                      style={{ width: '100%', height: '100%' }}
-                      alt="첨부된 사진"
-                    />
-                  </PhotoDiv>
-                ) : (
-                  <PhotoDiv
-                    size={'7.5rem'}
-                    onClick={() => setShowPhotoModal(true)}
-                  >
-                    <FontAwesomeIcon icon={faPlus} />
-                  </PhotoDiv>
-                )}
-                {uploadedFiles?.urls.length === 2 ? (
-                  <PhotoDiv size={'7.5rem'}>
-                    <Image
-                      src={uploadedFiles?.urls[1] || ''}
-                      width={100}
-                      height={100}
-                      style={{ width: '100%', height: '100%' }}
-                      alt="첨부된 사진"
-                    />
-                  </PhotoDiv>
-                ) : (
-                  <PhotoDiv
-                    size={'7.5rem'}
-                    onClick={() => setShowPhotoModal(true)}
-                  >
-                    <FontAwesomeIcon icon={faPlus} />
-                  </PhotoDiv>
-                )}
-              </ImageDiv>
-            </StyledDiv>
-            <StyledDiv>
-              <h2>위치 설명</h2>
-              <textarea
-                rows={5}
-                placeholder="위치를 쉽게 찾을 수 있도록 빗물받이 주변 건물 등을 알려주세요."
-              ></textarea>
-            </StyledDiv>
-          </div>
+
+      <Container>
+        <styled.Form>
+          <styled.Section>
+            <styled.SectionTitle>발생 지역</styled.SectionTitle>
+            <styled.SectionDiv>지도</styled.SectionDiv>
+            <styled.Address>서울특별시 동작구 노량진로 10</styled.Address>
+          </styled.Section>
+
+          <styled.Section>
+            <styled.SectionTitle>사진 첨부</styled.SectionTitle>
+            <styled.ImagesDiv>
+              {uploadedFiles?.urls.length !== 0 ? (
+                <ShapedImage
+                  size="7.5rem"
+                  src={uploadedFiles?.urls[0] || ''}
+                  alt="첨부된 사진"
+                />
+              ) : (
+                <ImageUploadButton
+                  size="7.5rem"
+                  onClick={() => setShowPhotoModal(true)}
+                />
+              )}
+              {uploadedFiles?.urls.length === 2 ? (
+                <ShapedImage
+                  size="7.5rem"
+                  src={uploadedFiles?.urls[1] || ''}
+                  alt="첨부된 사진"
+                />
+              ) : (
+                <ImageUploadButton
+                  size="7.5rem"
+                  onClick={() => setShowPhotoModal(true)}
+                />
+              )}
+            </styled.ImagesDiv>
+          </styled.Section>
+
+          <styled.Section>
+            <styled.SectionTitle>위치 설명</styled.SectionTitle>
+            <Textarea
+              rows={5}
+              placeholder="위치를 쉽게 찾을 수 있도록 빗물받이 주변 건물 등을 알려주세요."
+            ></Textarea>
+          </styled.Section>
+
           <Button type="submit">신고하기</Button>
-        </StyledForm>
-      </main>
+        </styled.Form>
+      </Container>
 
       {showPhotoModal && (
         <ModalBottom onClose={() => setShowPhotoModal(false)}>
-          <Modal>
-            <h2>이런 사진을 올려주세요</h2>
-            <ImageDiv>
+          <styled.ModalWrapper>
+            <styled.ModalTitle>이런 사진을 올려주세요</styled.ModalTitle>
+            <styled.ImagesDiv>
               <div>
-                <h3>빗물받이</h3>
-                <PhotoDiv size="15vh">
-                  <Image
-                    src="/example1.png"
-                    alt="빗물받이"
-                    width={100}
-                    height={100}
-                    style={{ width: '100%', height: '100%' }}
-                  />
-                </PhotoDiv>
+                <styled.ModalSubTitle>빗물받이</styled.ModalSubTitle>
+                <ShapedImage size="15vh" src="/example1.png" alt="빗물받이" />
               </div>
               <div>
-                <h3>주변 건물</h3>
-                <PhotoDiv size="15vh">
-                  <Image
-                    src="/example2.png"
-                    alt="주변 건물"
-                    width={100}
-                    height={100}
-                    style={{ width: '100%', height: '100%' }}
-                  />
-                </PhotoDiv>
+                <styled.ModalSubTitle>주변 건물</styled.ModalSubTitle>
+                <ShapedImage size="15vh" src="/example2.png" alt="주변 건물" />
               </div>
-            </ImageDiv>
-            <ButtonWrapper>
+            </styled.ImagesDiv>
+            <styled.ButtonWrapper>
               <input
                 type="file"
                 accept="image/*"
@@ -139,91 +114,10 @@ export default function ReportNew() {
               <Button rounded onClick={handleClickFileUpload}>
                 사진 보관함
               </Button>
-            </ButtonWrapper>
-          </Modal>
+            </styled.ButtonWrapper>
+          </styled.ModalWrapper>
         </ModalBottom>
       )}
     </>
   );
 }
-
-const StyledForm = styled.form`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledDiv = styled.div`
-  margin-bottom: 1rem;
-
-  & > h2 {
-    margin-bottom: 0.5rem;
-    color: var(--color-main);
-    font-weight: var(--font-semibold);
-  }
-
-  & > div,
-  textarea {
-    width: 100%;
-    min-height: 7.5rem;
-    border-radius: var(--border-radius);
-    border: none;
-  }
-
-  & > textarea {
-    padding: 0.75rem;
-    resize: none;
-    background-color: var(--color-light-gray);
-  }
-`;
-
-const StyledP = styled.p`
-  color: var(--color-gray);
-  font-size: var(--font-small);
-  text-align: center;
-  margin-top: 0.5rem;
-`;
-
-const ImageDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-`;
-
-const PhotoDiv = styled.div<{ size: string }>`
-  width: ${(props) => props.size};
-  height: ${(props) => props.size};
-	max-width; 8rem;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--border-radius);
-  background-color: var(--color-light-gray);
-  cursor: pointer;
-
-  & > svg {
-    font-size: 2rem;
-    color: var(--color-gray);
-  }
-`;
-
-const Modal = styled.div`
-  text-align: center;
-  padding: 1rem;
-
-  & h2 {
-    font-size: 1.25rem;
-    font-weight: var(--font-semibold);
-    margin-bottom: 1rem;
-  }
-
-  & h3 {
-    color: var(--color-main);
-    margin-bottom: 0.5rem;
-  }
-`;
-
-const ButtonWrapper = styled.div`
-  margin-top: 1rem;
-`;

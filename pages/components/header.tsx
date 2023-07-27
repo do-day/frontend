@@ -12,10 +12,10 @@ export default function Header({ title }: Props) {
 
   return (
     <StyledHeader>
-      <button onClick={() => router.back()}>
+      <BackButton onClick={() => router.back()}>
         <FontAwesomeIcon icon={faChevronLeft} />
-      </button>
-      <h1>{title}</h1>
+      </BackButton>
+      <Title>{title}</Title>
     </StyledHeader>
   );
 }
@@ -30,19 +30,19 @@ const StyledHeader = styled.header`
   font-size: var(--font-large);
   background-color: var(--color-white);
   z-index: 5;
+`;
 
-  & > button {
-    width: 2rem;
-    height: 2rem;
-    position: absolute;
-    border: none;
-    background: none;
-  }
+const BackButton = styled.button`
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  border: none;
+  background: none;
+`;
 
-  & > h1 {
-    flex: 1 1 0%;
-    text-align: center;
-    font-weight: var(--font-semibold);
-    line-height: 1.75;
-  }
+const Title = styled.h1`
+  flex: 1 1 0%;
+  text-align: center;
+  font-weight: var(--font-semibold);
+  line-height: 1.75;
 `;
