@@ -28,7 +28,7 @@ export default function Home() {
       </styles.TopBox>
       <styles.SearchBox>
         <styles.Search>
-          <input placeholder="Search"></input>
+          <input className="input" placeholder="검색"></input>
         </styles.Search>
       </styles.SearchBox>
       <styles.ListBox>

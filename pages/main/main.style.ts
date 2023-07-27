@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   width: 375px;
   background-color: white;
-  padding: 12px;
+  padding: 20px;
 `;
 
 export const Header = styled.div`
@@ -26,13 +26,33 @@ export const LogoBox = styled.div`
 
 export const TopBox = styled.div``;
 
-export const TopTitleBox = styled.div``;
+export const TopTitleBox = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+`;
 
-export const TopDescriptionBox = styled.div``;
+export const TopDescriptionBox = styled.div`
+  font-size: 14px;
+  color: #5a5a5a;
+`;
 
-export const SearchBox = styled.div``;
+export const SearchBox = styled.div`
+  margin: 12px 0;
+`;
 
-export const Search = styled.label``;
+export const Search = styled.label`
+  background-color: #f6f6f6;
+  input {
+    padding-left: 15px;
+    border-radius: 20px;
+    background-color: #f6f6f6;
+    height: 33px;
+    width: 335px;
+    border-color: #e8e8e8;
+    color: #bdbdbd;
+  }
+`;
 
 export const ListBox = styled.div``;
 
