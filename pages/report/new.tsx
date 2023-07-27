@@ -6,33 +6,17 @@ import Textarea from '@/pages/components/textarea';
 import ModalBottom from '@/pages/components/modal-bottom';
 import ShapedImage from '@/pages/components/shaped-image';
 import ImageUploadButton from '@/pages/components/image-upload-button';
+import useUploadImages from '@/pages/hooks/useUploadImages';
 import * as styled from '@/pages/components/styles/new';
 
 export default function ReportNew() {
   const [showPhotoModal, setShowPhotoModal] = useState(false);
-  const [uploadedFiles, setUploadedFiles] = useState<{
-    files: File[];
-    urls: string[];
-  }>({ files: [], urls: [] });
+
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = e.target;
-    if (!files) return;
-
-    const fileArray = Array.from(files);
-    const urls = Array.from(files).map((file) => URL.createObjectURL(file));
-    setUploadedFiles({
-      files: [...uploadedFiles.files, ...fileArray],
-      urls: [...uploadedFiles.urls, ...urls],
-    });
-    setShowPhotoModal(false);
-  };
-
-  const handleClickFileUpload = () => {
-    if (!fileInputRef.current) return;
-    fileInputRef.current?.click();
-  };
+  const [uploadedFiles, onFileChange, onClickFileUpload] = useUploadImages(
+    fileInputRef,
+    () => setShowPhotoModal(false),
+  );
 
   return (
     <>
@@ -107,11 +91,11 @@ export default function ReportNew() {
                 type="file"
                 accept="image/*"
                 ref={fileInputRef}
-                onChange={handleFileChange}
+                onChange={onFileChange}
                 style={{ display: 'none' }}
                 multiple
               />
-              <Button rounded onClick={handleClickFileUpload}>
+              <Button rounded onClick={onClickFileUpload}>
                 사진 보관함
               </Button>
             </styled.ButtonWrapper>
