@@ -5,6 +5,7 @@ interface Props {
   type?: 'button' | 'submit';
   primary?: boolean;
   rounded?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function Button({
@@ -12,9 +13,15 @@ export default function Button({
   type = 'button',
   primary = true,
   rounded = false,
+  onClick,
 }: Props) {
   return (
-    <StyledButton type={type} primary={primary} rounded={rounded}>
+    <StyledButton
+      type={type}
+      onClick={onClick}
+      primary={primary}
+      rounded={rounded}
+    >
       {children}
     </StyledButton>
   );

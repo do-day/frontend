@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +9,29 @@ import ModalBottom from '@/pages/components/modalBottom';
 
 export default function ReportNew() {
   const [showPhotoModal, setShowPhotoModal] = useState(false);
+  const [uploadedFiles, setUploadedFiles] = useState<{
+    files: File[];
+    urls: string[];
+  }>({ files: [], urls: [] });
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = e.target;
+    if (!files) return;
+
+    const fileArray = Array.from(files);
+    const urls = Array.from(files).map((file) => URL.createObjectURL(file));
+    setUploadedFiles({
+      files: [...uploadedFiles.files, ...fileArray],
+      urls: [...uploadedFiles.urls, ...urls],
+    });
+    setShowPhotoModal(false);
+  };
+
+  const handleClickFileUpload = () => {
+    if (!fileInputRef.current) return;
+    fileInputRef.current?.click();
+  };
 
   return (
     <>
@@ -24,15 +47,42 @@ export default function ReportNew() {
             <StyledDiv>
               <h2>사진 첨부</h2>
               <ImageDiv>
-                <PhotoDiv
-                  size={'7.5rem'}
-                  onClick={() => setShowPhotoModal(true)}
-                >
-                  <FontAwesomeIcon icon={faPlus} />
-                </PhotoDiv>
-                <PhotoDiv size={'7.5rem'}>
-                  <FontAwesomeIcon icon={faPlus} />
-                </PhotoDiv>
+                {uploadedFiles?.urls.length !== 0 ? (
+                  <PhotoDiv size={'7.5rem'}>
+                    <Image
+                      src={uploadedFiles?.urls[0] || ''}
+                      width={100}
+                      height={100}
+                      style={{ width: '100%', height: '100%' }}
+                      alt="첨부된 사진"
+                    />
+                  </PhotoDiv>
+                ) : (
+                  <PhotoDiv
+                    size={'7.5rem'}
+                    onClick={() => setShowPhotoModal(true)}
+                  >
+                    <FontAwesomeIcon icon={faPlus} />
+                  </PhotoDiv>
+                )}
+                {uploadedFiles?.urls.length === 2 ? (
+                  <PhotoDiv size={'7.5rem'}>
+                    <Image
+                      src={uploadedFiles?.urls[1] || ''}
+                      width={100}
+                      height={100}
+                      style={{ width: '100%', height: '100%' }}
+                      alt="첨부된 사진"
+                    />
+                  </PhotoDiv>
+                ) : (
+                  <PhotoDiv
+                    size={'7.5rem'}
+                    onClick={() => setShowPhotoModal(true)}
+                  >
+                    <FontAwesomeIcon icon={faPlus} />
+                  </PhotoDiv>
+                )}
               </ImageDiv>
             </StyledDiv>
             <StyledDiv>
@@ -58,8 +108,9 @@ export default function ReportNew() {
                   <Image
                     src="/example1.png"
                     alt="빗물받이"
-                    layout="fill"
-                    objectFit="contain"
+                    width={100}
+                    height={100}
+                    style={{ width: '100%', height: '100%' }}
                   />
                 </PhotoDiv>
               </div>
@@ -69,14 +120,25 @@ export default function ReportNew() {
                   <Image
                     src="/example2.png"
                     alt="주변 건물"
-                    layout="fill"
-                    objectFit="contain"
+                    width={100}
+                    height={100}
+                    style={{ width: '100%', height: '100%' }}
                   />
                 </PhotoDiv>
               </div>
             </ImageDiv>
             <ButtonWrapper>
-              <Button rounded>사진 보관함</Button>
+              <input
+                type="file"
+                accept="image/*"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                style={{ display: 'none' }}
+                multiple
+              />
+              <Button rounded onClick={handleClickFileUpload}>
+                사진 보관함
+              </Button>
             </ButtonWrapper>
           </Modal>
         </ModalBottom>
