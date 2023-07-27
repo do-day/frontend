@@ -33,24 +33,6 @@ export const ImagesDiv = styled.div`
   gap: 1rem;
 `;
 
-export const ImageUploadButton = styled.button<{ size: string }>`
-  width: ${(props) => props.size};
-  height: ${(props) => props.size};
-	max-width; 8rem;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--border-radius);
-  background-color: var(--color-light-gray);
-  cursor: pointer;
-
-  & > svg {
-    font-size: 2rem;
-    color: var(--color-gray);
-  }
-`;
-
 export const ModalWrapper = styled.div`
   text-align: center;
   padding: 1rem;
