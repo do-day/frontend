@@ -18,4 +18,5 @@ export const StyledTextarea = styled.textarea`
   background-color: var(--color-light-gray);
   border-radius: var(--border-radius);
   border: none;
+  font-size: var(--font-small);
 `;

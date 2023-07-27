@@ -35,4 +35,5 @@ const StyledButton = styled.button<{ primary: boolean; rounded: boolean }>`
     props.primary ? 'var(--color-main)' : 'var(--color-gray)'};
   border-radius: ${(props) =>
     props.rounded ? '2rem' : 'var(--border-radius)'};
+  font-weight: var(--font-semibold);
 `;
