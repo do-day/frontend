@@ -69,7 +69,7 @@ export default function ReportNew() {
             ></Textarea>
           </styled.Section>
 
-          <Button type="submit">신고하기</Button>
+          <Button type="submit">보고하기</Button>
         </styled.Form>
       </Container>
 
