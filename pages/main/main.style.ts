@@ -24,7 +24,9 @@ export const LogoBox = styled.div`
   font-weight: 600;
 `;
 
-export const TopBox = styled.div``;
+export const TopBox = styled.div`
+  margin-top: 20px;
+`;
 
 export const TopTitleBox = styled.div`
   font-size: 18px;
@@ -38,7 +40,7 @@ export const TopDescriptionBox = styled.div`
 `;
 
 export const SearchBox = styled.div`
-  margin: 12px 0;
+  margin: 20px 0;
   width: auto;
 `;
 
@@ -48,7 +50,7 @@ export const Search = styled.label`
     padding-left: 15px;
     border-radius: 20px;
     background-color: #f6f6f6;
-    height: 33px;
+    height: 36px;
     width: 100%;
     border-color: #e8e8e8;
     color: #bdbdbd;
