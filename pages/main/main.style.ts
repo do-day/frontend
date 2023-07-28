@@ -53,6 +53,7 @@ export const Search = styled.label`
     height: 36px;
     width: 100%;
     border-color: #e8e8e8;
+    border: 1px solid #e8e8e8;
     color: #bdbdbd;
   }
 `;
