@@ -13,7 +13,7 @@ export const Header = styled.div`
 
 export const MenuBox = styled.div`
   position: absolute;
-  top: 4.4%;
+  top: 25px;
 `;
 
 export const LogoBox = styled.div`
@@ -56,8 +56,9 @@ export const Search = styled.label`
 `;
 
 export const ListBox = styled.div`
+  margin-top: 7px;
   display: flex;
-  padding: 5px;
+  padding: 5px 5px 7px 5px;
   width: auto;
   border-bottom: 1px solid #e8e8e8;
 `;
