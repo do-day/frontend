@@ -49,6 +49,15 @@ export const ModalSubTitle = styled.h3`
   margin-bottom: 0.5rem;
 `;
 
+export const ModalList = styled.ul`
+  width: fit-content;
+  margin: auto;
+  padding-left: 2rem;
+  list-style: disc;
+  text-align: left;
+  color: var(--color-gray);
+`;
+
 export const ButtonWrapper = styled.div`
   margin-top: 1rem;
 `;
