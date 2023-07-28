@@ -32,10 +32,25 @@ export default function Home() {
           <input className="input" placeholder="검색"></input>
         </styles.Search>
       </styles.SearchBox>
+      {/** TODO: 데이터 map형태로 바꾸기 */}
       <AlertList />
       <AlertList />
       <AlertList />
       <AlertList />
+      <styles.WriteAbsoluteBox>
+        <styles.WriteFlexBox>
+          <styles.WriteIcon>
+            <Image
+              src="/write.svg"
+              alt="write pencil"
+              width={25}
+              height={25}
+              priority
+            />
+          </styles.WriteIcon>
+          <styles.WriteTxt>신고하기</styles.WriteTxt>
+        </styles.WriteFlexBox>
+      </styles.WriteAbsoluteBox>
     </styles.Container>
   );
 }

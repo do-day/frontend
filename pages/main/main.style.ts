@@ -99,3 +99,33 @@ export const Tag = styled.div`
   padding: 5px 10px;
   border-radius: 20px;
 `;
+
+export const WriteAbsoluteBox = styled.div`
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  z-index: 1;
+`;
+
+export const WriteFlexBox = styled.div`
+  display: flex;
+  background-color: #039be5;
+  width: 122px;
+  height: 48px;
+  border-radius: 25px;
+`;
+
+export const WriteIcon = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 10px 0 auto 15px;
+`;
+
+export const WriteTxt = styled.div`
+  color: white;
+  font-weight: 600;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+`;
