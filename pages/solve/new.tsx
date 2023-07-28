@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import Container from '@/pages/components/container';
 import HeaderBack from '@/pages/components/header';
 import Button from '@/pages/components/button';
@@ -10,6 +12,8 @@ import useUploadImages from '@/pages/hooks/useUploadImages';
 import * as styled from '@/pages/components/styles/new';
 
 export default function ReportNew() {
+  // TODO: 지도 API 연동 후 기본값 수정
+  const [address, setAddress] = useState('서울특별시 동작구 노량진로 10');
   const [showPhotoModal, setShowPhotoModal] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -17,6 +21,10 @@ export default function ReportNew() {
     fileInputRef,
     () => setShowPhotoModal(false),
   );
+
+  const handleClickCopy = async () => {
+    await navigator.clipboard.writeText(address);
+  };
 
   return (
     <>
@@ -27,7 +35,12 @@ export default function ReportNew() {
           <styled.Section>
             <styled.SectionTitle>발생 지역</styled.SectionTitle>
             <styled.SectionDiv>지도</styled.SectionDiv>
-            <styled.Address>서울특별시 동작구 노량진로 10</styled.Address>
+            <styled.Address>
+              {address}
+              <styled.CopyButton type="button" onClick={handleClickCopy}>
+                <FontAwesomeIcon icon={faCopy} />
+              </styled.CopyButton>
+            </styled.Address>
           </styled.Section>
 
           <styled.Section>

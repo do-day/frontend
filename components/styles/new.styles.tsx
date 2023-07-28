@@ -21,10 +21,17 @@ export const SectionDiv = styled.div`
 `;
 
 export const Address = styled.p`
+  height: 1rem;
   color: var(--color-gray);
   font-size: var(--font-small);
   text-align: center;
   margin-top: 0.5rem;
+`;
+
+export const CopyButton = styled.button`
+  color: var(--color-gray);
+  margin-left: 0.25rem;
+  background-color: transparent;
 `;
 
 export const ImagesDiv = styled.div`
