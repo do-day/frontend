@@ -52,7 +52,6 @@ export const Search = styled.label`
     background-color: #f6f6f6;
     height: 36px;
     width: 100%;
-    border-color: #e8e8e8;
     border: 1px solid #e8e8e8;
     color: #bdbdbd;
   }
@@ -71,6 +70,7 @@ export const WriteFlexBox = styled.div`
   width: 122px;
   height: 48px;
   border-radius: 25px;
+  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.25);
 `;
 
 export const WriteIcon = styled.div`

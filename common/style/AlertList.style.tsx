@@ -6,7 +6,7 @@ export const ListBox = styled.div`
   padding: 5px 5px 7px 5px;
   width: auto;
   height: 6.7rem;
-  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
 `;
 
@@ -40,7 +40,7 @@ export const ListDateBox = styled.div`
 `;
 
 export const ListTagBox = styled.div`
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
 `;
 
 export const Tag = styled.div`
