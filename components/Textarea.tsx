@@ -3,11 +3,20 @@ import styled from '@emotion/styled';
 interface Props {
   rows?: number;
   placeholder?: string;
+  disabled?: boolean;
+  children?: React.ReactNode;
 }
 
-export default function Textarea({ rows, placeholder }: Props) {
+export default function Textarea({
+  rows,
+  placeholder,
+  disabled = false,
+  children,
+}: Props) {
   return (
-    <StyledTextarea rows={rows} placeholder={placeholder}></StyledTextarea>
+    <StyledTextarea rows={rows} placeholder={placeholder} disabled={disabled}>
+      {children}
+    </StyledTextarea>
   );
 }
 
