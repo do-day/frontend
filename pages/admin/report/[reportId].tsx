@@ -47,9 +47,7 @@ export default function ReportDetail() {
 
         <styled.Section>
           <styled.SectionTitle>위치 설명</styled.SectionTitle>
-          <Textarea rows={5} disabled>
-            {content}
-          </Textarea>
+          <Textarea rows={5} disabled value={content}></Textarea>
         </styled.Section>
 
         <styled.ButtonDiv>

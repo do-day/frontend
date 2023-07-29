@@ -4,19 +4,22 @@ interface Props {
   rows?: number;
   placeholder?: string;
   disabled?: boolean;
-  children?: React.ReactNode;
+  value?: string;
 }
 
 export default function Textarea({
   rows,
   placeholder,
   disabled = false,
-  children,
+  value,
 }: Props) {
   return (
-    <StyledTextarea rows={rows} placeholder={placeholder} disabled={disabled}>
-      {children}
-    </StyledTextarea>
+    <StyledTextarea
+      rows={rows}
+      placeholder={placeholder}
+      disabled={disabled}
+      value={value}
+    ></StyledTextarea>
   );
 }
 
