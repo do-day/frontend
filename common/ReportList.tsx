@@ -1,4 +1,4 @@
-import * as styles from './style/AlertList.style';
+import * as styles from './style/ReportList.style';
 import Image from 'next/image';
 
 const AlertList = () => {

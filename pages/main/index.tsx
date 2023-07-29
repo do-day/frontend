@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import * as styles from './main.style';
 import Image from 'next/image';
-import AlertList from '@/common/AlertList';
+import ReportList from '@/common/ReportList';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -33,10 +33,10 @@ export default function Home() {
         </styles.Search>
       </styles.SearchBox>
       {/** TODO: 데이터 map형태로 바꾸기 */}
-      <AlertList />
-      <AlertList />
-      <AlertList />
-      <AlertList />
+      <ReportList />
+      <ReportList />
+      <ReportList />
+      <ReportList />
       <styles.WriteAbsoluteBox>
         <styles.WriteFlexBox>
           <styles.WriteIcon>
