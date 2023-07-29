@@ -25,7 +25,7 @@ export const LogoBox = styled.div`
 `;
 
 export const TopBox = styled.div`
-  margin-top: 2rem;
+  margin-top: 3rem;
 `;
 
 export const TitleBox = styled.div`
