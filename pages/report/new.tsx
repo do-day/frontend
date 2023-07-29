@@ -7,7 +7,7 @@ import ModalBottom from '@/components/ModalBottom';
 import ShapedImage from '@/components/ShapedImage';
 import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
-import * as styled from '@/components/styles/new.styles';
+import * as styled from '@/components/styles/report.styles';
 
 export default function ReportNew() {
   const [showPhotoModal, setShowPhotoModal] = useState(false);

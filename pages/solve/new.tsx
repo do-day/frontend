@@ -8,7 +8,7 @@ import ModalBottom from '@/components/ModalBottom';
 import ShapedImage from '@/components/ShapedImage';
 import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
-import * as styled from '@/components/styles/new.styles';
+import * as styled from '@/components/styles/report.styles';
 
 export default function SolveNew() {
   // TODO: 지도 API 연동 후 기본값 수정
