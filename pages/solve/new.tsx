@@ -1,15 +1,14 @@
 import { useRef, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
-import Container from '@/pages/components/container';
-import HeaderBack from '@/pages/components/header';
-import Button from '@/pages/components/button';
-import Textarea from '@/pages/components/textarea';
-import ModalBottom from '@/pages/components/modal-bottom';
-import ShapedImage from '@/pages/components/shaped-image';
-import ImageUploadButton from '@/pages/components/image-upload-button';
-import useUploadImages from '@/pages/hooks/useUploadImages';
-import * as styled from '@/pages/components/styles/new';
+import { BiCopyAlt } from 'react-icons/bi';
+import Container from '@/components/Container';
+import HeaderBack from '@/components/Header';
+import Button from '@/components/Button';
+import Textarea from '@/components/Textarea';
+import ModalBottom from '@/components/ModalBottom';
+import ShapedImage from '@/components/ShapedImage';
+import ImageUploadButton from '@/components/ImageUploadButton';
+import useUploadImages from '@/hooks/useUploadImages';
+import * as styled from '@/components/styles/new.styles';
 
 export default function ReportNew() {
   // TODO: 지도 API 연동 후 기본값 수정
@@ -35,12 +34,10 @@ export default function ReportNew() {
           <styled.Section>
             <styled.SectionTitle>발생 지역</styled.SectionTitle>
             <styled.SectionDiv>지도</styled.SectionDiv>
-            <styled.Address>
-              {address}
-              <styled.CopyButton type="button" onClick={handleClickCopy}>
-                <FontAwesomeIcon icon={faCopy} />
-              </styled.CopyButton>
-            </styled.Address>
+            <styled.CopyButton type="button" onClick={handleClickCopy}>
+              <styled.Address>{address}</styled.Address>
+              <BiCopyAlt />
+            </styled.CopyButton>
           </styled.Section>
 
           <styled.Section>

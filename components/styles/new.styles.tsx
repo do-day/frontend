@@ -29,9 +29,17 @@ export const Address = styled.p`
 `;
 
 export const CopyButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
   color: var(--color-gray);
-  margin-left: 0.25rem;
   background-color: transparent;
+
+  & > svg {
+    margin-left: 0.25rem;
+    margin-top: 0.5rem;
+  }
 `;
 
 export const ImagesDiv = styled.div`
