@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { BiChevronLeft } from 'react-icons/bi';
 
 interface Props {
   title: string;
@@ -13,7 +12,7 @@ export default function Header({ title }: Props) {
   return (
     <StyledHeader>
       <BackButton onClick={() => router.back()}>
-        <FontAwesomeIcon icon={faChevronLeft} />
+        <BiChevronLeft />
       </BackButton>
       <Title>{title}</Title>
     </StyledHeader>
@@ -38,6 +37,9 @@ const BackButton = styled.button`
   position: absolute;
   border: none;
   background: none;
+  & > svg {
+    font-size: 2rem;
+  }
 `;
 
 const Title = styled.h1`

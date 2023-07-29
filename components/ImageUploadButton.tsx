@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { BiPlus } from 'react-icons/bi';
 
 interface Props {
   size: string;
@@ -10,7 +9,7 @@ interface Props {
 export default function ImageUploadButton({ size, onClick }: Props) {
   return (
     <Button type="button" size={size} onClick={onClick}>
-      <FontAwesomeIcon icon={faPlus} />
+      <BiPlus />
     </Button>
   );
 }
