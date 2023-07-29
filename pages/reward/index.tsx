@@ -1,8 +1,7 @@
-import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import * as styles from './reward.style';
 import Image from 'next/image';
-import ReportList from '@/common/ReportList';
+import SaveList from '@/components/SaveList';
 
 const inter = Inter({ subsets: ['latin'] });
 
