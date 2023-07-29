@@ -48,6 +48,11 @@ export const ImagesDiv = styled.div`
   gap: 1rem;
 `;
 
+export const ButtonDiv = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
 export const ModalWrapper = styled.div`
   text-align: center;
   padding: 1rem;
