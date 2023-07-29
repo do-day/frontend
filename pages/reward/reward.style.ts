@@ -50,7 +50,7 @@ export const ChangeBox = styled.div`
   align-items: center;
 
   button {
-    background-color: #039be5;
+    background-color: #0083cd;
     color: white;
     width: 4.7rem;
     height: 2.2rem;
@@ -68,7 +68,7 @@ export const TotalBox = styled.div`
 `;
 
 export const CenterBox = styled.div`
-  background-color: #cfeaf8;
+  background-color: #bedbec;
   height: 1.2rem;
 `;
 

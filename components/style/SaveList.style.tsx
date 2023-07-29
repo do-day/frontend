@@ -26,6 +26,6 @@ export const LocationBox = styled.div`
 export const SaveMoneyBox = styled.div`
   font-size: 16px;
   font-weight: 600;
-  color: #039be5;
+  color: #0083cd;
   margin-left: auto;
 `;
