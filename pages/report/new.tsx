@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react';
-import Container from '@/components/container';
-import HeaderBack from '@/components/header';
-import Button from '@/components/button';
-import Textarea from '@/components/textarea';
-import ModalBottom from '@/components/modal-bottom';
-import ShapedImage from '@/components/shaped-image';
-import ImageUploadButton from '@/components/image-upload-button';
+import Container from '@/components/Container';
+import HeaderBack from '@/components/Header';
+import Button from '@/components/Button';
+import Textarea from '@/components/Textarea';
+import ModalBottom from '@/components/ModalBottom';
+import ShapedImage from '@/components/ShapedImage';
+import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
-import * as styled from '@/components/styles/new';
+import * as styled from '@/components/styles/new.styles';
 
 export default function ReportNew() {
   const [showPhotoModal, setShowPhotoModal] = useState(false);
