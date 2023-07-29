@@ -24,19 +24,53 @@ export const LogoBox = styled.div`
   font-weight: 600;
 `;
 
-export const TopBox = styled.div``;
+export const TopBox = styled.div`
+  margin-top: 2rem;
+`;
 
-export const TitleBox = styled.div``;
+export const TitleBox = styled.div`
+  font-size: 15px;
+`;
 
-export const MiddleBox = styled.div``;
+export const MiddleBox = styled.div`
+  display: flex;
+  margin-top: 1.5rem;
+`;
 
-export const MoneyBox = styled.div``;
+export const MoneyBox = styled.div`
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+`;
 
-export const ChangeBox = styled.div``;
+export const ChangeBox = styled.div`
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 
-export const TotalBox = styled.div``;
+  button {
+    background-color: #039be5;
+    color: white;
+    width: 4.7rem;
+    height: 2.2rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+  }
+`;
 
-export const CenterBox = styled.div``;
+export const TotalBox = styled.div`
+  margin-top: 25px;
+  margin-bottom: 5px;
+  font-size: 14px;
+`;
+
+export const CenterBox = styled.div`
+  background-color: #cfeaf8;
+  height: 1.2rem;
+`;
 
 export const BottomBox = styled.div``;
 
