@@ -35,25 +35,25 @@ export default function ReportNew() {
             <styled.ImagesDiv>
               {uploadedFiles?.urls.length !== 0 ? (
                 <ShapedImage
-                  size="9.5rem"
+                  size="10.5rem"
                   src={uploadedFiles?.urls[0] || ''}
                   alt="첨부된 사진"
                 />
               ) : (
                 <ImageUploadButton
-                  size="9.5rem"
+                  size="10.5rem"
                   onClick={() => setShowPhotoModal(true)}
                 />
               )}
               {uploadedFiles?.urls.length === 2 ? (
                 <ShapedImage
-                  size="9.5rem"
+                  size="10.5rem"
                   src={uploadedFiles?.urls[1] || ''}
                   alt="첨부된 사진"
                 />
               ) : (
                 <ImageUploadButton
-                  size="9.5rem"
+                  size="10.5rem"
                   onClick={() => setShowPhotoModal(true)}
                 />
               )}
