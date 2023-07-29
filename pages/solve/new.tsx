@@ -10,7 +10,7 @@ import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
 import * as styled from '@/components/styles/new.styles';
 
-export default function ReportNew() {
+export default function SolveNew() {
   // TODO: 지도 API 연동 후 기본값 수정
   const [address, setAddress] = useState('서울특별시 동작구 노량진로 10');
   const [showPhotoModal, setShowPhotoModal] = useState(false);
