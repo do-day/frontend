@@ -6,7 +6,7 @@ import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import * as styled from '@/components/styles/report.styles';
 
-export default function ReportDetail() {
+export default function AdminReportDetail() {
   // TODO: props로 넘어온 값 사용
   const address = '서울특별시 동작구 노량진로 10';
   const images = ['/example1.png', '/example2.png'];
