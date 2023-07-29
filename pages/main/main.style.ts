@@ -66,7 +66,7 @@ export const WriteAbsoluteBox = styled.div`
 
 export const WriteFlexBox = styled.div`
   display: flex;
-  background-color: #039be5;
+  background-color: #0083cd;
   width: 122px;
   height: 48px;
   border-radius: 25px;
