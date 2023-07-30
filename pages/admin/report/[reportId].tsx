@@ -37,7 +37,7 @@ export default function AdminReportDetail() {
             {images.map((image, index) => (
               <ShapedImage
                 key={index}
-                size="7.5rem"
+                size="10.5rem"
                 src={image}
                 alt="첨부된 사진"
               />
@@ -47,7 +47,7 @@ export default function AdminReportDetail() {
 
         <styled.Section>
           <styled.SectionTitle>위치 설명</styled.SectionTitle>
-          <Textarea rows={5} disabled value={content}></Textarea>
+          <Textarea rows={8} disabled value={content}></Textarea>
         </styled.Section>
 
         <styled.ButtonDiv>

@@ -28,8 +28,7 @@ export default function ShapedImage({ size, src, alt }: Props) {
 export const ImageWrapper = styled.div<{ size: string }>`
   width: ${(props) => props.size};
   height: ${(props) => props.size};
-  max-height: 8rem;
-
+  max-width: 10.5rem;
   & > img {
     border-radius: var(--border-radius);
   }
