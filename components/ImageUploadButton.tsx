@@ -17,7 +17,7 @@ export default function ImageUploadButton({ size, onClick }: Props) {
 export const Button = styled.button<{ size: string }>`
   width: ${(props) => props.size};
   height: ${(props) => props.size};
-  max-height: 8rem;
+  max-width: 10.5rem;
   position: relative;
   display: flex;
   justify-content: center;

@@ -6,18 +6,19 @@ export const Form = styled.form`
 `;
 
 export const Section = styled.section`
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 `;
 
 export const SectionTitle = styled.h2`
   margin-bottom: 0.5rem;
   color: var(--color-main);
+  font-size: var(--font-large);
   font-weight: var(--font-semibold);
 `;
 
 export const SectionDiv = styled.div`
   width: 100%;
-  min-height: 7.5rem;
+  height: 9.5rem;
 `;
 
 export const Address = styled.p`
@@ -46,6 +47,10 @@ export const ImagesDiv = styled.div`
   display: flex;
   justify-content: center;
   gap: 1rem;
+`;
+
+export const ButtonDiv = styled.div`
+  margin-top: 0.5rem;
 `;
 
 export const ModalWrapper = styled.div`
