@@ -22,10 +22,25 @@ export const SectionDiv = styled.div`
 `;
 
 export const Address = styled.p`
+  height: 1rem;
   color: var(--color-gray);
   font-size: var(--font-small);
   text-align: center;
   margin-top: 0.5rem;
+`;
+
+export const CopyButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  color: var(--color-gray);
+  background-color: transparent;
+
+  & > svg {
+    margin-left: 0.25rem;
+    margin-top: 0.5rem;
+  }
 `;
 
 export const ImagesDiv = styled.div`
@@ -52,6 +67,15 @@ export const ModalTitle = styled.h2`
 export const ModalSubTitle = styled.h3`
   color: var(--color-main);
   margin-bottom: 0.5rem;
+`;
+
+export const ModalList = styled.ul`
+  width: fit-content;
+  margin: auto;
+  padding-left: 2rem;
+  list-style: disc;
+  text-align: left;
+  color: var(--color-gray);
 `;
 
 export const ButtonWrapper = styled.div`
