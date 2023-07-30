@@ -21,7 +21,7 @@ export default function AdminReportDetail() {
         <styles.TopBox>내 리워드: 0,000원</styles.TopBox>
         <styles.MiddleBox>
           <styles.MoneyBox>
-            <styles.MoneyInput placeholder="전활할 금액 입력"></styles.MoneyInput>
+            <styles.MoneyInput placeholder="전환할 금액 입력"></styles.MoneyInput>
           </styles.MoneyBox>
           <styles.ButtonBox>
             <styles.ChangeAllBtn>전액 입력</styles.ChangeAllBtn>
