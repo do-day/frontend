@@ -1,10 +1,7 @@
-import { BiCopyAlt } from 'react-icons/bi';
 import Container from '@/components/Container';
 import HeaderBack from '@/components/Header';
 import Button from '@/components/Button';
-import Textarea from '@/components/Textarea';
 import * as styles from './change.style';
-import { BottomBox } from '../reward.style';
 
 export default function AdminReportDetail() {
   // TODO: props로 넘어온 값 사용
@@ -25,10 +22,14 @@ export default function AdminReportDetail() {
         <styles.MiddleBox>
           <styles.MoneyBox>
             <styles.MoneyInput placeholder="전활할 금액 입력"></styles.MoneyInput>
-            <styles.ChangeBtn>전액 입력</styles.ChangeBtn>
           </styles.MoneyBox>
+          <styles.ButtonBox>
+            <styles.ChangeAllBtn>전액 입력</styles.ChangeAllBtn>
+          </styles.ButtonBox>
         </styles.MiddleBox>
-        <BottomBox>전환하기</BottomBox>
+        <styles.BottomBox>
+          <Button type="submit">전환하기</Button>
+        </styles.BottomBox>
       </Container>
     </>
   );
