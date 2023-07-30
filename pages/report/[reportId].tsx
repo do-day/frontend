@@ -52,7 +52,7 @@ export default function ReportDetail() {
             {images.map((image, index) => (
               <ShapedImage
                 key={index}
-                size="7.5rem"
+                size="10.5rem"
                 src={image}
                 alt="첨부된 사진"
               />
@@ -62,7 +62,7 @@ export default function ReportDetail() {
 
         <styled.Section>
           <styled.SectionTitle>위치 설명</styled.SectionTitle>
-          <Textarea rows={5} disabled value={content}></Textarea>
+          <Textarea rows={8} disabled value={content}></Textarea>
         </styled.Section>
 
         <Button type="button" onClick={handleClickSolve}>
