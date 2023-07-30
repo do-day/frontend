@@ -9,6 +9,7 @@ import ShapedImage from '@/components/ShapedImage';
 import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
 import * as styled from '@/components/styles/report.styles';
+import Modal from '@/components/Modal';
 
 export default function SolveNew() {
   // TODO: 지도 API 연동 후 기본값 수정
@@ -23,6 +24,11 @@ export default function SolveNew() {
 
   const handleClickCopy = async () => {
     await navigator.clipboard.writeText(address);
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClickReportBtn = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -66,9 +72,18 @@ export default function SolveNew() {
             ></Textarea>
           </styled.Section>
 
-          <Button type="submit">보고하기</Button>
+          <Button onClick={handleClickReportBtn} type="submit">
+            보고하기
+          </Button>
         </styled.Form>
       </Container>
+      <div onClick={handleClickReportBtn}>modal</div>
+
+      {isOpen ? (
+        <Modal text={'해결 완료!'} isOpen={true} setIsOpen={setIsOpen} />
+      ) : (
+        ''
+      )}
 
       {showPhotoModal && (
         <ModalBottom onClose={() => setShowPhotoModal(false)}>

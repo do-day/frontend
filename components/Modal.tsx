@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useRef } from 'react';
 
 interface MProps {
   text: string;
@@ -11,6 +12,11 @@ const Modal = ({ text, isOpen, setIsOpen }: MProps) => {
     setIsOpen(!isOpen);
   };
 
+  const ment = useRef<string>();
+
+  if (text.length > 6) ment.current = '신고 목록으로';
+  else ment.current = `나의 ${text.slice(0, 2)} 목록`;
+
   return (
     <ModalContainer>
       <ModalBackdrop onClick={openModalHandler}>
@@ -20,7 +26,7 @@ const Modal = ({ text, isOpen, setIsOpen }: MProps) => {
           </ModalTitleBox>
           <ModalButtonBox>
             <ModalLeftBtn>메인으로</ModalLeftBtn>
-            <ModalRightBtn>나의 {text.slice(0, 2)} 목록</ModalRightBtn>
+            <ModalRightBtn>{ment.current}</ModalRightBtn>
           </ModalButtonBox>
         </ModalView>
       </ModalBackdrop>

@@ -8,6 +8,7 @@ import ShapedImage from '@/components/ShapedImage';
 import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
 import * as styled from '@/components/styles/report.styles';
+import Modal from '@/components/Modal';
 
 export default function ReportNew() {
   const [showPhotoModal, setShowPhotoModal] = useState(false);
@@ -17,6 +18,10 @@ export default function ReportNew() {
     fileInputRef,
     () => setShowPhotoModal(false),
   );
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClickReportBtn = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
@@ -68,10 +73,17 @@ export default function ReportNew() {
             ></Textarea>
           </styled.Section>
           <styled.ButtonDiv>
-            <Button type="submit">신고하기</Button>
+            <Button onClick={handleClickReportBtn} type="submit">
+              신고하기
+            </Button>
           </styled.ButtonDiv>
         </styled.Form>
       </Container>
+      {isOpen ? (
+        <Modal text={'신고 완료!'} isOpen={true} setIsOpen={setIsOpen} />
+      ) : (
+        ''
+      )}
 
       {showPhotoModal && (
         <ModalBottom onClose={() => setShowPhotoModal(false)}>
