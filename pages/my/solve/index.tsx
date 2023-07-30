@@ -1,12 +1,11 @@
-import Head from 'next/head';
-import { Inter } from 'next/font/google';
-import * as styles from './myreport.style';
+import * as styles from '../report/report.style';
 import Image from 'next/image';
-import AlertList from '@/common/AlertList';
 import { useState } from 'react';
+import ReportList from '@/components/ReportList';
+import Tab from '@/components/Tab';
 
 export interface TabDirection {
-  border: boolean;
+  border: string;
 }
 
 export default function Home() {
@@ -14,6 +13,8 @@ export default function Home() {
   const handleOnClick = () => {
     setTab(!tab);
   };
+  const list = ['나의 신고 목록', '나의 해결 목록'];
+  const link = ['/my/report', '/my/solve'];
   return (
     <styles.Container>
       <styles.Header>
@@ -28,20 +29,9 @@ export default function Home() {
         </styles.MenuBox>
         <styles.LogoBox>DO DAY</styles.LogoBox>
       </styles.Header>
-      <styles.TabBox>
-        <styles.LeftBox border={tab} onClick={handleOnClick}>
-          나의 신고 목록
-        </styles.LeftBox>
-        <styles.RightBox border={tab} onClick={handleOnClick}>
-          나의 해결 목록
-        </styles.RightBox>
-      </styles.TabBox>
-
+      <Tab list={list} order={'1'} link={link} />
       {/** TODO: 데이터 map형태로 바꾸기 */}
-      <AlertList />
-      <AlertList />
-      <AlertList />
-      <AlertList />
+      <ReportList />
     </styles.Container>
   );
 }
