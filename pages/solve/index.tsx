@@ -77,10 +77,8 @@ export default function SolveNew() {
           </Button>
         </styled.Form>
       </Container>
-      <div onClick={handleClickReportBtn}>modal</div>
-
       {isOpen ? (
-        <Modal text={'해결 완료!'} isOpen={true} setIsOpen={setIsOpen} />
+        <Modal text={'보고 완료'} isOpen={true} setIsOpen={setIsOpen} />
       ) : (
         ''
       )}

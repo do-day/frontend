@@ -80,7 +80,7 @@ export default function ReportNew() {
         </styled.Form>
       </Container>
       {isOpen ? (
-        <Modal text={'신고 완료!'} isOpen={true} setIsOpen={setIsOpen} />
+        <Modal text={'신고 완료'} isOpen={true} setIsOpen={setIsOpen} />
       ) : (
         ''
       )}
