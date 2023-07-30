@@ -3,15 +3,9 @@ import { useRef } from 'react';
 
 interface MProps {
   text: string;
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
 }
 
-const Modal = ({ text, isOpen, setIsOpen }: MProps) => {
-  const openModalHandler = () => {
-    setIsOpen(!isOpen);
-  };
-
+const Modal = ({ text }: MProps) => {
   const ment = useRef<string>();
 
   if (text.length > 6) ment.current = '신고 목록으로';
@@ -19,7 +13,7 @@ const Modal = ({ text, isOpen, setIsOpen }: MProps) => {
 
   return (
     <ModalContainer>
-      <ModalBackdrop onClick={openModalHandler}>
+      <ModalBackdrop>
         <ModalView onClick={(e) => e.stopPropagation()}>
           <ModalTitleBox>
             <ModalText>{text}</ModalText>
