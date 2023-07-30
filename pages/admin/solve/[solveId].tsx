@@ -6,6 +6,7 @@ import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import * as styled from '@/components/styles/report.styles';
 import Modal from '@/components/Modal';
+import RejectModal from '@/components/RejectModal';
 import { useState } from 'react';
 
 export default function AdminSolveDetail() {
@@ -69,7 +70,7 @@ export default function AdminSolveDetail() {
         type === '승인' ? (
           <Modal text={'승인하였습니다.'} />
         ) : (
-          <Modal text={'반려하였습니다.'} />
+          <RejectModal isOpen={isOpen} setIsOpen={setIsOpen} />
         )
       ) : (
         ''
