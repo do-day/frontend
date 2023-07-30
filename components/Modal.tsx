@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useRef } from 'react';
+import Link from 'next/link';
 
 interface MProps {
   text: string;
@@ -7,9 +8,19 @@ interface MProps {
 
 const Modal = ({ text }: MProps) => {
   const ment = useRef<string>();
+  const link = useRef<string>('');
 
-  if (text.length > 6) ment.current = '신고 목록으로';
-  else ment.current = `나의 ${text.slice(0, 2)} 목록`;
+  if (text.length > 6) {
+    ment.current = '신고 목록으로';
+    link.current = '/admin/report';
+  } else {
+    if (text.slice(0, 2) === '보고') ment.current = `나의 해결 목록`;
+    else {
+      ment.current = `나의 ${text.slice(0, 2)} 목록`;
+    }
+    if (text.slice(0, 2) === '보고') link.current = '/mysolve';
+    else if (text.slice(0, 2) === '신고') link.current = '/myreport';
+  }
 
   return (
     <ModalContainer>
@@ -19,8 +30,12 @@ const Modal = ({ text }: MProps) => {
             <ModalText>{text}</ModalText>
           </ModalTitleBox>
           <ModalButtonBox>
-            <ModalLeftBtn>메인으로</ModalLeftBtn>
-            <ModalRightBtn>{ment.current}</ModalRightBtn>
+            <Link href="/">
+              <ModalLeftBtn>메인으로</ModalLeftBtn>
+            </Link>
+            <Link href={link.current}>
+              <ModalRightBtn>{ment.current}</ModalRightBtn>
+            </Link>
           </ModalButtonBox>
         </ModalView>
       </ModalBackdrop>
