@@ -1,7 +1,7 @@
 import * as styles from './style/ReportList.style';
 import Image from 'next/image';
 
-const AlertList = () => {
+const ReportList = () => {
   return (
     <styles.ListBox>
       <styles.PicBox>
@@ -18,4 +18,4 @@ const AlertList = () => {
   );
 };
 
-export default AlertList;
+export default ReportList;
