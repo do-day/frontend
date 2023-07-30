@@ -5,6 +5,8 @@ import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import * as styled from '@/components/styles/report.styles';
+import Modal from '@/components/Modal';
+import { useState } from 'react';
 
 export default function AdminReportDetail() {
   // TODO: props로 넘어온 값 사용
@@ -15,6 +17,17 @@ export default function AdminReportDetail() {
 
   const handleClickCopy = async () => {
     await navigator.clipboard.writeText(address);
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [type, setType] = useState<string>('');
+  const handleClickAcceptBtn = () => {
+    setIsOpen(!isOpen);
+    setType('승인');
+  };
+  const handleClickRejectBtn = () => {
+    setIsOpen(!isOpen);
+    setType('반려');
   };
 
   return (
@@ -51,12 +64,23 @@ export default function AdminReportDetail() {
         </styled.Section>
 
         <styled.ButtonDiv>
-          <Button type="button">승인하기</Button>
-          <Button type="button" secondary>
+          <Button onClick={handleClickAcceptBtn} type="button">
+            승인하기
+          </Button>
+          <Button onClick={handleClickRejectBtn} type="button" secondary>
             반려하기
           </Button>
         </styled.ButtonDiv>
       </Container>
+      {isOpen ? (
+        type === '승인' ? (
+          <Modal text={'승인하였습니다.'} isOpen={true} setIsOpen={setIsOpen} />
+        ) : (
+          <Modal text={'반려하였습니다.'} isOpen={true} setIsOpen={setIsOpen} />
+        )
+      ) : (
+        ''
+      )}
     </>
   );
 }
