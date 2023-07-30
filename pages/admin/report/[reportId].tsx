@@ -7,6 +7,7 @@ import ShapedImage from '@/components/ShapedImage';
 import * as styled from '@/components/styles/report.styles';
 import Modal from '@/components/Modal';
 import { useState } from 'react';
+import RejectModal from '@/components/RejectModal';
 
 export default function AdminReportDetail() {
   // TODO: props로 넘어온 값 사용
@@ -76,7 +77,7 @@ export default function AdminReportDetail() {
         type === '승인' ? (
           <Modal text={'승인하였습니다.'} />
         ) : (
-          <Modal text={'반려하였습니다.'} />
+          <RejectModal isOpen={isOpen} setIsOpen={setIsOpen} />
         )
       ) : (
         ''
