@@ -67,9 +67,9 @@ export default function AdminSolveDetail() {
       </Container>
       {isOpen ? (
         type === '승인' ? (
-          <Modal text={'승인하였습니다.'} isOpen={true} setIsOpen={setIsOpen} />
+          <Modal text={'승인하였습니다.'} />
         ) : (
-          <Modal text={'반려하였습니다.'} isOpen={true} setIsOpen={setIsOpen} />
+          <Modal text={'반려하였습니다.'} />
         )
       ) : (
         ''

@@ -79,11 +79,7 @@ export default function ReportNew() {
           </styled.ButtonDiv>
         </styled.Form>
       </Container>
-      {isOpen ? (
-        <Modal text={'신고 완료'} isOpen={true} setIsOpen={setIsOpen} />
-      ) : (
-        ''
-      )}
+      {isOpen ? <Modal text={'신고 완료'} /> : ''}
 
       {showPhotoModal && (
         <ModalBottom onClose={() => setShowPhotoModal(false)}>

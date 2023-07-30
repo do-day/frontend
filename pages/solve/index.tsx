@@ -77,11 +77,7 @@ export default function SolveNew() {
           </Button>
         </styled.Form>
       </Container>
-      {isOpen ? (
-        <Modal text={'보고 완료'} isOpen={true} setIsOpen={setIsOpen} />
-      ) : (
-        ''
-      )}
+      {isOpen ? <Modal text={'보고 완료'} /> : ''}
 
       {showPhotoModal && (
         <ModalBottom onClose={() => setShowPhotoModal(false)}>
