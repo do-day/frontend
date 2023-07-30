@@ -3,17 +3,7 @@ import HeaderBack from '@/components/Header';
 import Button from '@/components/Button';
 import * as styles from './change.style';
 
-export default function AdminReportDetail() {
-  // TODO: props로 넘어온 값 사용
-  const address = '서울특별시 동작구 노량진로 10';
-  const images = ['/example1.png', '/example2.png'];
-  const content =
-    '대방역 3번 출구 앞 버스 정류장 쪽 빗물받이에 담배꽁초가 많아요.';
-
-  const handleClickCopy = async () => {
-    await navigator.clipboard.writeText(address);
-  };
-
+export default function RewardChange() {
   return (
     <>
       <HeaderBack title="리워드 전환" />
