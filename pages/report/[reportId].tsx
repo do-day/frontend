@@ -52,7 +52,7 @@ export default function ReportDetail() {
             {images.map((image, index) => (
               <ShapedImage
                 key={index}
-                size="10.5rem"
+                size="12.5rem"
                 src={image}
                 alt="첨부된 사진"
               />

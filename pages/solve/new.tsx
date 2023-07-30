@@ -45,13 +45,13 @@ export default function SolveNew() {
             <styled.ImagesDiv>
               {uploadedFiles?.urls.length ? (
                 <ShapedImage
-                  size="15rem"
+                  size="22rem"
                   src={uploadedFiles?.urls[0] || ''}
                   alt="첨부된 사진"
                 />
               ) : (
                 <ImageUploadButton
-                  size="15rem"
+                  size="22rem"
                   onClick={() => setShowPhotoModal(true)}
                 />
               )}
@@ -61,7 +61,7 @@ export default function SolveNew() {
           <styled.Section>
             <styled.SectionTitle>허위 신고 제보</styled.SectionTitle>
             <Textarea
-              rows={5}
+              rows={8}
               placeholder="신고가 거짓일 경우 알려주세요."
             ></Textarea>
           </styled.Section>

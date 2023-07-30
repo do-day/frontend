@@ -33,13 +33,13 @@ export default function SolveDetail() {
         <styled.Section>
           <styled.SectionTitle>첨부된 사진</styled.SectionTitle>
           <styled.ImagesDiv>
-            <ShapedImage size="15rem" src={image} alt="첨부된 사진" />
+            <ShapedImage size="22rem" src={image} alt="첨부된 사진" />
           </styled.ImagesDiv>
         </styled.Section>
 
         <styled.Section>
           <styled.SectionTitle>허위 신고 제보</styled.SectionTitle>
-          <Textarea rows={5} disabled value={content}></Textarea>
+          <Textarea rows={8} disabled value={content}></Textarea>
         </styled.Section>
       </Container>
     </>
