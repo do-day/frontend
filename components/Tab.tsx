@@ -37,7 +37,7 @@ const Tab = ({ list, order, link }: TProps) => {
 
 export const TabBox = styled.div`
   display: flex;
-  margin: 1rem auto;
+  margin: 0.1rem auto 1rem;
   width: 19rem;
 `;
 

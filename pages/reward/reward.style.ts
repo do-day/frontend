@@ -1,31 +1,7 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
-  width: 375px;
-  background-color: white;
-  padding: 20px;
-`;
-
-export const Header = styled.div`
-  display: flex;
-  height: 40px;
-`;
-
-export const MenuBox = styled.div`
-  position: absolute;
-  top: 25px;
-`;
-
-export const LogoBox = styled.div`
-  margin: auto;
-  display: flex;
-  align-items: center;
-  font-size: 20px;
-  font-weight: 600;
-`;
-
 export const TopBox = styled.div`
-  margin-top: 3rem;
+  margin-top: 2rem;
 `;
 
 export const TitleBox = styled.div`
@@ -72,7 +48,9 @@ export const CenterBox = styled.div`
   height: 1.2rem;
 `;
 
-export const BottomBox = styled.div``;
+export const BottomBox = styled.div`
+  margin-top: -3.8rem;
+`;
 
 export const DescriptionBox = styled.div`
   font-size: 16px;
