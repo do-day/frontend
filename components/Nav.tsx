@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
 interface NProps {
   isOpen: boolean;
@@ -13,13 +14,21 @@ const Nav = ({ isOpen, setIsOpen }: NProps) => {
   return (
     <Backdrop onClick={hanldeonClickbtn}>
       <FlexBox onClick={(e) => e.stopPropagation()}>
-        <MainBox>메인으로 가기</MainBox>
+        <Link href={'/'}>
+          <MainBox>메인으로 가기</MainBox>
+        </Link>
         <MainBox>
           마이페이지
           <SubMenuBox>
-            <SubMenuNameBox>나의 신고 목록</SubMenuNameBox>
-            <SubMenuNameBox>나의 해결 목록</SubMenuNameBox>
-            <SubMenuNameBox>리워드</SubMenuNameBox>
+            <Link href={'/my/report'}>
+              <SubMenuNameBox>나의 신고 목록</SubMenuNameBox>
+            </Link>
+            <Link href={'/my/solve'}>
+              <SubMenuNameBox>나의 해결 목록</SubMenuNameBox>
+            </Link>
+            <Link href={'/my/reward'}>
+              <SubMenuNameBox>리워드</SubMenuNameBox>
+            </Link>
           </SubMenuBox>
         </MainBox>
         <LogOutBox>로그아웃</LogOutBox>
