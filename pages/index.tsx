@@ -5,6 +5,7 @@ import Image from 'next/image';
 import ReportList from '@/components/ReportList';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -29,21 +30,22 @@ export default function Home() {
         <ReportList />
         <ReportList />
         <ReportList />
-        <styles.WriteAbsoluteBox>
-          <styles.WriteFlexBox>
-            <styles.WriteIcon>
-              <Image
-                src="/write.svg"
-                alt="write pencil"
-                width={25}
-                height={25}
-                priority
-              />
-            </styles.WriteIcon>
-
-            <styles.WriteTxt>신고하기</styles.WriteTxt>
-          </styles.WriteFlexBox>
-        </styles.WriteAbsoluteBox>
+        <Link href={'/report'}>
+          <styles.WriteAbsoluteBox>
+            <styles.WriteFlexBox>
+              <styles.WriteIcon>
+                <Image
+                  src="/write.svg"
+                  alt="write pencil"
+                  width={25}
+                  height={25}
+                  priority
+                />
+              </styles.WriteIcon>
+              <styles.WriteTxt>신고하기</styles.WriteTxt>
+            </styles.WriteFlexBox>
+          </styles.WriteAbsoluteBox>
+        </Link>
       </Container>
     </>
   );
