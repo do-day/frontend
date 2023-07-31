@@ -41,11 +41,11 @@ export const TopDescriptionBox = styled.div`
 
 export const SearchBox = styled.div`
   margin: 20px 0;
-  width: auto;
+  display: flex;
 `;
 
 export const Search = styled.label`
-  background-color: #f6f6f6;
+  width: 100%;
   input {
     padding-left: 15px;
     border-radius: 20px;
@@ -55,6 +55,13 @@ export const Search = styled.label`
     border: 1px solid #e8e8e8;
     color: #bdbdbd;
   }
+`;
+
+export const SearchIconBtn = styled.button`
+  margin-left: -1.6rem;
+  margin-top: 0.3rem;
+  color: #0083cd;
+  background-color: transparent;
 `;
 
 export const WriteAbsoluteBox = styled.div`
