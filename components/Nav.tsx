@@ -82,7 +82,7 @@ const SubMenuNameBox = styled.div`
 
 const LogOutBox = styled.div`
   position: fixed;
-  left: 10rem;
+  left: 10.5rem;
   bottom: 1rem;
   color: #0083cd;
   text-decoration: underline;
