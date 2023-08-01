@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import * as styles from '@/components/styles/Textarea.style';
 
 interface Props {
   rows?: number;
@@ -14,20 +14,11 @@ export default function Textarea({
   value,
 }: Props) {
   return (
-    <StyledTextarea
+    <styles.Textarea
       rows={rows}
       placeholder={placeholder}
       disabled={disabled}
       value={value}
-    ></StyledTextarea>
+    ></styles.Textarea>
   );
 }
-
-export const StyledTextarea = styled.textarea`
-  width: 100%;
-  padding: 0.75rem;
-  resize: none;
-  background-color: var(--color-light-gray);
-  border-radius: var(--border-radius);
-  border: none;
-`;

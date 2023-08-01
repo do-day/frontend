@@ -4,7 +4,7 @@ import Container from '@/components/Container';
 import HeaderBack from '@/components/Header';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
-import ModalBottom from '@/components/ModalBottom';
+import BottomModal from '@/components/BottomModal';
 import ShapedImage from '@/components/ShapedImage';
 import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
@@ -80,7 +80,7 @@ export default function SolveNew() {
       {isOpen ? <Modal text={'보고 완료'} /> : ''}
 
       {showPhotoModal && (
-        <ModalBottom onClose={() => setShowPhotoModal(false)}>
+        <BottomModal onClose={() => setShowPhotoModal(false)}>
           <styles.ModalWrapper>
             <styles.ModalTitle>이런 사진을 올려주세요</styles.ModalTitle>
             <styles.ModalList>
@@ -105,7 +105,7 @@ export default function SolveNew() {
               </Button>
             </styles.ButtonWrapper>
           </styles.ModalWrapper>
-        </ModalBottom>
+        </BottomModal>
       )}
     </>
   );

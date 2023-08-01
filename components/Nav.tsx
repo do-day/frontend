@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import styled from '@emotion/styled';
 import { ROUTES } from '@/constants';
+import * as styles from '@/components/styles/Nav.style';
 
 interface NProps {
   isOpen: boolean;
@@ -13,81 +13,29 @@ const Nav = ({ isOpen, setIsOpen }: NProps) => {
   };
 
   return (
-    <Backdrop onClick={hanldeonClickbtn}>
-      <FlexBox onClick={(e) => e.stopPropagation()}>
+    <styles.Backdrop onClick={hanldeonClickbtn}>
+      <styles.FlexBox onClick={(e) => e.stopPropagation()}>
         <Link href={ROUTES.MAIN}>
-          <MainBox>메인으로 가기</MainBox>
+          <styles.MainBox>메인으로 가기</styles.MainBox>
         </Link>
-        <MainBox>
+        <styles.MainBox>
           마이페이지
-          <SubMenuBox>
+          <styles.SubMenuBox>
             <Link href={ROUTES.MY.REPORTS}>
-              <SubMenuNameBox>나의 신고 목록</SubMenuNameBox>
+              <styles.SubMenuNameBox>나의 신고 목록</styles.SubMenuNameBox>
             </Link>
             <Link href={ROUTES.MY.SOLVES}>
-              <SubMenuNameBox>나의 해결 목록</SubMenuNameBox>
+              <styles.SubMenuNameBox>나의 해결 목록</styles.SubMenuNameBox>
             </Link>
             <Link href={ROUTES.MY.REWARD.INDEX}>
-              <SubMenuNameBox>리워드</SubMenuNameBox>
+              <styles.SubMenuNameBox>리워드</styles.SubMenuNameBox>
             </Link>
-          </SubMenuBox>
-        </MainBox>
-        <LogOutBox>로그아웃</LogOutBox>
-      </FlexBox>
-    </Backdrop>
+          </styles.SubMenuBox>
+        </styles.MainBox>
+        <styles.LogOutBox>로그아웃</styles.LogOutBox>
+      </styles.FlexBox>
+    </styles.Backdrop>
   );
 };
-
-const Backdrop = styled.div`
-  background: rgba(0, 0, 0, 0.4);
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-`;
-
-const FlexBox = styled.div`
-  background-color: white;
-  position: absolute;
-  z-index: 11;
-  height: 100%;
-  width: 15rem;
-  left: 0%;
-  &.fail {
-    height: 100%;
-  }
-`;
-
-const MainBox = styled.div`
-  font-size: 18px;
-  font-weight: 700;
-  padding: 20px;
-  margin-top: 5px;
-`;
-
-const SubMenuBox = styled.div`
-  font-weight: 400;
-  margin-top: 30px;
-  margin-left: 20px;
-`;
-
-const SubMenuNameBox = styled.div`
-  margin-left: 15px;
-  margin-top: 35px;
-`;
-
-const LogOutBox = styled.div`
-  position: fixed;
-  left: 10.5rem;
-  bottom: 1rem;
-  color: #0083cd;
-  text-decoration: underline;
-  font-size: 16px;
-`;
 
 export default Nav;
