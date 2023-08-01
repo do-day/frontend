@@ -1,12 +1,12 @@
 import Container from '@/components/Container';
-import HeaderBack from '@/components/Header';
+import Header from '@/components/Header';
 import Button from '@/components/Button';
-import * as styles from './change.style';
+import * as styles from '@/pages/my/reward/change/change.style';
 
 export default function MyRewardChange() {
   return (
     <>
-      <HeaderBack title="리워드 전환" />
+      <Header title="리워드 전환" />
       <Container>
         <styles.TopBox>내 리워드: 0,000원</styles.TopBox>
         <styles.MiddleBox>

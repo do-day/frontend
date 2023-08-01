@@ -1,5 +1,5 @@
-import * as styles from './styles/ReportList.style';
 import Image from 'next/image';
+import * as styles from '@/components/styles/ReportList.style';
 
 const ReportList = () => {
   return (

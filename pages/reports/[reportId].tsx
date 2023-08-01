@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { BiCopyAlt } from 'react-icons/bi';
 import Container from '@/components/Container';
-import HeaderBack from '@/components/Header';
+import Header from '@/components/Header';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
-import * as styles from '@/components/styles/report-solve/style';
 import { ROUTES } from '@/constants';
+import * as styles from '@/components/styles/report-solve/style';
 
 export default function ReportDetail() {
   // TODO: props로 넘어온 값 사용
@@ -35,7 +35,7 @@ export default function ReportDetail() {
 
   return (
     <>
-      <HeaderBack title="신고 상세보기" />
+      <Header title="신고 상세보기" />
 
       <Container>
         <styles.Section>

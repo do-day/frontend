@@ -1,6 +1,6 @@
 import { BiCopyAlt } from 'react-icons/bi';
 import Container from '@/components/Container';
-import HeaderBack from '@/components/Header';
+import Header from '@/components/Header';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import * as styles from '@/components/styles/report-solve/style';
@@ -18,7 +18,7 @@ export default function SolveDetail() {
 
   return (
     <>
-      <HeaderBack title="해결 상세보기" />
+      <Header title="해결 상세보기" />
 
       <Container>
         <styles.Section>

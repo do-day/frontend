@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Modal from './Modal';
 import Image from 'next/image';
+import Modal from '@/components/Modal';
 import * as styles from '@/components/styles/RejectModal.style';
 
 interface RMProps {

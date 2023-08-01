@@ -1,5 +1,6 @@
 import { BiPlus } from 'react-icons/bi';
 import * as styles from '@/components/styles/ImageUploadButton.style';
+
 interface Props {
   size: string;
   onClick: () => void;

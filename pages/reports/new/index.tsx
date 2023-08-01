@@ -1,14 +1,14 @@
 import { useRef, useState } from 'react';
 import Container from '@/components/Container';
-import HeaderBack from '@/components/Header';
+import Header from '@/components/Header';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import BottomModal from '@/components/BottomModal';
 import ShapedImage from '@/components/ShapedImage';
 import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
-import * as styles from '@/components/styles/report-solve/style';
 import Modal from '@/components/Modal';
+import * as styles from '@/components/styles/report-solve/style';
 
 export default function ReportNew() {
   const [showPhotoModal, setShowPhotoModal] = useState(false);
@@ -25,7 +25,7 @@ export default function ReportNew() {
 
   return (
     <>
-      <HeaderBack title="신고하기" />
+      <Header title="신고하기" />
 
       <Container>
         <styles.Form>

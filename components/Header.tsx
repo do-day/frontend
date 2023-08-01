@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { BiChevronLeft, BiMenu } from 'react-icons/bi';
-import { useState } from 'react';
-import Nav from './Nav';
+import Nav from '@/components/Nav';
 import * as styles from '@/components/styles/Header.style';
 
 interface Props {

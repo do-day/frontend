@@ -1,15 +1,11 @@
-import Head from 'next/head';
-import { Inter } from 'next/font/google';
-import * as styles from './main.style';
 import Image from 'next/image';
+import Link from 'next/link';
+import { AiOutlineSearch } from 'react-icons/ai';
 import ReportList from '@/components/ReportList';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
-import Link from 'next/link';
-import { AiOutlineSearch } from 'react-icons/ai';
 import { ROUTES } from '@/constants';
-
-const inter = Inter({ subsets: ['latin'] });
+import * as styles from '@/pages/main.style';
 
 export default function Home() {
   return (

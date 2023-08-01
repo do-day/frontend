@@ -1,4 +1,4 @@
-import * as styles from './styles/SolveList.style';
+import * as styles from '@/components/styles/SolveList.style';
 
 const SolveList = () => {
   return (

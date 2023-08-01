@@ -1,11 +1,7 @@
-import { Inter } from 'next/font/google';
-import * as styles from './reward.style';
-import Image from 'next/image';
 import SolveList from '@/components/SolveList';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
-
-const inter = Inter({ subsets: ['latin'] });
+import * as styles from '@/pages/my/reward/reward.style';
 
 export default function MyRewardHome() {
   return (

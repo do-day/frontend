@@ -1,13 +1,13 @@
+import { useState } from 'react';
 import { BiCopyAlt } from 'react-icons/bi';
 import Container from '@/components/Container';
-import HeaderBack from '@/components/Header';
+import Header from '@/components/Header';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
-import * as styles from '@/components/styles/report-solve/style';
 import Modal from '@/components/Modal';
 import RejectModal from '@/components/RejectModal';
-import { useState } from 'react';
+import * as styles from '@/components/styles/report-solve/style';
 
 export default function AdminSolveDetail() {
   // TODO: props로 넘어온 값 사용
@@ -33,7 +33,7 @@ export default function AdminSolveDetail() {
 
   return (
     <>
-      <HeaderBack title="해결 내용 확인" />
+      <Header title="해결 내용 확인" />
 
       <Container>
         <styles.Section>
