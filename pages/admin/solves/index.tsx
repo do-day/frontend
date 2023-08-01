@@ -9,7 +9,7 @@ export interface TabDirection {
   border: string;
 }
 
-export default function Home() {
+export default function AdminSolvesHome() {
   const [tab, setTab] = useState<boolean>(true);
   const handleOnClick = () => {
     setTab(!tab);

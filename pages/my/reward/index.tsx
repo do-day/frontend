@@ -7,7 +7,7 @@ import Container from '@/components/Container';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home() {
+export default function MyRewardHome() {
   return (
     <>
       <Header title="리워드" type="main" />

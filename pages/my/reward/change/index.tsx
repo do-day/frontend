@@ -3,7 +3,7 @@ import HeaderBack from '@/components/Header';
 import Button from '@/components/Button';
 import * as styles from './change.style';
 
-export default function RewardChange() {
+export default function MyRewardChange() {
   return (
     <>
       <HeaderBack title="리워드 전환" />
