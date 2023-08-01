@@ -6,6 +6,7 @@ import ReportList from '@/components/ReportList';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
 import Link from 'next/link';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,6 +25,9 @@ export default function Home() {
           <styles.Search>
             <input className="input" placeholder="검색"></input>
           </styles.Search>
+          <styles.SearchIconBtn>
+            <AiOutlineSearch />
+          </styles.SearchIconBtn>
         </styles.SearchBox>
         {/** TODO: 데이터 map형태로 바꾸기 */}
         <ReportList />
