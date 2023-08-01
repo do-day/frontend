@@ -64,15 +64,13 @@ export const SearchIconBtn = styled.button`
   background-color: transparent;
 `;
 
-export const WriteAbsoluteBox = styled.div`
+export const WriteButton = styled.div`
+  display: flex;
+  align-items: center;
   position: fixed;
   bottom: 1rem;
-  right: 0.8rem;
+  right: 1rem;
   z-index: 1;
-`;
-
-export const WriteFlexBox = styled.div`
-  display: flex;
   background-color: #0083cd;
   width: 122px;
   height: 48px;
@@ -81,16 +79,16 @@ export const WriteFlexBox = styled.div`
 `;
 
 export const WriteIcon = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 10px 0 auto 15px;
+  padding: 0.5rem;
+  text-align: center;
+  & > svg {
+    color: var(--color-white);
+    font-size: 2rem;
+  }
 `;
 
 export const WriteTxt = styled.div`
   color: white;
   font-weight: 600;
   font-size: 17px;
-  display: flex;
-  align-items: center;
-  margin: auto;
 `;

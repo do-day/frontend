@@ -1,6 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { BiSearch, BiPencil } from 'react-icons/bi';
 import ReportList from '@/components/ReportList';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
@@ -23,7 +22,7 @@ export default function Home() {
             <input className="input" placeholder="검색"></input>
           </styles.Search>
           <styles.SearchIconBtn>
-            <AiOutlineSearch />
+            <BiSearch />
           </styles.SearchIconBtn>
         </styles.SearchBox>
         {/** TODO: 데이터 map형태로 바꾸기 */}
@@ -32,20 +31,12 @@ export default function Home() {
         <ReportList />
         <ReportList />
         <Link href={ROUTES.REPORTS.NEW}>
-          <styles.WriteAbsoluteBox>
-            <styles.WriteFlexBox>
-              <styles.WriteIcon>
-                <Image
-                  src="/write.svg"
-                  alt="write pencil"
-                  width={25}
-                  height={25}
-                  priority
-                />
-              </styles.WriteIcon>
-              <styles.WriteTxt>신고하기</styles.WriteTxt>
-            </styles.WriteFlexBox>
-          </styles.WriteAbsoluteBox>
+          <styles.WriteButton>
+            <styles.WriteIcon>
+              <BiPencil />
+            </styles.WriteIcon>
+            <styles.WriteTxt>신고하기</styles.WriteTxt>
+          </styles.WriteButton>
         </Link>
       </Container>
     </>

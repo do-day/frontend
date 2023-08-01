@@ -29,11 +29,12 @@ export const ModalView = styled.div`
 
 export const ModalTitleBox = styled.div`
   display: flex;
+  justify-content: space-between;
   margin: 1rem 1rem 0 1rem;
 `;
 
 export const ModalCloseBox = styled.div`
-  margin-left: auto;
+  cursor: pointer;
 `;
 
 export const ModalText = styled.div`
@@ -48,11 +49,11 @@ export const ModalContentBox = styled.div`
 export const ModalContent = styled.textarea`
   margin: auto;
   width: 17.5rem;
-  height: 8rem;
   background-color: #ededed;
   border: none;
   border-radius: 5px;
   padding: 10px;
+  resize: none;
 `;
 
 export const ModalButtonBox = styled.div`

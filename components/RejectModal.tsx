@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Image from 'next/image';
+import { BiX } from 'react-icons/bi';
 import Modal from '@/components/Modal';
 import * as styles from '@/components/styles/RejectModal.style';
 
@@ -26,17 +26,14 @@ const RejectModal = ({ isOpen, setIsOpen }: RMProps) => {
             <styles.ModalTitleBox>
               <styles.ModalText>반려사유</styles.ModalText>
               <styles.ModalCloseBox onClick={Backdrop}>
-                <Image
-                  src="/close.svg"
-                  alt="goback"
-                  width={16}
-                  height={16}
-                  priority
-                />
+                <BiX />
               </styles.ModalCloseBox>
             </styles.ModalTitleBox>
             <styles.ModalContentBox>
-              <styles.ModalContent placeholder="반려 사유를 입력해주세요"></styles.ModalContent>
+              <styles.ModalContent
+                placeholder="반려 사유를 입력해주세요"
+                rows={6}
+              ></styles.ModalContent>
             </styles.ModalContentBox>
             <styles.ModalButtonBox>
               <styles.ModalButton onClick={hanldeonClickbtn}>
