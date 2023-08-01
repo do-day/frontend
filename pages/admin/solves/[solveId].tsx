@@ -4,7 +4,7 @@ import HeaderBack from '@/components/Header';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
-import * as styled from '@/components/styles/report.styles';
+import * as styled from '@/components/styles/report-solve/style';
 import Modal from '@/components/Modal';
 import RejectModal from '@/components/RejectModal';
 import { useState } from 'react';

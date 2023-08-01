@@ -3,7 +3,7 @@ import Container from '@/components/Container';
 import HeaderBack from '@/components/Header';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
-import * as styled from '@/components/styles/report.styles';
+import * as styled from '@/components/styles/report-solve/style';
 
 export default function SolveDetail() {
   // TODO: props로 넘어온 값 사용

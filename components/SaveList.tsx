@@ -1,4 +1,4 @@
-import * as styles from './style/SaveList.style';
+import * as styles from './styles/SaveList.style';
 
 const SaveList = () => {
   return (

@@ -8,7 +8,7 @@ import ModalBottom from '@/components/ModalBottom';
 import ShapedImage from '@/components/ShapedImage';
 import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
-import * as styled from '@/components/styles/report.styles';
+import * as styled from '@/components/styles/report-solve/style';
 import Modal from '@/components/Modal';
 
 export default function SolveNew() {
