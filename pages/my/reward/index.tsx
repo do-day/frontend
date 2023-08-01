@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 import * as styles from './reward.style';
 import Image from 'next/image';
-import SaveList from '@/components/SaveList';
+import SolveList from '@/components/SolveList';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
 
@@ -29,11 +29,11 @@ export default function Home() {
       <Container>
         <styles.BottomBox>
           <styles.DescriptionBox>적립 상세 내역</styles.DescriptionBox>
-          <SaveList />
-          <SaveList />
-          <SaveList />
-          <SaveList />
-          <SaveList />
+          <SolveList />
+          <SolveList />
+          <SolveList />
+          <SolveList />
+          <SolveList />
         </styles.BottomBox>
       </Container>
     </>

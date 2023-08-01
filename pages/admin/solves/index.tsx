@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ReportList from '@/components/ReportList';
+import SolveList from '@/components/SolveList';
 import Tab from '@/components/Tab';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
@@ -23,7 +23,7 @@ export default function Home() {
       <Container>
         <Tab list={list} order={'1'} link={link} />
         {/** TODO: 데이터 map형태로 바꾸기 */}
-        <ReportList />
+        <SolveList />
       </Container>
     </>
   );
