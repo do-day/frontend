@@ -25,7 +25,7 @@ export const LogoBox = styled.div`
 `;
 
 export const TopBox = styled.div`
-  margin-top: 20px;
+  margin-top: 10px;
 `;
 
 export const TopTitleBox = styled.div`
@@ -58,9 +58,9 @@ export const Search = styled.label`
 `;
 
 export const WriteAbsoluteBox = styled.div`
-  position: absolute;
-  bottom: 20px;
-  right: 10px;
+  position: fixed;
+  bottom: 1rem;
+  right: 0.8rem;
   z-index: 1;
 `;
 
