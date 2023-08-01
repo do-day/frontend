@@ -7,6 +7,7 @@ import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import * as styled from '@/components/styles/report.styles';
+import { ROUTES } from '@/constants';
 
 export default function ReportDetail() {
   // TODO: props로 넘어온 값 사용
@@ -28,7 +29,7 @@ export default function ReportDetail() {
     if (buttonText === '해결하기') {
       setButtonText('보고하러 가기');
     } else {
-      router.push({ pathname: '/solve/new', query: { reportId } });
+      router.push({ pathname: ROUTES.SOLVES.NEW, query: { reportId } });
     }
   };
 

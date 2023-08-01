@@ -3,6 +3,7 @@ import ReportList from '@/components/ReportList';
 import Tab from '@/components/Tab';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
+import { ROUTES } from '@/constants';
 
 export interface TabDirection {
   border: string;
@@ -14,7 +15,8 @@ export default function Home() {
     setTab(!tab);
   };
   const list = ['신고 목록 확인', '해결 목록 확인'];
-  const link = ['/admin/report', '/admin/solve'];
+  const link = [ROUTES.ADMIN.REPORTS, ROUTES.ADMIN.SOLVES];
+
   return (
     <>
       <Header title="DO DAY" type="main" />

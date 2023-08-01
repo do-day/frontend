@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { TabDirection } from '@/pages/my/report';
+import { TabDirection } from '@/pages/my/reports';
 import Link from 'next/link';
 
 interface TProps {

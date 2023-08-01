@@ -1,5 +1,6 @@
-import styled from '@emotion/styled';
 import Link from 'next/link';
+import styled from '@emotion/styled';
+import { ROUTES } from '@/constants';
 
 interface NProps {
   isOpen: boolean;
@@ -14,19 +15,19 @@ const Nav = ({ isOpen, setIsOpen }: NProps) => {
   return (
     <Backdrop onClick={hanldeonClickbtn}>
       <FlexBox onClick={(e) => e.stopPropagation()}>
-        <Link href={'/'}>
+        <Link href={ROUTES.MAIN}>
           <MainBox>메인으로 가기</MainBox>
         </Link>
         <MainBox>
           마이페이지
           <SubMenuBox>
-            <Link href={'/my/report'}>
+            <Link href={ROUTES.MY.REPORTS}>
               <SubMenuNameBox>나의 신고 목록</SubMenuNameBox>
             </Link>
-            <Link href={'/my/solve'}>
+            <Link href={ROUTES.MY.SOLVES}>
               <SubMenuNameBox>나의 해결 목록</SubMenuNameBox>
             </Link>
-            <Link href={'/my/reward'}>
+            <Link href={ROUTES.MY.REWARD.INDEX}>
               <SubMenuNameBox>리워드</SubMenuNameBox>
             </Link>
           </SubMenuBox>

@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Container from '@/components/Container';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { ROUTES } from '@/constants';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -34,7 +35,7 @@ export default function Home() {
         <ReportList />
         <ReportList />
         <ReportList />
-        <Link href={'/report'}>
+        <Link href={ROUTES.REPORTS.NEW}>
           <styles.WriteAbsoluteBox>
             <styles.WriteFlexBox>
               <styles.WriteIcon>

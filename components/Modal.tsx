@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { useRef } from 'react';
 import Link from 'next/link';
+import { ROUTES } from '@/constants';
 
 interface MProps {
   text: string;
@@ -12,14 +13,14 @@ const Modal = ({ text }: MProps) => {
 
   if (text.length > 6) {
     ment.current = '신고 목록으로';
-    link.current = '/admin/report';
+    link.current = `${ROUTES.ADMIN.REPORTS}`;
   } else {
     if (text.slice(0, 2) === '보고') ment.current = `나의 해결 목록`;
     else {
       ment.current = `나의 ${text.slice(0, 2)} 목록`;
     }
-    if (text.slice(0, 2) === '보고') link.current = '/mysolve';
-    else if (text.slice(0, 2) === '신고') link.current = '/myreport';
+    if (text.slice(0, 2) === '보고') link.current = `${ROUTES.MY.SOLVES}`;
+    else if (text.slice(0, 2) === '신고') link.current = `${ROUTES.MY.REPORTS}`;
   }
 
   return (
@@ -30,7 +31,7 @@ const Modal = ({ text }: MProps) => {
             <ModalText>{text}</ModalText>
           </ModalTitleBox>
           <ModalButtonBox>
-            <Link href="/">
+            <Link href={ROUTES.MAIN}>
               <ModalLeftBtn>메인으로</ModalLeftBtn>
             </Link>
             <Link href={link.current}>
