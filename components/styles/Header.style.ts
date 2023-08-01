@@ -6,7 +6,7 @@ export const Header = styled.header`
   position: fixed;
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 1.25rem;
   font-size: var(--font-large);
   background-color: var(--color-white);
   z-index: 5;
@@ -28,6 +28,6 @@ export const Title = styled.h1`
   justify-content: center;
   flex: 1 1 0%;
   text-align: center;
-  font-weight: var(--font-semibold);
+  font-weight: var(--font-bold);
   line-height: 1.75;
 `;

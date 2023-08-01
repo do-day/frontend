@@ -5,19 +5,20 @@ export const Button = styled.button<{
   primary: boolean;
   secondary: boolean;
   rounded: boolean;
+  fitContent: boolean;
 }>`
-  width: 100%;
+  width: ${(props) => (props.fitContent ? 'fit-content' : '100%')};
   height: 3rem;
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: between;
   align-items: center;
-  font-weight: var(--font-semibold);
+  font-weight: var(--font-bold);
   color: var(--color-white);
   background-color: ${(props) =>
     props.secondary ? 'var(--color-gray)' : 'var(--color-main)'};
   border-radius: ${(props) =>
-    props.rounded ? '2rem' : 'var(--border-radius)'};
+    props.rounded ? 'var(--border-rounded)' : 'var(--border-radius)'};
 
   ${(props) => props.style && String(props.style)}
 `;

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { TabDirection } from '@/pages/my/reports';
 
 export const TabBox = styled.div`
   display: flex;
@@ -7,28 +6,13 @@ export const TabBox = styled.div`
   width: 19rem;
 `;
 
-export const LeftBox = styled.div<TabDirection>`
+export const Tab = styled.div<{ active: boolean }>`
   width: 9rem;
   display: flex;
   justify-content: center;
-  border-bottom: ${(props) =>
-    props.border === '0' ? '4px solid #6fcbf8' : 'none'};
-  color: ${(props) => (props.border === '0' ? '#039BE5' : '#BDBDBD')};
-  font-weight: ${(props) => (props.border === '0' ? '600' : '400')};
+  border-bottom: ${(props) => props.active && '4px solid var(--color-sub)'};
+  color: ${(props) =>
+    props.active ? 'var(--color-main)' : 'var(--color-dark-gray)'};
+  font-weight: ${(props) => props.active && 'var(--font-bold)'};
   height: 2rem;
-  font-size: 16px;
-`;
-
-export const RightBox = styled.div<TabDirection>`
-  margin-left: 1rem;
-  width: 9rem;
-  height: 2rem;
-
-  display: flex;
-  justify-content: center;
-  border-bottom: ${(props) =>
-    props.border === '1' ? '4px solid #6fcbf8' : 'none'};
-  font-size: 16px;
-  color: ${(props) => (props.border === '1' ? '#039BE5' : '#BDBDBD')};
-  font-weight: ${(props) => (props.border === '1' ? '600' : '400')};
 `;

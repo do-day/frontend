@@ -9,6 +9,7 @@ interface Props {
   primary?: boolean;
   secondary?: boolean;
   rounded?: boolean;
+  fitContent?: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -20,6 +21,7 @@ export default function Button({
   primary = true,
   secondary = false,
   rounded = false,
+  fitContent = false,
   onClick,
 }: Props) {
   return (
@@ -30,6 +32,7 @@ export default function Button({
       primary={primary}
       secondary={secondary}
       rounded={rounded}
+      fitContent={fitContent}
     >
       {logoImageUrl && (
         <Image

@@ -15,17 +15,18 @@ export default function AdminReportDetail() {
   const images = ['/example1.png', '/example2.png'];
   const content =
     '대방역 3번 출구 앞 버스 정류장 쪽 빗물받이에 담배꽁초가 많아요.';
+  const [isOpen, setIsOpen] = useState(false);
+  const [type, setType] = useState<string>('');
 
   const handleClickCopy = async () => {
     await navigator.clipboard.writeText(address);
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [type, setType] = useState<string>('');
   const handleClickAcceptBtn = () => {
     setIsOpen(!isOpen);
     setType('승인');
   };
+
   const handleClickRejectBtn = () => {
     setIsOpen(!isOpen);
     setType('반려');
@@ -73,15 +74,12 @@ export default function AdminReportDetail() {
           </Button>
         </styles.ButtonDiv>
       </Container>
-      {isOpen ? (
-        type === '승인' ? (
-          <Modal text={'승인하였습니다.'} />
+      {isOpen &&
+        (type === '승인' ? (
+          <Modal text={'승인 완료'} />
         ) : (
-          <RejectModal isOpen={isOpen} setIsOpen={setIsOpen} />
-        )
-      ) : (
-        ''
-      )}
+          <RejectModal onClose={() => setIsOpen(false)} />
+        ))}
     </>
   );
 }

@@ -1,53 +1,47 @@
 import { useState } from 'react';
-import { BiX } from 'react-icons/bi';
+import { createPortal } from 'react-dom';
 import Modal from '@/components/Modal';
+import Button from '@/components/Button';
 import * as styles from '@/components/styles/RejectModal.style';
 
 interface RMProps {
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
+  onClose: () => void;
 }
 
-const RejectModal = ({ isOpen, setIsOpen }: RMProps) => {
+const RejectModal = ({ onClose }: RMProps) => {
   const [isReject, setIsReject] = useState(false);
-  const hanldeonClickbtn = () => {
+
+  const hanldeSubmit = () => {
     setIsReject(true);
   };
 
-  const Backdrop = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <styles.ModalContainer>
-      {isOpen && !isReject ? (
-        <styles.ModalBackdrop onClick={Backdrop}>
-          <styles.ModalView onClick={(e) => e.stopPropagation()}>
-            <styles.ModalTitleBox>
-              <styles.ModalText>반려사유</styles.ModalText>
-              <styles.ModalCloseBox onClick={Backdrop}>
-                <BiX />
-              </styles.ModalCloseBox>
-            </styles.ModalTitleBox>
-            <styles.ModalContentBox>
-              <styles.ModalContent
-                placeholder="반려 사유를 입력해주세요"
-                rows={6}
-              ></styles.ModalContent>
-            </styles.ModalContentBox>
-            <styles.ModalButtonBox>
-              <styles.ModalButton onClick={hanldeonClickbtn}>
-                입력완료
-              </styles.ModalButton>
-            </styles.ModalButtonBox>
-          </styles.ModalView>
-        </styles.ModalBackdrop>
-      ) : isReject ? (
-        <Modal text={'반려하였습니다.'} />
-      ) : (
-        ''
+    <>
+      {createPortal(
+        <>
+          {!isReject ? (
+            <styles.Modal onClick={onClose}>
+              <styles.ModalView onClick={(e) => e.stopPropagation()}>
+                <styles.ModalText>반려사유</styles.ModalText>
+                <styles.ModalContent
+                  placeholder="반려 사유를 입력해 주세요."
+                  rows={6}
+                ></styles.ModalContent>
+                <styles.ModalButtonBox>
+                  <Button onClick={onClose} secondary>
+                    취소하기
+                  </Button>
+                  <Button onClick={hanldeSubmit}>반려하기</Button>
+                </styles.ModalButtonBox>
+              </styles.ModalView>
+            </styles.Modal>
+          ) : (
+            <Modal text={'반려 완료'} />
+          )}
+        </>,
+        document.getElementById('modal-root') as HTMLElement,
       )}
-    </styles.ModalContainer>
+    </>
   );
 };
 

@@ -11,9 +11,6 @@ export const Button = styled.button<{ size: string }>`
   border-radius: var(--border-radius);
   background-color: var(--color-light-gray);
   cursor: pointer;
-
-  & > svg {
-    font-size: 2rem;
-    color: var(--color-gray);
-  }
+  font-size: 2rem;
+  color: var(--color-dark-gray);
 `;

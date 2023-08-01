@@ -3,29 +3,34 @@ import styled from '@emotion/styled';
 export const RewardList = styled.div`
   display: flex;
   margin-bottom: 2rem;
+  gap: 2rem;
 `;
 
 export const DateBox = styled.div`
-  font-size: 14px;
-  margin-right: 2rem;
+  font-size: var(--font-small);
 `;
 
-export const RewardCenterBox = styled.div``;
+export const RewardCenterBox = styled.div`
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
 
 export const RewardTitleBox = styled.div`
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 7px;
+  font-weight: var(--font-bold);
 `;
 
 export const LocationBox = styled.div`
-  font-size: 14px;
-  color: #6d6d6d;
+  font-size: var(--font-small);
+  color: var(--color-dark-gray);
 `;
 
 export const RewardMoneyBox = styled.div`
-  font-size: 16px;
-  font-weight: 600;
-  color: #0083cd;
-  margin-left: auto;
+  font-weight: var(--font-bold);
+  color: var(--color-main);
+`;
+
+export const Money = styled.span`
+  padding-right: 0.25rem;
 `;

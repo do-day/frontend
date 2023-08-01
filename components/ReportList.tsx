@@ -1,20 +1,24 @@
-import Image from 'next/image';
+import Link from 'next/link';
+import { ROUTES } from '@/constants';
+import ShapedImage from '@/components/ShapedImage';
 import * as styles from '@/components/styles/ReportList.style';
 
 const ReportList = () => {
   return (
-    <styles.ListBox>
-      <styles.PicBox>
-        <Image src="/list.svg" alt="goback" width={68} height={68} priority />
-      </styles.PicBox>
-      <styles.RightBox>
-        <styles.ListTagBox>
-          <styles.Tag>미해결</styles.Tag>
-        </styles.ListTagBox>
-        <styles.ListTopBox>서울특별시 동작구 노량진로 10</styles.ListTopBox>
-        <styles.ListDateBox>최초 신고일 23.07.01 18:30</styles.ListDateBox>
-      </styles.RightBox>
-    </styles.ListBox>
+    // TODO: 연결되는 주소를 reportId로 변경
+    // TODO: admin일 경우에는 admin 라우트로 변경
+    <Link href={ROUTES.REPORTS.REPORT(1)}>
+      <styles.ListBox>
+        <ShapedImage src="/list.svg" alt="썸네일" size="5rem" />
+        <styles.RightBox>
+          <styles.ListTagBox>
+            <styles.Tag>미해결</styles.Tag>
+          </styles.ListTagBox>
+          <styles.ListTitle>서울특별시 동작구 노량진로 10</styles.ListTitle>
+          <styles.ListDate>2023년 7월 1일 18:30</styles.ListDate>
+        </styles.RightBox>
+      </styles.ListBox>
+    </Link>
   );
 };
 

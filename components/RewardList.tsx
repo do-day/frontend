@@ -8,7 +8,9 @@ const RewardList = () => {
         <styles.RewardTitleBox>해결하기</styles.RewardTitleBox>
         <styles.LocationBox>동작구 세종로 126길</styles.LocationBox>
       </styles.RewardCenterBox>
-      <styles.RewardMoneyBox>N원</styles.RewardMoneyBox>
+      <styles.RewardMoneyBox>
+        <styles.Money>200</styles.Money>원
+      </styles.RewardMoneyBox>
     </styles.RewardList>
   );
 };

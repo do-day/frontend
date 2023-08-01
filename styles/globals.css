@@ -1,12 +1,20 @@
 :root {
   --color-main: #0083cd;
+  --color-sub: #6fcbf8;
   --color-white: #fff;
-  --color-gray: #777;
   --color-light-gray: #eee;
-  --font-semibold: 600;
+  --color-gray: #bdbdbd;
+  --color-dark-gray: #777;
+  --color-backdrop: rgba(0, 0, 0, 0.5);
+  --font-bold: 600;
+  --font-x-small: 0.75rem;
   --font-small: 0.875rem;
+  --font-medium: 1rem;
   --font-large: 1.25rem;
+  --font-x-large: 1.5rem;
   --border-radius: 0.5rem;
+  --border-rounded: 2rem;
+  --box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.05);
 }
 
 * {

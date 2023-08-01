@@ -1,4 +1,5 @@
 import { createPortal } from 'react-dom';
+import Backdrop from '@/components/Backdrop';
 import * as styles from '@/components/styles/BottomModal.style';
 
 interface Props {
@@ -10,7 +11,7 @@ export default function BottomModal({ children, onClose }: Props) {
   return (
     <>
       {createPortal(
-        <styles.BackDrop onClick={onClose} />,
+        <Backdrop onClick={onClose} />,
         document.getElementById('modal-root') as HTMLElement,
       )}
       {createPortal(

@@ -13,7 +13,7 @@ export const SectionTitle = styled.h2`
   margin-bottom: 0.5rem;
   color: var(--color-main);
   font-size: var(--font-large);
-  font-weight: var(--font-semibold);
+  font-weight: var(--font-bold);
 `;
 
 export const SectionDiv = styled.div`
@@ -23,7 +23,7 @@ export const SectionDiv = styled.div`
 
 export const Address = styled.p`
   height: 1rem;
-  color: var(--color-gray);
+  color: var(--color-dark-gray);
   font-size: var(--font-small);
   text-align: center;
   margin-top: 0.5rem;
@@ -34,7 +34,7 @@ export const CopyButton = styled.button`
   justify-content: center;
   align-items: center;
   margin: auto;
-  color: var(--color-gray);
+  color: var(--color-dark-gray);
   background-color: transparent;
 
   & > svg {
@@ -62,7 +62,7 @@ export const ModalWrapper = styled.div`
 
 export const ModalTitle = styled.h2`
   font-size: 1.25rem;
-  font-weight: var(--font-semibold);
+  font-weight: var(--font-bold);
   margin-bottom: 1rem;
 `;
 
@@ -77,7 +77,7 @@ export const ModalList = styled.ul`
   padding-left: 2rem;
   list-style: disc;
   text-align: left;
-  color: var(--color-gray);
+  color: var(--color-dark-gray);
 `;
 
 export const ButtonWrapper = styled.div`

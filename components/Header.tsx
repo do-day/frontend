@@ -27,7 +27,7 @@ export default function Header({ title, hasBackButton = false }: Props) {
       >
         {hasBackButton ? <BiChevronLeft /> : <BiMenu />}
       </styles.Button>
-      {isOpen && <Nav isOpen={isOpen} setIsOpen={setIsOpen} />}
+      {isOpen && <Nav setIsOpen={setIsOpen} />}
       <styles.Title>
         {title ? (
           title

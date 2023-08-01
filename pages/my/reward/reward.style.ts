@@ -1,46 +1,38 @@
 import styled from '@emotion/styled';
 
-export const TopBox = styled.div`
-  margin-top: 2rem;
+export const TopBox = styled.div``;
+
+export const Section = styled.section`
+  margin-bottom: 1.25rem;
 `;
 
-export const TitleBox = styled.div`
-  font-size: 15px;
+export const SectionTitle = styled.h2`
+  font-size: var(--font-large);
+  font-weight: var(--font-bold);
+  color: var(--color-main);
+  padding: 1rem 0;
 `;
 
 export const MiddleBox = styled.div`
   display: flex;
-  margin-top: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
 `;
 
 export const MoneyBox = styled.div`
-  font-size: 32px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
+  font-size: 2rem;
+  font-weight: var(--font-bold);
+  letter-spacing: 0.1rem;
 `;
 
-export const ChangeBox = styled.div`
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-
-  button {
-    background-color: #0083cd;
-    color: white;
-    width: 4.7rem;
-    height: 2.2rem;
-    border-radius: 10px;
-    border: none;
-    font-size: 14px;
-    font-weight: 600;
-  }
+export const Money = styled.span`
+  padding-right: 0.5rem;
 `;
 
 export const TotalBox = styled.div`
-  margin-top: 25px;
-  margin-bottom: 5px;
-  font-size: 14px;
+  text-align: center;
+  padding-top: 1rem;
 `;
 
 export const CenterBox = styled.div`
@@ -48,11 +40,11 @@ export const CenterBox = styled.div`
   height: 1.2rem;
 `;
 
-export const BottomBox = styled.div`
-  margin-top: -3.8rem;
+export const HorizontalLine = styled.div`
+  border-bottom: 1px solid #ddd;
+  margin: 1rem 0;
 `;
 
-export const DescriptionBox = styled.div`
-  font-size: 16px;
-  margin-bottom: 1.5rem;
+export const RewardListBox = styled.div`
+  padding-top: 0.5rem;
 `;

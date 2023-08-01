@@ -4,10 +4,6 @@ import Header from '@/components/Header';
 import Container from '@/components/Container';
 import { ROUTES } from '@/constants';
 
-export interface TabDirection {
-  border: string;
-}
-
 export default function MySolvesHome() {
   const list = ['나의 신고 목록', '나의 해결 목록'];
   const link = [ROUTES.MY.REPORTS, ROUTES.MY.SOLVES];
@@ -16,7 +12,7 @@ export default function MySolvesHome() {
     <>
       <Header />
       <Container>
-        <Tab list={list} order={'1'} link={link} />
+        <Tab list={list} order={1} link={link} />
         {/** TODO: 데이터 map형태로 바꾸기 */}
         <ReportList />
       </Container>

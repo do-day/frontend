@@ -1,58 +1,38 @@
 import styled from '@emotion/styled';
 
 export const ListBox = styled.div`
-  margin-top: 1rem;
-  display: flex;
-  padding: 5px 5px 7px 5px;
-  width: auto;
-  height: 6.7rem;
-  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-`;
-
-export const PicBox = styled.div`
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  margin-left: 0.7rem;
+  gap: 1rem;
+  padding: 1rem;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
 `;
 
 export const RightBox = styled.div`
-  margin-left: 0.5rem;
-  margin: auto 0.7rem auto;
-`;
-
-export const ListTopBox = styled.div`
-  font-weight: 500;
-  font-size: 16px;
-  height: 2.5rem;
-`;
-
-export const ListBottomBox = styled.div`
+  flex: 1 1 0%;
   display: flex;
-  margin-top: 10px;
+  flex-direction: column;
+  gap: 0.5rem;
 `;
 
-export const ListDateBox = styled.div`
-  font-size: 11px;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
+export const ListTitle = styled.h2``;
+
+export const ListDate = styled.p`
+  font-size: var(--font-small);
+  color: var(--color-dark-gray);
 `;
 
-export const ListTagBox = styled.div`
-  margin-bottom: 0.4rem;
-`;
+export const ListTagBox = styled.div``;
 
 export const Tag = styled.div`
-  font-size: 11px;
-  font-weight: 600;
-  background-color: #7c7c7c;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 20px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  width: 50px;
-  justify-content: center;
+  width: fit-content;
+  padding: 0.25rem 0.5rem;
+  line-height: 1rem;
+  font-size: var(--font-x-small);
+  font-weight: var(--font-bold);
+  color: var(--color-white);
+  background-color: var(--color-dark-gray);
+  border-radius: var(--border-rounded);
 `;

@@ -66,15 +66,12 @@ export default function AdminSolveDetail() {
           </Button>
         </styles.ButtonDiv>
       </Container>
-      {isOpen ? (
-        type === '승인' ? (
-          <Modal text={'승인하였습니다.'} />
+      {isOpen &&
+        (type === '승인' ? (
+          <Modal text={'승인 완료'} />
         ) : (
-          <RejectModal isOpen={isOpen} setIsOpen={setIsOpen} />
-        )
-      ) : (
-        ''
-      )}
+          <RejectModal onClose={() => setIsOpen(false)} />
+        ))}
     </>
   );
 }

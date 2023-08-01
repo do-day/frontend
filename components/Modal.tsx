@@ -1,17 +1,20 @@
+import { createPortal } from 'react-dom';
 import { useRef } from 'react';
-import Link from 'next/link';
+import Button from '@/components/Button';
 import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/Modal.style';
+import { useRouter } from 'next/router';
 
 interface MProps {
   text: string;
 }
 
 const Modal = ({ text }: MProps) => {
+  const router = useRouter();
   const ment = useRef<string>();
   const link = useRef<string>('');
 
-  if (text.length > 6) {
+  if (text.length > 4) {
     ment.current = '신고 목록으로';
     link.current = `${ROUTES.ADMIN.REPORTS}`;
   } else {
@@ -24,23 +27,28 @@ const Modal = ({ text }: MProps) => {
   }
 
   return (
-    <styles.ModalContainer>
-      <styles.ModalBackdrop>
-        <styles.ModalView onClick={(e) => e.stopPropagation()}>
-          <styles.ModalTitleBox>
+    <>
+      {createPortal(
+        <styles.Modal>
+          <styles.ModalView>
             <styles.ModalText>{text}</styles.ModalText>
-          </styles.ModalTitleBox>
-          <styles.ModalButtonBox>
-            <Link href={ROUTES.MAIN}>
-              <styles.ModalLeftBtn>메인으로</styles.ModalLeftBtn>
-            </Link>
-            <Link href={link.current}>
-              <styles.ModalRightBtn>{ment.current}</styles.ModalRightBtn>
-            </Link>
-          </styles.ModalButtonBox>
-        </styles.ModalView>
-      </styles.ModalBackdrop>
-    </styles.ModalContainer>
+            <styles.ModalButtonBox>
+              <Button
+                onClick={() => router.push(ROUTES.MAIN)}
+                secondary
+                fitContent
+              >
+                메인으로
+              </Button>
+              <Button onClick={() => router.push(link.current)} fitContent>
+                {ment.current}
+              </Button>
+            </styles.ModalButtonBox>
+          </styles.ModalView>
+        </styles.Modal>,
+        document.getElementById('modal-root') as HTMLElement,
+      )}
+    </>
   );
 };
 

@@ -1,53 +1,45 @@
 import styled from '@emotion/styled';
 
-export const Backdrop = styled.div`
-  background: rgba(0, 0, 0, 0.4);
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-`;
-
-export const FlexBox = styled.div`
-  background-color: white;
+export const Nav = styled.div`
+  width: 40vw;
+  min-width: 16rem;
+  height: 100vh;
   position: absolute;
+  top: 0;
+  left: 0;
   z-index: 11;
-  height: 100%;
-  width: 15rem;
-  left: 0%;
-  &.fail {
-    height: 100%;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  background-color: var(--color-white);
 `;
 
 export const MainBox = styled.div`
-  font-size: 18px;
-  font-weight: 700;
-  padding: 20px;
-  margin-top: 5px;
+  padding: 0.5rem;
+  font-size: var(--font-large);
+  font-weight: var(--font-bold);
+  line-height: 2rem;
 `;
 
 export const SubMenuBox = styled.div`
-  font-weight: 400;
-  margin-top: 30px;
-  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  font-weight: normal;
 `;
 
 export const SubMenuNameBox = styled.div`
-  margin-left: 15px;
-  margin-top: 35px;
+  padding: 0.5rem;
 `;
 
-export const LogOutBox = styled.div`
-  position: fixed;
-  left: 10.5rem;
+export const LogOutButton = styled.button`
+  position: absolute;
+  right: 1.5rem;
   bottom: 1rem;
-  color: #0083cd;
+  color: var(--color-dark-gray);
   text-decoration: underline;
-  font-size: 16px;
+  background-color: transparent;
 `;

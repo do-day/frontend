@@ -1,73 +1,40 @@
 import styled from '@emotion/styled';
+import { Backdrop } from './Backdrop.style';
 
-export const ModalContainer = styled.div``;
-
-export const ModalBackdrop = styled.div`
-  background: rgba(0, 0, 0, 0.6);
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+export const Modal = styled(Backdrop)`
   display: flex;
-  justify-content: center;
+  text-align: center;
   align-items: center;
-  z-index: 10;
+  justify-content: center;
 `;
 
 export const ModalView = styled.div`
-  width: 19.5rem;
-  height: 15rem;
-  background-color: white;
-  &.fail {
-    height: 120px;
-  }
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: 1.25rem;
 `;
 
-export const ModalTitleBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem 1rem 0 1rem;
-`;
-
-export const ModalCloseBox = styled.div`
-  cursor: pointer;
-`;
-
-export const ModalText = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-`;
-
-export const ModalContentBox = styled.div`
-  margin: 0.5rem 1rem;
+export const ModalText = styled.h1`
+  text-align: left;
+  font-size: var(--font-large);
+  font-weight: var(--font-bold);
+  padding-bottom: 1rem;
 `;
 
 export const ModalContent = styled.textarea`
-  margin: auto;
-  width: 17.5rem;
-  background-color: #ededed;
+  width: 18rem;
+  background-color: var(--color-light-gray);
   border: none;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: var(--border-radius);
+  padding: 1rem;
   resize: none;
 `;
 
 export const ModalButtonBox = styled.div`
   display: flex;
-`;
-
-export const ModalButton = styled.button`
-  width: 5.2rem;
-  border-radius: 10px;
-  height: 2.2rem;
-  background-color: #0083cd;
-  margin-left: auto;
-  margin-right: 1rem;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
 `;
