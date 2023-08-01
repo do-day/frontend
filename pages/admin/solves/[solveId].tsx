@@ -4,7 +4,7 @@ import HeaderBack from '@/components/Header';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
-import * as styled from '@/components/styles/report-solve/style';
+import * as styles from '@/components/styles/report-solve/style';
 import Modal from '@/components/Modal';
 import RejectModal from '@/components/RejectModal';
 import { useState } from 'react';
@@ -36,35 +36,35 @@ export default function AdminSolveDetail() {
       <HeaderBack title="해결 내용 확인" />
 
       <Container>
-        <styled.Section>
-          <styled.SectionTitle>발생 지역</styled.SectionTitle>
-          <styled.SectionDiv>지도</styled.SectionDiv>
-          <styled.CopyButton type="button" onClick={handleClickCopy}>
-            <styled.Address>{address}</styled.Address>
+        <styles.Section>
+          <styles.SectionTitle>발생 지역</styles.SectionTitle>
+          <styles.SectionDiv>지도</styles.SectionDiv>
+          <styles.CopyButton type="button" onClick={handleClickCopy}>
+            <styles.Address>{address}</styles.Address>
             <BiCopyAlt />
-          </styled.CopyButton>
-        </styled.Section>
+          </styles.CopyButton>
+        </styles.Section>
 
-        <styled.Section>
-          <styled.SectionTitle>첨부된 사진</styled.SectionTitle>
-          <styled.ImagesDiv>
+        <styles.Section>
+          <styles.SectionTitle>첨부된 사진</styles.SectionTitle>
+          <styles.ImagesDiv>
             <ShapedImage size="22rem" src={image} alt="첨부된 사진" />
-          </styled.ImagesDiv>
-        </styled.Section>
+          </styles.ImagesDiv>
+        </styles.Section>
 
-        <styled.Section>
-          <styled.SectionTitle>허위 신고 제보</styled.SectionTitle>
+        <styles.Section>
+          <styles.SectionTitle>허위 신고 제보</styles.SectionTitle>
           <Textarea rows={8} disabled value={content}></Textarea>
-        </styled.Section>
+        </styles.Section>
 
-        <styled.ButtonDiv>
+        <styles.ButtonDiv>
           <Button onClick={handleClickAcceptBtn} type="button">
             승인하기
           </Button>
           <Button onClick={handleClickRejectBtn} type="button" secondary>
             반려하기
           </Button>
-        </styled.ButtonDiv>
+        </styles.ButtonDiv>
       </Container>
       {isOpen ? (
         type === '승인' ? (

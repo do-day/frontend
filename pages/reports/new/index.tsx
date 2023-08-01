@@ -7,7 +7,7 @@ import ModalBottom from '@/components/ModalBottom';
 import ShapedImage from '@/components/ShapedImage';
 import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
-import * as styled from '@/components/styles/report-solve/style';
+import * as styles from '@/components/styles/report-solve/style';
 import Modal from '@/components/Modal';
 
 export default function ReportNew() {
@@ -28,16 +28,16 @@ export default function ReportNew() {
       <HeaderBack title="신고하기" />
 
       <Container>
-        <styled.Form>
-          <styled.Section>
-            <styled.SectionTitle>발생 지역</styled.SectionTitle>
-            <styled.SectionDiv>지도</styled.SectionDiv>
-            <styled.Address>서울특별시 동작구 노량진로 10</styled.Address>
-          </styled.Section>
+        <styles.Form>
+          <styles.Section>
+            <styles.SectionTitle>발생 지역</styles.SectionTitle>
+            <styles.SectionDiv>지도</styles.SectionDiv>
+            <styles.Address>서울특별시 동작구 노량진로 10</styles.Address>
+          </styles.Section>
 
-          <styled.Section>
-            <styled.SectionTitle>사진 첨부</styled.SectionTitle>
-            <styled.ImagesDiv>
+          <styles.Section>
+            <styles.SectionTitle>사진 첨부</styles.SectionTitle>
+            <styles.ImagesDiv>
               {uploadedFiles?.urls.length !== 0 ? (
                 <ShapedImage
                   size="12.5rem"
@@ -62,40 +62,40 @@ export default function ReportNew() {
                   onClick={() => setShowPhotoModal(true)}
                 />
               )}
-            </styled.ImagesDiv>
-          </styled.Section>
+            </styles.ImagesDiv>
+          </styles.Section>
 
-          <styled.Section>
-            <styled.SectionTitle>위치 설명</styled.SectionTitle>
+          <styles.Section>
+            <styles.SectionTitle>위치 설명</styles.SectionTitle>
             <Textarea
               rows={8}
               placeholder="위치를 쉽게 찾을 수 있도록 빗물받이 주변 건물 등을 알려주세요."
             ></Textarea>
-          </styled.Section>
-          <styled.ButtonDiv>
+          </styles.Section>
+          <styles.ButtonDiv>
             <Button onClick={handleClickReportBtn} type="submit">
               신고하기
             </Button>
-          </styled.ButtonDiv>
-        </styled.Form>
+          </styles.ButtonDiv>
+        </styles.Form>
       </Container>
       {isOpen ? <Modal text={'신고 완료'} /> : ''}
 
       {showPhotoModal && (
         <ModalBottom onClose={() => setShowPhotoModal(false)}>
-          <styled.ModalWrapper>
-            <styled.ModalTitle>이런 사진을 올려주세요</styled.ModalTitle>
-            <styled.ImagesDiv>
+          <styles.ModalWrapper>
+            <styles.ModalTitle>이런 사진을 올려주세요</styles.ModalTitle>
+            <styles.ImagesDiv>
               <div>
-                <styled.ModalSubTitle>빗물받이</styled.ModalSubTitle>
+                <styles.ModalSubTitle>빗물받이</styles.ModalSubTitle>
                 <ShapedImage size="15vh" src="/example1.png" alt="빗물받이" />
               </div>
               <div>
-                <styled.ModalSubTitle>주변 건물</styled.ModalSubTitle>
+                <styles.ModalSubTitle>주변 건물</styles.ModalSubTitle>
                 <ShapedImage size="15vh" src="/example2.png" alt="주변 건물" />
               </div>
-            </styled.ImagesDiv>
-            <styled.ButtonWrapper>
+            </styles.ImagesDiv>
+            <styles.ButtonWrapper>
               <input
                 type="file"
                 accept="image/*"
@@ -107,8 +107,8 @@ export default function ReportNew() {
               <Button rounded onClick={onClickFileUpload}>
                 사진 보관함
               </Button>
-            </styled.ButtonWrapper>
-          </styled.ModalWrapper>
+            </styles.ButtonWrapper>
+          </styles.ModalWrapper>
         </ModalBottom>
       )}
     </>

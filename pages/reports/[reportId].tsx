@@ -6,7 +6,7 @@ import HeaderBack from '@/components/Header';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
-import * as styled from '@/components/styles/report-solve/style';
+import * as styles from '@/components/styles/report-solve/style';
 import { ROUTES } from '@/constants';
 
 export default function ReportDetail() {
@@ -38,18 +38,18 @@ export default function ReportDetail() {
       <HeaderBack title="신고 상세보기" />
 
       <Container>
-        <styled.Section>
-          <styled.SectionTitle>발생 지역</styled.SectionTitle>
-          <styled.SectionDiv>지도</styled.SectionDiv>
-          <styled.CopyButton type="button" onClick={handleClickCopy}>
-            <styled.Address>{address}</styled.Address>
+        <styles.Section>
+          <styles.SectionTitle>발생 지역</styles.SectionTitle>
+          <styles.SectionDiv>지도</styles.SectionDiv>
+          <styles.CopyButton type="button" onClick={handleClickCopy}>
+            <styles.Address>{address}</styles.Address>
             <BiCopyAlt />
-          </styled.CopyButton>
-        </styled.Section>
+          </styles.CopyButton>
+        </styles.Section>
 
-        <styled.Section>
-          <styled.SectionTitle>첨부된 사진</styled.SectionTitle>
-          <styled.ImagesDiv>
+        <styles.Section>
+          <styles.SectionTitle>첨부된 사진</styles.SectionTitle>
+          <styles.ImagesDiv>
             {images.map((image, index) => (
               <ShapedImage
                 key={index}
@@ -58,13 +58,13 @@ export default function ReportDetail() {
                 alt="첨부된 사진"
               />
             ))}
-          </styled.ImagesDiv>
-        </styled.Section>
+          </styles.ImagesDiv>
+        </styles.Section>
 
-        <styled.Section>
-          <styled.SectionTitle>위치 설명</styled.SectionTitle>
+        <styles.Section>
+          <styles.SectionTitle>위치 설명</styles.SectionTitle>
           <Textarea rows={8} disabled value={content}></Textarea>
-        </styled.Section>
+        </styles.Section>
 
         <Button type="button" onClick={handleClickSolve}>
           {buttonText}

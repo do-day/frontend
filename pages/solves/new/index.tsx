@@ -8,7 +8,7 @@ import ModalBottom from '@/components/ModalBottom';
 import ShapedImage from '@/components/ShapedImage';
 import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
-import * as styled from '@/components/styles/report-solve/style';
+import * as styles from '@/components/styles/report-solve/style';
 import Modal from '@/components/Modal';
 
 export default function SolveNew() {
@@ -36,19 +36,19 @@ export default function SolveNew() {
       <HeaderBack title="보고하기" />
 
       <Container>
-        <styled.Form>
-          <styled.Section>
-            <styled.SectionTitle>발생 지역</styled.SectionTitle>
-            <styled.SectionDiv>지도</styled.SectionDiv>
-            <styled.CopyButton type="button" onClick={handleClickCopy}>
-              <styled.Address>{address}</styled.Address>
+        <styles.Form>
+          <styles.Section>
+            <styles.SectionTitle>발생 지역</styles.SectionTitle>
+            <styles.SectionDiv>지도</styles.SectionDiv>
+            <styles.CopyButton type="button" onClick={handleClickCopy}>
+              <styles.Address>{address}</styles.Address>
               <BiCopyAlt />
-            </styled.CopyButton>
-          </styled.Section>
+            </styles.CopyButton>
+          </styles.Section>
 
-          <styled.Section>
-            <styled.SectionTitle>사진 첨부</styled.SectionTitle>
-            <styled.ImagesDiv>
+          <styles.Section>
+            <styles.SectionTitle>사진 첨부</styles.SectionTitle>
+            <styles.ImagesDiv>
               {uploadedFiles?.urls.length ? (
                 <ShapedImage
                   size="22rem"
@@ -61,37 +61,37 @@ export default function SolveNew() {
                   onClick={() => setShowPhotoModal(true)}
                 />
               )}
-            </styled.ImagesDiv>
-          </styled.Section>
+            </styles.ImagesDiv>
+          </styles.Section>
 
-          <styled.Section>
-            <styled.SectionTitle>허위 신고 제보</styled.SectionTitle>
+          <styles.Section>
+            <styles.SectionTitle>허위 신고 제보</styles.SectionTitle>
             <Textarea
               rows={8}
               placeholder="신고가 거짓일 경우 알려주세요."
             ></Textarea>
-          </styled.Section>
+          </styles.Section>
 
           <Button onClick={handleClickReportBtn} type="submit">
             보고하기
           </Button>
-        </styled.Form>
+        </styles.Form>
       </Container>
       {isOpen ? <Modal text={'보고 완료'} /> : ''}
 
       {showPhotoModal && (
         <ModalBottom onClose={() => setShowPhotoModal(false)}>
-          <styled.ModalWrapper>
-            <styled.ModalTitle>이런 사진을 올려주세요</styled.ModalTitle>
-            <styled.ModalList>
+          <styles.ModalWrapper>
+            <styles.ModalTitle>이런 사진을 올려주세요</styles.ModalTitle>
+            <styles.ModalList>
               <li>청소가 끝난 빗물받이 사진</li>
               <li>
                 허위 신고를 입증할 수 있는 사진
                 <br />
                 (예: 해당 위치에 빗물받이가 없음)
               </li>
-            </styled.ModalList>
-            <styled.ButtonWrapper>
+            </styles.ModalList>
+            <styles.ButtonWrapper>
               <input
                 type="file"
                 accept="image/*"
@@ -103,8 +103,8 @@ export default function SolveNew() {
               <Button rounded onClick={onClickFileUpload}>
                 사진 보관함
               </Button>
-            </styled.ButtonWrapper>
-          </styled.ModalWrapper>
+            </styles.ButtonWrapper>
+          </styles.ModalWrapper>
         </ModalBottom>
       )}
     </>
