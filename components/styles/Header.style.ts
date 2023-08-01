@@ -12,7 +12,7 @@ export const Header = styled.header`
   z-index: 5;
 `;
 
-export const BackButton = styled.button`
+export const Button = styled.button`
   width: 2rem;
   height: 2rem;
   position: absolute;
@@ -24,6 +24,8 @@ export const BackButton = styled.button`
 `;
 
 export const Title = styled.h1`
+  display: flex;
+  justify-content: center;
   flex: 1 1 0%;
   text-align: center;
   font-weight: var(--font-semibold);

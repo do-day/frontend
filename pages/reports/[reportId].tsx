@@ -35,7 +35,7 @@ export default function ReportDetail() {
 
   return (
     <>
-      <Header title="신고 상세보기" />
+      <Header title="신고 상세보기" hasBackButton />
 
       <Container>
         <styles.Section>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import ReportList from '@/components/ReportList';
 import Tab from '@/components/Tab';
 import Header from '@/components/Header';
@@ -10,15 +9,12 @@ export interface TabDirection {
 }
 
 export default function AdminReportsHome() {
-  const [tab, setTab] = useState<boolean>(true);
-  const handleOnClick = () => {
-    setTab(!tab);
-  };
   const list = ['신고 목록 확인', '해결 목록 확인'];
   const link = [ROUTES.ADMIN.REPORTS, ROUTES.ADMIN.SOLVES];
+
   return (
     <>
-      <Header title="DO DAY" type="main" />
+      <Header />
       <Container>
         <Tab list={list} order={'0'} link={link} />
         {/** TODO: 데이터 map형태로 바꾸기 */}

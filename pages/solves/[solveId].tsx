@@ -18,7 +18,7 @@ export default function SolveDetail() {
 
   return (
     <>
-      <Header title="해결 상세보기" />
+      <Header title="해결 상세보기" hasBackButton />
 
       <Container>
         <styles.Section>

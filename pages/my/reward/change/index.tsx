@@ -6,7 +6,7 @@ import * as styles from '@/pages/my/reward/change/change.style';
 export default function MyRewardChange() {
   return (
     <>
-      <Header title="리워드 전환" />
+      <Header title="리워드 전환" hasBackButton />
       <Container>
         <styles.TopBox>내 리워드: 0,000원</styles.TopBox>
         <styles.MiddleBox>

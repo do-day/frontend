@@ -9,7 +9,7 @@ import * as styles from '@/pages/main.style';
 export default function Home() {
   return (
     <>
-      <Header title="DO DAY" type="main" />
+      <Header />
       <Container>
         <styles.TopBox>
           <styles.TopTitleBox>신고목록</styles.TopTitleBox>

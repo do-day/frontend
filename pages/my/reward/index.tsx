@@ -1,4 +1,4 @@
-import SolveList from '@/components/SolveList';
+import RewardList from '@/components/RewardList';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
 import * as styles from '@/pages/my/reward/reward.style';
@@ -6,7 +6,7 @@ import * as styles from '@/pages/my/reward/reward.style';
 export default function MyRewardHome() {
   return (
     <>
-      <Header title="리워드" type="main" />
+      <Header />
       <Container>
         <styles.TopBox>
           <styles.TitleBox>적립된 리워드</styles.TitleBox>
@@ -25,11 +25,11 @@ export default function MyRewardHome() {
       <Container>
         <styles.BottomBox>
           <styles.DescriptionBox>적립 상세 내역</styles.DescriptionBox>
-          <SolveList />
-          <SolveList />
-          <SolveList />
-          <SolveList />
-          <SolveList />
+          <RewardList />
+          <RewardList />
+          <RewardList />
+          <RewardList />
+          <RewardList />
         </styles.BottomBox>
       </Container>
     </>

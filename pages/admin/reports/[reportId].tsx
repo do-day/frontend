@@ -33,7 +33,7 @@ export default function AdminReportDetail() {
 
   return (
     <>
-      <Header title="신고 내용 확인" />
+      <Header title="신고 내용 확인" hasBackButton />
 
       <Container>
         <styles.Section>

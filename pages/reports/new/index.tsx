@@ -25,7 +25,7 @@ export default function ReportNew() {
 
   return (
     <>
-      <Header title="신고하기" />
+      <Header title="신고하기" hasBackButton />
 
       <Container>
         <styles.Form>

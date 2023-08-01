@@ -33,7 +33,7 @@ export default function SolveNew() {
 
   return (
     <>
-      <Header title="보고하기" />
+      <Header title="보고하기" hasBackButton />
 
       <Container>
         <styles.Form>

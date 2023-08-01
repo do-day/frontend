@@ -33,7 +33,7 @@ export default function AdminSolveDetail() {
 
   return (
     <>
-      <Header title="해결 내용 확인" />
+      <Header title="해결 내용 확인" hasBackButton />
 
       <Container>
         <styles.Section>
