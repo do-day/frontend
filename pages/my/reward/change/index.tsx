@@ -17,6 +17,9 @@ export default function MyRewardChange() {
       <Header title="리워드 전환" hasBackButton />
       <Container>
         <styles.TopBox>내 리워드: {total.nowReward}원</styles.TopBox>
+        <styles.TopBox>
+          내 리워드: {total.nowReward.toLocaleString()}원
+        </styles.TopBox>
         <styles.MoneyBox>
           <styles.MoneyInput
             placeholder="전환할 금액 입력"

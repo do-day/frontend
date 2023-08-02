@@ -33,7 +33,7 @@ export default function MyRewardHome() {
           <styles.SectionTitle>적립된 리워드</styles.SectionTitle>
           <styles.MiddleBox>
             <styles.MoneyBox>
-              <styles.Money>{total?.nowReward}</styles.Money>원
+              <styles.Money>{total?.nowReward.toLocaleString()}</styles.Money>원
             </styles.MoneyBox>
             <Button
               fitContent
@@ -43,7 +43,7 @@ export default function MyRewardHome() {
             </Button>
           </styles.MiddleBox>
           <styles.TotalBox>
-            총 적립 리워드 {total?.totalReward}원
+            총 적립 리워드 {total?.totalReward.toLocaleString()}원
           </styles.TotalBox>
         </styles.Section>
         <styles.HorizontalLine />
