@@ -17,6 +17,18 @@ export interface RProps {
   state: 'UNAPPROVAL' | 'UNRESOLVED' | 'RESOLVING' | 'RESOLVED' | 'REJECTED';
 }
 
+const formateDate = (createDate: string) => {
+  const date = new Date(createDate);
+
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+
+  return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
+};
+
 const ReportList = ({
   route,
   reportId,
@@ -30,18 +42,6 @@ const ReportList = ({
 }: RProps) => {
   const [href, setHref] = useState<string>('');
   const [viewDate, setViewDate] = useState<string>('');
-
-  const formateDate = (createDate: string) => {
-    const date = new Date(createDate);
-
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-
-    return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
-  };
 
   useEffect(() => {
     if (route === 'admin') {
