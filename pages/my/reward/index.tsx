@@ -6,7 +6,7 @@ import Button from '@/components/Button';
 import * as styles from '@/pages/my/reward/reward.style';
 import { ROUTES } from '@/constants';
 import { useQuery } from '@tanstack/react-query';
-import { getReward } from '@/api/reward';
+import { getTotalReward, getReward } from '@/api/reward';
 import { RewardHistory } from '@/types';
 
 export default function MyRewardHome() {
@@ -20,6 +20,11 @@ export default function MyRewardHome() {
     queryFn: () => getReward(Number(memberId)),
   });
 
+  const { data: total } = useQuery({
+    queryKey: ['total', memberId],
+    queryFn: () => getTotalReward(Number(memberId)),
+  });
+
   return (
     <>
       <Header />
@@ -28,7 +33,7 @@ export default function MyRewardHome() {
           <styles.SectionTitle>적립된 리워드</styles.SectionTitle>
           <styles.MiddleBox>
             <styles.MoneyBox>
-              <styles.Money>3750</styles.Money>원
+              <styles.Money>{total?.nowReward}</styles.Money>원
             </styles.MoneyBox>
             <Button
               fitContent
@@ -37,7 +42,9 @@ export default function MyRewardHome() {
               전환하기
             </Button>
           </styles.MiddleBox>
-          <styles.TotalBox>총 적립 리워드 25300원</styles.TotalBox>
+          <styles.TotalBox>
+            총 적립 리워드 {total?.totalReward}원
+          </styles.TotalBox>
         </styles.Section>
         <styles.HorizontalLine />
         <styles.Section>

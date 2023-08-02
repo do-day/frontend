@@ -60,3 +60,8 @@ export type RewardHistory = {
   type: string;
   location: string;
 };
+
+export type TotalReward = {
+  nowReward?: number;
+  totalReward?: number;
+};
