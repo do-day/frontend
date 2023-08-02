@@ -1,13 +1,9 @@
-import styled from '@emotion/styled';
+import * as styles from '@/components/styles/Container.style';
 
 interface Props {
   children: React.ReactNode;
 }
 
 export default function Container({ children }: Props) {
-  return <Main>{children}</Main>;
+  return <styles.Main>{children}</styles.Main>;
 }
-
-const Main = styled.main`
-  padding: 5rem 1rem 1rem 1rem;
-`;

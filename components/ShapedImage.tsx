@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import Image from 'next/image';
+import * as styles from '@/components/styles/ShapedImage.style';
 
 interface Props {
   size: string;
@@ -9,7 +9,7 @@ interface Props {
 
 export default function ShapedImage({ size, src, alt }: Props) {
   return (
-    <ImageWrapper size={size}>
+    <styles.ImageWrapper size={size}>
       <Image
         src={src}
         width={100}
@@ -21,15 +21,6 @@ export default function ShapedImage({ size, src, alt }: Props) {
           objectFit: 'cover',
         }}
       />
-    </ImageWrapper>
+    </styles.ImageWrapper>
   );
 }
-
-export const ImageWrapper = styled.div<{ size: string }>`
-  width: ${(props) => props.size};
-  height: ${(props) => props.size};
-  max-height: 10.5rem;
-  & > img {
-    border-radius: var(--border-radius);
-  }
-`;

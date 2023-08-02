@@ -1,110 +1,55 @@
-import styled from '@emotion/styled';
+import { createPortal } from 'react-dom';
 import { useRef } from 'react';
-import Link from 'next/link';
+import Button from '@/components/Button';
+import { ROUTES } from '@/constants';
+import * as styles from '@/components/styles/Modal.style';
+import { useRouter } from 'next/router';
 
 interface MProps {
   text: string;
 }
 
 const Modal = ({ text }: MProps) => {
+  const router = useRouter();
   const ment = useRef<string>();
   const link = useRef<string>('');
 
-  if (text.length > 6) {
+  if (text.length > 4) {
     ment.current = '신고 목록으로';
-    link.current = '/admin/report';
+    link.current = `${ROUTES.ADMIN.REPORTS}`;
   } else {
     if (text.slice(0, 2) === '보고') ment.current = `나의 해결 목록`;
     else {
       ment.current = `나의 ${text.slice(0, 2)} 목록`;
     }
-    if (text.slice(0, 2) === '보고') link.current = '/mysolve';
-    else if (text.slice(0, 2) === '신고') link.current = '/myreport';
+    if (text.slice(0, 2) === '보고') link.current = `${ROUTES.MY.SOLVES}`;
+    else if (text.slice(0, 2) === '신고') link.current = `${ROUTES.MY.REPORTS}`;
   }
 
   return (
-    <ModalContainer>
-      <ModalBackdrop>
-        <ModalView onClick={(e) => e.stopPropagation()}>
-          <ModalTitleBox>
-            <ModalText>{text}</ModalText>
-          </ModalTitleBox>
-          <ModalButtonBox>
-            <Link href="/">
-              <ModalLeftBtn>메인으로</ModalLeftBtn>
-            </Link>
-            <Link href={link.current}>
-              <ModalRightBtn>{ment.current}</ModalRightBtn>
-            </Link>
-          </ModalButtonBox>
-        </ModalView>
-      </ModalBackdrop>
-    </ModalContainer>
+    <>
+      {createPortal(
+        <styles.Modal>
+          <styles.ModalView>
+            <styles.ModalText>{text}</styles.ModalText>
+            <styles.ModalButtonBox>
+              <Button
+                onClick={() => router.push(ROUTES.MAIN)}
+                secondary
+                fitContent
+              >
+                메인으로
+              </Button>
+              <Button onClick={() => router.push(link.current)} fitContent>
+                {ment.current}
+              </Button>
+            </styles.ModalButtonBox>
+          </styles.ModalView>
+        </styles.Modal>,
+        document.getElementById('modal-root') as HTMLElement,
+      )}
+    </>
   );
 };
-
-const ModalContainer = styled.div``;
-
-const ModalBackdrop = styled.div`
-  background: rgba(0, 0, 0, 0.6);
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-`;
-
-const ModalView = styled.div`
-  width: 19.5rem;
-  height: 11rem;
-  background-color: white;
-  &.fail {
-    height: 120px;
-  }
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const ModalTitleBox = styled.div`
-  display: flex;
-  margin: 2.5rem auto 0.1rem;
-`;
-
-const ModalText = styled.div`
-  font-size: 24px;
-  font-weight: 600;
-`;
-
-const ModalButtonBox = styled.div`
-  display: flex;
-  margin: 2.3rem auto 0;
-`;
-
-const ModalLeftBtn = styled.button`
-  width: 7.5rem;
-  border-radius: 10px;
-  background-color: white;
-  height: 2.7rem;
-  border: 3px solid #0083cd;
-  color: #0083cd;
-  font-size: 16px;
-  font-weight: 600;
-`;
-
-const ModalRightBtn = styled.button`
-  width: 7.5rem;
-  border-radius: 10px;
-  height: 2.7rem;
-  background-color: #0083cd;
-  margin-left: 1.5rem;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-`;
 
 export default Modal;

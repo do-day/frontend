@@ -1,96 +1,80 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
-  width: 375px;
-  background-color: white;
-  padding: 20px;
+export const TopTitle = styled.h1`
+  font-size: var(--font-large);
+  font-weight: var(--font-bold);
+  margin-bottom: 0.5rem;
 `;
 
-export const Header = styled.div`
-  display: flex;
-  height: 40px;
+export const TopDescription = styled.p`
+  font-size: var(--font-small);
+  color: var(--color-dark-gray);
 `;
 
-export const MenuBox = styled.div`
-  position: absolute;
-  top: 25px;
-`;
-
-export const LogoBox = styled.div`
-  margin: auto;
-  display: flex;
-  align-items: center;
-  font-size: 20px;
-  font-weight: 600;
-`;
-
-export const TopBox = styled.div`
-  margin-top: 10px;
-`;
-
-export const TopTitleBox = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 5px;
-`;
-
-export const TopDescriptionBox = styled.div`
-  font-size: 14px;
-  color: #5a5a5a;
-`;
-
-export const SearchBox = styled.div`
-  margin: 20px 0;
-  display: flex;
-`;
-
-export const Search = styled.label`
+export const SearchBox = styled.form`
   width: 100%;
-  input {
-    padding-left: 15px;
-    border-radius: 20px;
-    background-color: #f6f6f6;
-    height: 36px;
-    width: 100%;
-    border: 1px solid #e8e8e8;
-    color: #bdbdbd;
-  }
+  margin: 1.25rem 0;
+  display: flex;
+`;
+
+export const SearchInput = styled.input`
+  flex: 1 1 0%;
+  width: 100%;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  background-color: var(--color-light-gray);
+  border-top-left-radius: var(--border-rounded);
+  border-bottom-left-radius: var(--border-rounded);
+  border: none;
 `;
 
 export const SearchIconBtn = styled.button`
-  margin-left: -1.6rem;
-  margin-top: 0.3rem;
-  color: #0083cd;
-  background-color: transparent;
-`;
-
-export const WriteAbsoluteBox = styled.div`
-  position: fixed;
-  bottom: 1rem;
-  right: 0.8rem;
-  z-index: 1;
-`;
-
-export const WriteFlexBox = styled.div`
+  width: 3rem;
+  background-color: white;
+  border: 1px solid var(--color-light-gray);
+  border-top-right-radius: var(--border-rounded);
+  border-bottom-right-radius: var(--border-rounded);
+  font-size: 1.25rem;
   display: flex;
-  background-color: #0083cd;
-  width: 122px;
-  height: 48px;
-  border-radius: 25px;
-  box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.25);
+  align-items: center;
+  justify-content: center;
+  color: var(--color-dark-gray);
+`;
+
+export const WriteButtonBox = styled.div`
+  width: 100%;
+  max-width: 36rem;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: var(--color-white);
+`;
+
+export const WriteButton = styled.div`
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem 0.5rem 0.75rem;
+  background-color: var(--color-main);
+  border-radius: var(--border-rounded);
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.15);
+  line-height: 1.5rem;
 `;
 
 export const WriteIcon = styled.div`
   display: flex;
-  align-items: center;
-  margin: 10px 0 auto 15px;
+  padding-right: 0.5rem;
+  & > svg {
+    font-size: 1.25rem;
+  }
 `;
 
 export const WriteTxt = styled.div`
-  color: white;
-  font-weight: 600;
-  font-size: 17px;
-  display: flex;
-  align-items: center;
-  margin: auto;
+  font-weight: var(--font-bold);
 `;
