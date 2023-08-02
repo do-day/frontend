@@ -31,3 +31,11 @@ export const getMyReports = async (memberId: number): Promise<Report[]> => {
   }
   return res.data;
 };
+
+export const getReport = async (reportId: number): Promise<Report> => {
+  const res = await axios.get(`/report/${reportId}`);
+  if (res.status !== 200) {
+    throw new Error(res.statusText);
+  }
+  return res.data;
+};
