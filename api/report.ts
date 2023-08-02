@@ -16,6 +16,14 @@ export const createReport = async (reportForm: ReportForm) => {
   return res;
 };
 
+export const getReports = async (): Promise<Report[]> => {
+  const res = await axios.get('/report');
+  if (res.status !== 200) {
+    throw new Error(res.statusText);
+  }
+  return res.data;
+};
+
 export const getMyReports = async (memberId: number): Promise<Report[]> => {
   const res = await axios.get(`/mypage/report/${memberId}`);
   if (res.status !== 200) {

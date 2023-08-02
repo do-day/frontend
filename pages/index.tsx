@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import { useQuery } from '@tanstack/react-query';
 import { BiSearch, BiPencil } from 'react-icons/bi';
+import { getReports } from '@/api/report';
 import ReportList from '@/components/ReportList';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
@@ -7,6 +9,11 @@ import { ROUTES } from '@/constants';
 import * as styles from '@/pages/main.style';
 
 export default function Home() {
+  const { data: reports } = useQuery({
+    queryKey: ['reports', 'main'],
+    queryFn: getReports,
+  });
+
   return (
     <>
       <Header />
@@ -24,11 +31,9 @@ export default function Home() {
           </styles.SearchIconBtn>
         </styles.SearchBox>
 
-        {/** TODO: 데이터 map형태로 바꾸기 */}
-        <ReportList />
-        <ReportList />
-        <ReportList />
-        <ReportList />
+        {reports?.map((report) => (
+          <ReportList report={report} key={report.reportId} />
+        ))}
       </Container>
 
       <Link href={ROUTES.REPORTS.NEW}>
