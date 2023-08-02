@@ -1,15 +1,25 @@
 import * as styles from '@/components/styles/RewardList.style';
+import { RewardHistory } from '@/types';
+import { onlyDate } from '@/utils';
 
-const RewardList = () => {
+const RewardList = ({
+  date,
+  location,
+  price,
+  rewardId,
+  type,
+}: RewardHistory) => {
+  const rewardDate = onlyDate(date);
+
   return (
     <styles.RewardList>
-      <styles.DateBox>00.00</styles.DateBox>
+      <styles.DateBox>{rewardDate}</styles.DateBox>
       <styles.RewardCenterBox>
-        <styles.RewardTitleBox>해결하기</styles.RewardTitleBox>
-        <styles.LocationBox>동작구 세종로 126길</styles.LocationBox>
+        <styles.RewardTitleBox>{type}</styles.RewardTitleBox>
+        <styles.LocationBox>{location}</styles.LocationBox>
       </styles.RewardCenterBox>
       <styles.RewardMoneyBox>
-        <styles.Money>200</styles.Money>원
+        <styles.Money>{price}</styles.Money>원
       </styles.RewardMoneyBox>
     </styles.RewardList>
   );

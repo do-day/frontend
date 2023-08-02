@@ -5,14 +5,24 @@ import Container from '@/components/Container';
 import Button from '@/components/Button';
 import * as styles from '@/pages/my/reward/reward.style';
 import { ROUTES } from '@/constants';
+import { useQuery } from '@tanstack/react-query';
+import { getReward } from '@/api/reward';
+import { RewardHistory } from '@/types';
 
 export default function MyRewardHome() {
   const router = useRouter();
 
+  // TODO: memberId를 로그인 정보에서 가져오기
+  const memberId = '1';
+
+  const { data: rewards } = useQuery({
+    queryKey: ['reward', memberId],
+    queryFn: () => getReward(Number(memberId)),
+  });
+
   return (
     <>
       <Header />
-
       <Container>
         <styles.Section>
           <styles.SectionTitle>적립된 리워드</styles.SectionTitle>
@@ -33,11 +43,18 @@ export default function MyRewardHome() {
         <styles.Section>
           <styles.SectionTitle>적립 상세 내역</styles.SectionTitle>
           <styles.RewardListBox>
-            <RewardList />
-            <RewardList />
-            <RewardList />
-            <RewardList />
-            <RewardList />
+            {rewards?.map((reward: RewardHistory) => {
+              return (
+                <RewardList
+                  key={reward.date}
+                  date={reward.date}
+                  location={reward.location}
+                  price={reward.price}
+                  rewardId={reward.rewardId}
+                  type={reward.type}
+                />
+              );
+            })}
           </styles.RewardListBox>
         </styles.Section>
       </Container>

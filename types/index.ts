@@ -48,3 +48,15 @@ export type SolveForm = {
   photo: File | null;
   falseReport?: string;
 };
+
+export type ChangeReward = {
+  amount: number;
+};
+
+export type RewardHistory = {
+  rewardId: number;
+  date: string;
+  price: number;
+  type: string;
+  location: string;
+};
