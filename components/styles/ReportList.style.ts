@@ -23,16 +23,3 @@ export const ListDate = styled.p`
   font-size: var(--font-small);
   color: var(--color-dark-gray);
 `;
-
-export const ListTagBox = styled.div``;
-
-export const Tag = styled.div`
-  width: fit-content;
-  padding: 0.25rem 0.5rem;
-  line-height: 1rem;
-  font-size: var(--font-x-small);
-  font-weight: var(--font-bold);
-  color: var(--color-white);
-  background-color: var(--color-dark-gray);
-  border-radius: var(--border-rounded);
-`;
