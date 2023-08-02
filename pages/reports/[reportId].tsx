@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { BiCopyAlt } from 'react-icons/bi';
 import { getReport } from '@/api/report';
+import { applySolve } from '@/api/solve';
 import Container from '@/components/Container';
 import Header from '@/components/Header';
 import Button from '@/components/Button';
@@ -10,11 +11,12 @@ import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/report-solve/style';
-import { applySolve } from '@/api/solve';
+import { Solve } from '@/types';
 
 export default function ReportDetail() {
   // TODO: 이미 해결중인 신고인지 확인 후 초기값 설정
   const [buttonText, setButtonText] = useState('해결하기');
+  const [solveId, setSolveId] = useState<number>(0);
 
   const router = useRouter();
   const reportId = router.query.reportId;
@@ -28,7 +30,8 @@ export default function ReportDetail() {
 
   const applySolveMutation = useMutation({
     mutationFn: () => applySolve(Number(reportId), Number(memberId)),
-    onSuccess: () => {
+    onSuccess: (solve: Solve) => {
+      setSolveId(solve.id ?? 0);
       setButtonText('보고하러 가기');
     },
   });
@@ -41,7 +44,7 @@ export default function ReportDetail() {
     if (buttonText === '해결하기') {
       applySolveMutation.mutate();
     } else {
-      router.push({ pathname: ROUTES.SOLVES.NEW, query: { reportId } });
+      router.push({ pathname: ROUTES.SOLVES.NEW, query: { solveId } });
     }
   };
 

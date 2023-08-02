@@ -1,9 +1,9 @@
-import { createPortal } from 'react-dom';
 import { useRef } from 'react';
+import { createPortal } from 'react-dom';
+import { useRouter } from 'next/router';
 import Button from '@/components/Button';
 import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/Modal.style';
-import { useRouter } from 'next/router';
 
 interface MProps {
   text: string;
@@ -14,16 +14,13 @@ const Modal = ({ text }: MProps) => {
   const ment = useRef<string>();
   const link = useRef<string>('');
 
-  if (text.length > 4) {
+  const type = text.slice(0, 2);
+  if (type === '승인') {
     ment.current = '신고 목록으로';
     link.current = `${ROUTES.ADMIN.REPORTS}`;
   } else {
-    if (text.slice(0, 2) === '보고') ment.current = `나의 해결 목록`;
-    else {
-      ment.current = `나의 ${text.slice(0, 2)} 목록`;
-    }
-    if (text.slice(0, 2) === '보고') link.current = `${ROUTES.MY.SOLVES}`;
-    else if (text.slice(0, 2) === '신고') link.current = `${ROUTES.MY.REPORTS}`;
+    ment.current = type === '보고' ? `나의 해결 목록` : `나의 ${type} 목록`;
+    link.current = type === '보고' ? ROUTES.MY.SOLVES : ROUTES.MY.REPORTS;
   }
 
   return (

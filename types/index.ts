@@ -17,8 +17,19 @@ export type Report = {
   createDate?: string;
 };
 
+export type ReportForm = {
+  memberId: number;
+  location: string;
+  photoRaincatch: File | null;
+  photoAround?: File | null;
+  description?: string;
+  latitude: number;
+  longitude: number;
+};
+
 export type Solve = {
   solutionId: number;
+  id?: number;
   latitude?: number;
   longitude?: number;
   location: string;
@@ -29,12 +40,10 @@ export type Solve = {
   reportDate?: string;
 };
 
-export type ReportForm = {
-  memberId: number;
-  location: string;
-  photoRaincatch: File | null;
-  photoAround?: File | null;
-  description?: string;
+export type SolveForm = {
   latitude: number;
   longitude: number;
+  location: string;
+  photo: File | null;
+  falseReport?: string;
 };
