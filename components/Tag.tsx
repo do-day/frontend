@@ -36,7 +36,7 @@ export const TagBox = styled.div<State>`
     props.state === 'UNAPPROVAL'
       ? 'var(--color--unapproval)'
       : props.state === 'UNRESOLVED'
-      ? 'var(--color--unresolved'
+      ? 'var(--color--unresolved)'
       : props.state === 'RESOLVING'
       ? 'var(--color--resolving)'
       : props.state === 'RESOLVED'

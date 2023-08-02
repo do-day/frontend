@@ -6,7 +6,7 @@
   --color-gray: #bdbdbd;
   --color-dark-gray: #777;
   --color-backdrop: rgba(0, 0, 0, 0.5);
-  --color-unresolved: #a4a4a4;
+  --color--unresolved: #a4a4a4;
   --color--resolving: #4cb7ea;
   --color--resolved: #7ac06f;
   --color--rejected: #f57970;
