@@ -12,11 +12,11 @@ export default function MySolvesHome() {
   const list = ['나의 신고 목록', '나의 해결 목록'];
   const link = [ROUTES.MY.REPORTS, ROUTES.MY.SOLVES];
 
-  const getMyReport = async (memberId: string) => {
+  const getMySolve = async (memberId: string) => {
     return await axios.get(`/mypage/solution/${memberId}`);
   };
 
-  const { data } = useQuery(['memberId'], () => getMyReport('1'));
+  const { data } = useQuery(['memberId'], () => getMySolve('1'));
   console.log('data', data);
 
   return (
