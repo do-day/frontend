@@ -12,7 +12,7 @@ const ReportList = () => {
       <styles.ListBox>
         <ShapedImage src="/list.svg" alt="썸네일" size="5rem" />
         <styles.RightBox>
-          <Tag />
+          <Tag state={'UNAPPROVAL'} />
           <styles.ListTitle>서울특별시 동작구 노량진로 10</styles.ListTitle>
           <styles.ListDate>2023년 7월 1일 18:30</styles.ListDate>
         </styles.RightBox>
