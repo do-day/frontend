@@ -5,6 +5,7 @@ interface Props {
   placeholder?: string;
   disabled?: boolean;
   value?: string;
+  onChange?: (value: string) => void;
 }
 
 export default function Textarea({
@@ -12,13 +13,19 @@ export default function Textarea({
   placeholder,
   disabled = false,
   value,
+  onChange,
 }: Props) {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    onChange && onChange(e.target.value);
+  };
+
   return (
     <styles.Textarea
       rows={rows}
       placeholder={placeholder}
       disabled={disabled}
       value={value}
+      onChange={handleChange}
     ></styles.Textarea>
   );
 }

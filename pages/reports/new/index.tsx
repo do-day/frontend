@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { createReport } from '@/api/report';
 import Container from '@/components/Container';
 import Header from '@/components/Header';
 import Button from '@/components/Button';
@@ -8,19 +10,51 @@ import ShapedImage from '@/components/ShapedImage';
 import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
 import Modal from '@/components/Modal';
+import { ReportForm } from '@/types';
 import * as styles from '@/components/styles/report-solve/style';
 
 export default function ReportNew() {
+  // TODO: memberId 받아오기
+  // TODO: 지도 API 추가 후 위치 정보 받아오기
+  const [reportForm, setReportForm] = useState<ReportForm>({
+    memberId: 1,
+    location: '',
+    description: '',
+    latitude: 0,
+    longitude: 0,
+    photoRaincatch: null,
+    photoAround: null,
+  });
   const [showPhotoModal, setShowPhotoModal] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadedFiles, onFileChange, onClickFileUpload] = useUploadImages(
     fileInputRef,
     () => setShowPhotoModal(false),
   );
-  const [isOpen, setIsOpen] = useState(false);
-  const handleClickReportBtn = () => {
-    setIsOpen(!isOpen);
+
+  const createReportMutation = useMutation({
+    mutationFn: createReport,
+    onSuccess: () => {
+      setIsOpen(true);
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const photoRaincatch = uploadedFiles?.files[0];
+    if (!photoRaincatch) {
+      alert('사진을 1장 이상 첨부해 주세요.');
+      return;
+    }
+
+    createReportMutation.mutate({
+      ...reportForm,
+      photoRaincatch,
+      photoAround: uploadedFiles?.files[1],
+    });
   };
 
   return (
@@ -28,7 +62,7 @@ export default function ReportNew() {
       <Header title="신고하기" hasBackButton />
 
       <Container>
-        <styles.Form>
+        <styles.Form onSubmit={handleSubmit}>
           <styles.Section>
             <styles.SectionTitle>발생 지역</styles.SectionTitle>
             <styles.SectionDiv>지도</styles.SectionDiv>
@@ -70,15 +104,17 @@ export default function ReportNew() {
             <Textarea
               rows={8}
               placeholder="위치를 쉽게 찾을 수 있도록 빗물받이 주변 건물 등을 알려주세요."
+              onChange={(value) =>
+                setReportForm({ ...reportForm, description: value })
+              }
             ></Textarea>
           </styles.Section>
           <styles.ButtonDiv>
-            <Button onClick={handleClickReportBtn} type="submit">
-              신고하기
-            </Button>
+            <Button type="submit">신고하기</Button>
           </styles.ButtonDiv>
         </styles.Form>
       </Container>
+
       {isOpen ? <Modal text={'신고 완료'} /> : ''}
 
       {showPhotoModal && (
