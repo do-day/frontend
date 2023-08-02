@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { BiCopyAlt } from 'react-icons/bi';
 import { getReport } from '@/api/report';
 import Container from '@/components/Container';
@@ -10,18 +10,28 @@ import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/report-solve/style';
+import { applySolve } from '@/api/solve';
 
 export default function ReportDetail() {
+  // TODO: 이미 해결중인 신고인지 확인 후 초기값 설정
+  const [buttonText, setButtonText] = useState('해결하기');
+
   const router = useRouter();
   const reportId = router.query.reportId;
+  // TODO: 로그인 정보 확인해서 memberId 가져오기
+  const memberId = '1';
 
   const { data: report } = useQuery({
     queryKey: ['report', reportId],
     queryFn: () => getReport(Number(reportId)),
   });
 
-  // TODO: 이미 해결중인 신고인지 확인 후 초기값 설정
-  const [buttonText, setButtonText] = useState('해결하기');
+  const applySolveMutation = useMutation({
+    mutationFn: () => applySolve(Number(reportId), Number(memberId)),
+    onSuccess: () => {
+      setButtonText('보고하러 가기');
+    },
+  });
 
   const handleClickCopy = async () => {
     await navigator.clipboard.writeText(report?.location ?? '');
@@ -29,7 +39,7 @@ export default function ReportDetail() {
 
   const handleClickSolve = () => {
     if (buttonText === '해결하기') {
-      setButtonText('보고하러 가기');
+      applySolveMutation.mutate();
     } else {
       router.push({ pathname: ROUTES.SOLVES.NEW, query: { reportId } });
     }
