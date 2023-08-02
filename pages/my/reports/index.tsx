@@ -24,7 +24,6 @@ export default function MyReportsHome() {
       <Header />
       <Container>
         <Tab list={list} link={link} />
-        {/** TODO: 데이터 map형태로 바꾸기 */}
         {data?.data.map((el: any, idx: number) => {
           return (
             <ReportList
