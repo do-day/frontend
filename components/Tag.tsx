@@ -1,11 +1,8 @@
 import styled from '@emotion/styled';
+import { State } from '@/types';
 
 interface TProps {
-  state: 'UNAPPROVAL' | 'UNRESOLVED' | 'RESOLVING' | 'RESOLVED' | 'REJECTED';
-}
-
-interface State {
-  state: string;
+  state: State;
 }
 
 const Tag = ({ state }: TProps) => {
@@ -25,7 +22,7 @@ const Tag = ({ state }: TProps) => {
 
 export const ListTagBox = styled.div``;
 
-export const TagBox = styled.div<State>`
+export const TagBox = styled.div<{ state: State }>`
   width: fit-content;
   padding: 0.25rem 0.5rem;
   line-height: 1rem;

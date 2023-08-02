@@ -1,82 +1,28 @@
-import Link from 'next/link';
+import ListItem from '@/components/ListItem';
+import { formatDate } from '@/utils';
 import { ROUTES } from '@/constants';
-import ShapedImage from '@/components/ShapedImage';
-import * as styles from '@/components/styles/ReportList.style';
-import Tag from './Tag';
-import { useEffect, useState } from 'react';
+import { Report } from '@/types';
 
-export interface RProps {
-  route: string;
-  reportId: number | 0;
-  solutionId: number | 0;
-  location: string;
-  photoRaincatch: string;
-  createDate: string | '';
-  reportDate: string | '';
-  content: string;
-  state: 'UNAPPROVAL' | 'UNRESOLVED' | 'RESOLVING' | 'RESOLVED' | 'REJECTED';
+interface Props {
+  report: Report;
+  isAdmin?: boolean;
 }
 
-const formateDate = (createDate: string) => {
-  const date = new Date(createDate);
-
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-
-  return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
-};
-
-const ReportList = ({
-  route,
-  reportId,
-  solutionId,
-  location,
-  photoRaincatch,
-  createDate,
-  reportDate,
-  content,
-  state,
-}: RProps) => {
-  const [href, setHref] = useState<string>('');
-  const [viewDate, setViewDate] = useState<string>('');
-
-  useEffect(() => {
-    if (route === 'admin') {
-      if (reportId !== 0) {
-        setHref(ROUTES.ADMIN.REPORT(reportId));
-        setViewDate(formateDate(createDate));
-      } else {
-        setHref(ROUTES.ADMIN.SOLVE(solutionId));
-        setViewDate(formateDate(reportDate));
-      }
-    } else {
-      if (reportId !== 0) {
-        setHref(ROUTES.REPORTS.REPORT(reportId));
-        setViewDate(formateDate(createDate));
-      } else {
-        setHref(ROUTES.SOLVES.SOLVE(solutionId));
-        setViewDate(formateDate(reportDate));
-      }
-    }
-  }, []);
+const ReportList = ({ report, isAdmin = false }: Props) => {
+  // TODO: 로그인 정보 확인해서 admin 라우팅하기
+  const href = isAdmin
+    ? ROUTES.ADMIN.REPORT(report.reportId)
+    : ROUTES.REPORTS.REPORT(report.reportId);
+  const formattedDate = formatDate(report.createDate);
 
   return (
-    // TODO: 연결되는 주소를 reportId로 변경
-    // TODO: admin일 경우에는 admin 라우트로 변경
-    <Link href={href}>
-      <styles.ListBox>
-        {/** TODO: photoraincatch 사용한걸로 변경하기 */}
-        <ShapedImage src={'/list.svg'} alt="썸네일" size="5rem" />
-        <styles.RightBox>
-          <Tag state={state} />
-          <styles.ListTitle>{location}</styles.ListTitle>
-          <styles.ListDate>{viewDate}</styles.ListDate>
-        </styles.RightBox>
-      </styles.ListBox>
-    </Link>
+    <ListItem
+      href={href}
+      thumbnail={report.photoRaincatch}
+      state={report.state}
+      title={report.location}
+      date={formattedDate}
+    />
   );
 };
 
