@@ -27,13 +27,14 @@ export default function MySolvesHome() {
         {data?.data.map((el: any, idx: number) => {
           return (
             <ReportList
-              key={el.createDate}
+              key={el.solutionId}
               route={'my'}
               reportId={0}
               solutionId={el.solutionId}
               location={el.location}
               photoRaincatch={el.photoRaincatch}
-              createDate={el.createDate}
+              reportDate={el.reportDate}
+              createDate=""
               content={el.content}
               state={el.state}
             />

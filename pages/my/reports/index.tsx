@@ -27,13 +27,14 @@ export default function MyReportsHome() {
         {data?.data.map((el: any, idx: number) => {
           return (
             <ReportList
-              key={el.createDate}
+              key={el.reportId}
               route={'my'}
               reportId={el.reportId}
               solutionId={0}
               location={el.location}
               photoRaincatch={el.photoRaincatch}
               createDate={el.createDate}
+              reportDate=""
               content={el.content}
               state={el.state}
             />

@@ -11,7 +11,8 @@ export interface RProps {
   solutionId: number | 0;
   location: string;
   photoRaincatch: string;
-  createDate: string;
+  createDate: string | '';
+  reportDate: string | '';
   content: string;
   state: 'UNAPPROVAL' | 'UNRESOLVED' | 'RESOLVING' | 'RESOLVED' | 'REJECTED';
 }
@@ -23,10 +24,12 @@ const ReportList = ({
   location,
   photoRaincatch,
   createDate,
+  reportDate,
   content,
   state,
 }: RProps) => {
   const [href, setHref] = useState<string>('');
+  const [viewDate, setViewDate] = useState<string>('');
 
   const formateDate = (createDate: string) => {
     const date = new Date(createDate);
@@ -42,11 +45,21 @@ const ReportList = ({
 
   useEffect(() => {
     if (route === 'admin') {
-      if (reportId === 0) setHref(ROUTES.ADMIN.SOLVE(solutionId));
-      else setHref(ROUTES.ADMIN.REPORT(reportId));
+      if (reportId !== 0) {
+        setHref(ROUTES.ADMIN.REPORT(reportId));
+        setViewDate(formateDate(createDate));
+      } else {
+        setHref(ROUTES.ADMIN.SOLVE(solutionId));
+        setViewDate(formateDate(reportDate));
+      }
     } else {
-      if (reportId === 0) setHref(ROUTES.SOLVES.SOLVE(solutionId));
-      else setHref(ROUTES.REPORTS.REPORT(reportId));
+      if (reportId !== 0) {
+        setHref(ROUTES.REPORTS.REPORT(reportId));
+        setViewDate(formateDate(createDate));
+      } else {
+        setHref(ROUTES.SOLVES.SOLVE(solutionId));
+        setViewDate(formateDate(reportDate));
+      }
     }
   }, []);
 
@@ -60,7 +73,7 @@ const ReportList = ({
         <styles.RightBox>
           <Tag state={state} />
           <styles.ListTitle>{location}</styles.ListTitle>
-          <styles.ListDate>{formateDate(createDate)}</styles.ListDate>
+          <styles.ListDate>{viewDate}</styles.ListDate>
         </styles.RightBox>
       </styles.ListBox>
     </Link>
