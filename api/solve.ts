@@ -46,3 +46,11 @@ export const createSolve = async ({
   }
   return res;
 };
+
+export const getSolve = async (solutionId: number): Promise<Solve> => {
+  const res = await axios.get(`/solution/${solutionId}`);
+  if (res.status !== 200) {
+    throw new Error(res.statusText);
+  }
+  return res.data;
+};

@@ -34,7 +34,8 @@ export type Solve = {
   longitude?: number;
   location: string;
   photo: string;
-  content: string;
+  falseReport?: string;
+  content?: string;
   state?: State;
   createdDate?: string;
   reportDate?: string;
