@@ -13,6 +13,7 @@ export default function useMapView(
 ) {
   const [map, setMap] = useState<any>();
   const [marker, setMarker] = useState<any>();
+  // NOTE: 보고하는 사람의 위치를 검증할 때 사용하는 정보
   const [currentPosition, setCurrentPosition] = useState({
     latitude: 0,
     longitude: 0,
@@ -77,7 +78,7 @@ export default function useMapView(
         setCurrentLocation(result[0].address.address_name);
       },
     );
-  }, [map]);
+  }, [currentPosition.latitude, currentPosition.longitude, map]);
 
   return { currentLocation, currentPosition };
 }
