@@ -1,6 +1,6 @@
 import * as styles from '@/components/styles/RewardList.style';
 import { RewardHistory } from '@/types';
-import { onlyDate } from '@/utils';
+import { formatonlyDate } from '@/utils';
 
 const RewardList = ({
   date,
@@ -9,7 +9,7 @@ const RewardList = ({
   rewardId,
   type,
 }: RewardHistory) => {
-  const rewardDate = onlyDate(date);
+  const rewardDate = formatonlyDate(date);
 
   return (
     <styles.RewardList>

@@ -12,7 +12,7 @@ export const formatDate = (createDate?: string) => {
   return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
 };
 
-export const onlyDate = (rewardDate?: string) => {
+export const formatonlyDate = (rewardDate?: string) => {
   if (rewardDate === undefined) return;
 
   const month = rewardDate.slice(5, 7);
