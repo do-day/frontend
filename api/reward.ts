@@ -19,7 +19,7 @@ export const changeReward = async ({
 }: {
   memberId: number;
   amount: number;
-}): Promise<ChangeReward> => {
+}) => {
   const res = await axios.post(`/reward/convert/${memberId}`, {
     amount: amount,
   });

@@ -21,12 +21,15 @@ export default function MyRewardChange() {
     queryFn: () => getTotalReward(Number(memberId)),
   });
 
-  const changeRewardMutation = useMutation((amount: Number) =>
-    axios.post(`/reward/convert/${memberId}`, { amount: amount }),
-  );
+  const changeRewardMutation = useMutation({
+    mutationFn: changeReward,
+  });
 
   const handleClickChange = () => {
-    changeRewardMutation.mutate(amount);
+    changeRewardMutation.mutate({
+      memberId: Number(memberId),
+      amount: amount,
+    });
   };
 
   const AllMoneyBtn = () => {
