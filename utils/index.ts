@@ -1,7 +1,5 @@
-export const formatDate = (createDate?: string) => {
-  if (createDate === undefined) return;
-
-  const date = new Date(createDate);
+export const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
 
   const year = date.getFullYear();
   const month = date.getMonth() + 1;

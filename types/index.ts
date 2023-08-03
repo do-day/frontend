@@ -14,7 +14,7 @@ export type Report = {
   photoAround?: string;
   description: string;
   state?: State;
-  createDate?: string;
+  createdDate?: string;
 };
 
 export type ReportForm = {
@@ -29,7 +29,6 @@ export type ReportForm = {
 
 export type Solve = {
   solutionId: number;
-  id?: number;
   latitude?: number;
   longitude?: number;
   location: string;
