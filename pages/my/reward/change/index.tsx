@@ -10,9 +10,11 @@ import { useQuery } from '@tanstack/react-query';
 import { getTotalReward, getReward } from '@/api/reward';
 import axios from 'axios';
 import { API_PREFIX } from '@/constants';
+import Modal from '@/components/Modal';
 axios.defaults.baseURL = API_PREFIX;
 
 export default function MyRewardChange() {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [amount, setAmount] = useState<number>(0);
   const memberId = '1';
 
@@ -30,6 +32,8 @@ export default function MyRewardChange() {
       memberId: Number(memberId),
       amount: amount,
     });
+
+    setIsOpen(true);
   };
 
   const AllMoneyBtn = () => {
@@ -60,6 +64,7 @@ export default function MyRewardChange() {
           전환하기
         </Button>
       </Container>
+      {isOpen ? <Modal text={'전환되었습니다'} /> : ''}
     </>
   );
 }
