@@ -47,3 +47,20 @@ export type SolveForm = {
   photo: File | null;
   falseReport?: string;
 };
+
+export type ChangeReward = {
+  amount: number;
+};
+
+export type Reward = {
+  rewardId: number;
+  date: string;
+  price: number;
+  type: string;
+  location: string;
+};
+
+export type TotalReward = {
+  nowReward?: number;
+  totalReward?: number;
+};

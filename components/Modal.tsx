@@ -19,8 +19,18 @@ const Modal = ({ text }: MProps) => {
     ment.current = '신고 목록으로';
     link.current = `${ROUTES.ADMIN.REPORTS}`;
   } else {
-    ment.current = type === '보고' ? `나의 해결 목록` : `나의 ${type} 목록`;
-    link.current = type === '보고' ? ROUTES.MY.SOLVES : ROUTES.MY.REPORTS;
+    ment.current =
+      type === '보고'
+        ? `나의 해결 목록`
+        : type === '전환'
+        ? '리워드 내역으로'
+        : `나의 ${type} 목록`;
+    link.current =
+      type === '보고'
+        ? ROUTES.MY.SOLVES
+        : type === '전환'
+        ? ROUTES.MY.REWARD.INDEX
+        : ROUTES.MY.REPORTS;
   }
 
   return (

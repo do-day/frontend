@@ -9,3 +9,12 @@ export const formatDate = (dateStr: string) => {
 
   return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
 };
+
+export const formatonlyDate = (rewardDate?: string) => {
+  if (rewardDate === undefined) return;
+
+  const month = rewardDate.slice(5, 7);
+  const day = rewardDate.slice(8, 10);
+
+  return `${month}.${day}`;
+};
