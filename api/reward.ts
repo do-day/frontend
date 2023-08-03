@@ -1,7 +1,5 @@
 import axios from 'axios';
 import { API_PREFIX } from '@/constants';
-import { memo } from 'react';
-import { ChangeReward, TotalReward } from '@/types';
 
 axios.defaults.baseURL = API_PREFIX;
 

@@ -7,7 +7,7 @@ import * as styles from '@/pages/my/reward/reward.style';
 import { ROUTES } from '@/constants';
 import { useQuery } from '@tanstack/react-query';
 import { getTotalReward, getReward } from '@/api/reward';
-import { RewardHistory } from '@/types';
+import { Reward } from '@/types';
 
 export default function MyRewardHome() {
   const router = useRouter();
@@ -50,7 +50,7 @@ export default function MyRewardHome() {
         <styles.Section>
           <styles.SectionTitle>적립 상세 내역</styles.SectionTitle>
           <styles.RewardListBox>
-            {rewards?.map((reward: RewardHistory) => {
+            {rewards?.map((reward: Reward) => {
               return (
                 <RewardList
                   key={reward.date}
