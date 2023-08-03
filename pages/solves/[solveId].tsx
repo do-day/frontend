@@ -1,5 +1,7 @@
+import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
+import useMapView from '@/hooks/useMapView';
 import { getSolve } from '@/api/solve';
 import Container from '@/components/Container';
 import Header from '@/components/Header';
@@ -14,46 +16,51 @@ export default function SolveDetail() {
   const { data: solve } = useQuery({
     queryKey: ['solve', solveId],
     queryFn: () => getSolve(Number(solveId)),
+    enabled: !!solveId,
   });
+
+  const mapRef = useRef<HTMLDivElement>(null);
+  const {} = useMapView(mapRef, solve?.latitude, solve?.longitude);
 
   return (
     <>
       <Header title="해결 상세보기" hasBackButton />
 
-      <Container>
-        <styles.Section>
-          <styles.SectionTitle>발생 지역</styles.SectionTitle>
-          <styles.SectionDiv>지도</styles.SectionDiv>
-          <styles.Address>{solve?.location}</styles.Address>
-        </styles.Section>
-
-        <styles.Section>
-          <styles.SectionTitle>첨부된 사진</styles.SectionTitle>
-          <styles.ImagesDiv>
-            <ShapedImage
-              size="22rem"
-              src={solve?.photo || ''}
-              alt="첨부된 사진"
-            />
-          </styles.ImagesDiv>
-        </styles.Section>
-
-        <styles.Section>
-          <styles.SectionTitle>허위 신고 제보</styles.SectionTitle>
-          <Textarea
-            rows={solve?.content ? 4 : 8}
-            disabled
-            value={solve?.falseReport ?? '내용이 없습니다.'}
-          ></Textarea>
-        </styles.Section>
-
-        {solve?.content && (
+      {solve && (
+        <Container>
           <styles.Section>
-            <styles.SectionTitle>반려 사유</styles.SectionTitle>
-            <Textarea rows={4} disabled value={solve?.content}></Textarea>
+            <styles.SectionTitle>발생 지역</styles.SectionTitle>
+            <styles.SectionDiv>
+              <styles.Map ref={mapRef} />
+            </styles.SectionDiv>
+            <styles.Address>{solve?.location}</styles.Address>
           </styles.Section>
-        )}
-      </Container>
+
+          <styles.Section>
+            <styles.SectionTitle>첨부된 사진</styles.SectionTitle>
+            <styles.ImagesDiv>
+              <ShapedImage src={solve?.photo || ''} alt="첨부된 사진" />
+            </styles.ImagesDiv>
+          </styles.Section>
+
+          <styles.Section>
+            <styles.SectionTitle>허위 신고 제보</styles.SectionTitle>
+            <Textarea
+              rows={solve?.content ? 3 : 10}
+              disabled
+              value={solve?.falseReport}
+              placeholder={solve?.falseReport ? '' : '내용이 없습니다.'}
+            ></Textarea>
+          </styles.Section>
+
+          {solve?.content && (
+            <styles.Section>
+              <styles.SectionTitle>반려 사유</styles.SectionTitle>
+              <Textarea rows={3} disabled value={solve?.content}></Textarea>
+            </styles.Section>
+          )}
+        </Container>
+      )}
     </>
   );
 }
