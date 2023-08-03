@@ -124,11 +124,11 @@ export default function ReportNew() {
             <styles.ImagesDiv>
               <div>
                 <styles.ModalSubTitle>빗물받이</styles.ModalSubTitle>
-                <ShapedImage size="15vh" src="/example1.png" alt="빗물받이" />
+                <ShapedImage size="100%" src="/example1.png" alt="빗물받이" />
               </div>
               <div>
                 <styles.ModalSubTitle>주변 건물</styles.ModalSubTitle>
-                <ShapedImage size="15vh" src="/example2.png" alt="주변 건물" />
+                <ShapedImage size="100%" src="/example2.png" alt="주변 건물" />
               </div>
             </styles.ImagesDiv>
             <styles.ButtonWrapper>
