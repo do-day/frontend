@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import ShapedImage from '@/components/ShapedImage';
 import Tag from '@/components/Tag';
+import { formatDate } from '@/utils';
 import { State } from '@/types';
 import * as styles from '@/components/styles/ListItem.style';
 
@@ -26,7 +27,7 @@ export default function ListItem({
         <styles.RightBox>
           <Tag state={state || 'UNRESOLVED'} />
           <styles.ListTitle>{title}</styles.ListTitle>
-          <styles.ListDate>{date}</styles.ListDate>
+          <styles.ListDate>{date && formatDate(date)}</styles.ListDate>
         </styles.RightBox>
       </styles.ListBox>
     </Link>

@@ -1,5 +1,4 @@
 import ListItem from '@/components/ListItem';
-import { formatDate } from '@/utils';
 import { ROUTES } from '@/constants';
 import { Report } from '@/types';
 
@@ -13,7 +12,6 @@ const ReportList = ({ report, isAdmin = false }: Props) => {
   const href = isAdmin
     ? ROUTES.ADMIN.REPORT(report.reportId)
     : ROUTES.REPORTS.REPORT(report.reportId);
-  const formattedDate = formatDate(report.createDate);
 
   return (
     <ListItem
@@ -21,7 +19,7 @@ const ReportList = ({ report, isAdmin = false }: Props) => {
       thumbnail={report.photoRaincatch}
       state={report.state}
       title={report.location}
-      date={formattedDate}
+      date={report.createdDate}
     />
   );
 };

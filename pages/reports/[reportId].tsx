@@ -30,8 +30,8 @@ export default function ReportDetail() {
 
   const applySolveMutation = useMutation({
     mutationFn: () => applySolve(Number(reportId), Number(memberId)),
-    onSuccess: (solve: Solve) => {
-      setSolveId(solve.id ?? 0);
+    onSuccess: ({ solutionId }: Solve) => {
+      setSolveId(solutionId);
       setButtonText('보고하러 가기');
     },
   });
