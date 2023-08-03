@@ -8,7 +8,6 @@ import { ChangeReward } from '@/types';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getTotalReward, getReward } from '@/api/reward';
-import { RewardHistory } from '@/types';
 import axios from 'axios';
 import { API_PREFIX } from '@/constants';
 axios.defaults.baseURL = API_PREFIX;

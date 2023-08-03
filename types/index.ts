@@ -53,7 +53,7 @@ export type ChangeReward = {
   amount: number;
 };
 
-export type RewardHistory = {
+export type Reward = {
   rewardId: number;
   date: string;
   price: number;
