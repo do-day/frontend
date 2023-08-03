@@ -2,10 +2,16 @@ import Container from '@/components/Container';
 import Header from '@/components/Header';
 import Button from '@/components/Button';
 import * as styles from '@/pages/my/reward/change/change.style';
+import { useMutation } from '@tanstack/react-query';
+import { changeReward } from '@/api/reward';
+import { ChangeReward } from '@/types';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getTotalReward, getReward } from '@/api/reward';
 import { RewardHistory } from '@/types';
+import axios from 'axios';
+import { API_PREFIX } from '@/constants';
+axios.defaults.baseURL = API_PREFIX;
 
 export default function MyRewardChange() {
   const [amount, setAmount] = useState<number>(0);
@@ -16,6 +22,14 @@ export default function MyRewardChange() {
     queryFn: () => getTotalReward(Number(memberId)),
   });
 
+  const changeRewardMutation = useMutation((amount: Number) =>
+    axios.post(`/reward/convert/${memberId}`, { amount: amount }),
+  ); // useMutate 정의
+
+  const handleClickChange = () => {
+    changeRewardMutation.mutate(amount); // 데이터 저장
+  };
+
   const AllMoneyBtn = () => {
     setAmount(total.nowReward);
   };
@@ -24,9 +38,7 @@ export default function MyRewardChange() {
     <>
       <Header title="리워드 전환" hasBackButton />
       <Container>
-        <styles.TopBox>내 리워드: {total.nowReward}원</styles.TopBox>
         <styles.TopBox>
-          내 리워드: {total.nowReward.toLocaleString()}원
           내 리워드: {total?.nowReward.toLocaleString()}원
         </styles.TopBox>
         <styles.MoneyBox>
@@ -43,6 +55,8 @@ export default function MyRewardChange() {
           </styles.ChangeAllBtn>
         </styles.ButtonBox>
         <Button type="submit" onClick={handleClickChange}>
+          전환하기
+        </Button>
       </Container>
     </>
   );

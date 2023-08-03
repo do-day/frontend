@@ -13,8 +13,16 @@ export const getReward = async (memberId: number) => {
   return res.data;
 };
 
-export const changeReward = async (memberId: number): Promise<ChangeReward> => {
-  const res = await axios.post(`/reward/convert/${memberId}`);
+export const changeReward = async ({
+  memberId,
+  amount,
+}: {
+  memberId: number;
+  amount: number;
+}): Promise<ChangeReward> => {
+  const res = await axios.post(`/reward/convert/${memberId}`, {
+    amount: amount,
+  });
   if (res.status !== 200) {
     throw new Error(res.statusText);
   }
