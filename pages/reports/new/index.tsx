@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
+import useMap from '@/hooks/useMap';
 import { createReport } from '@/api/report';
 import Container from '@/components/Container';
 import Header from '@/components/Header';
@@ -15,7 +16,6 @@ import * as styles from '@/components/styles/report-solve/style';
 
 export default function ReportNew() {
   // TODO: memberId 받아오기
-  // TODO: 지도 API 추가 후 위치 정보 받아오기
   const [reportForm, setReportForm] = useState<ReportForm>({
     memberId: 1,
     location: '',
@@ -27,6 +27,9 @@ export default function ReportNew() {
   });
   const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const mapRef = useRef<HTMLDivElement>(null);
+  const { location, position } = useMap(mapRef);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadedFiles, onFileChange, onClickFileUpload] = useUploadImages(
@@ -52,6 +55,9 @@ export default function ReportNew() {
 
     createReportMutation.mutate({
       ...reportForm,
+      latitude: position?.latitude,
+      longitude: position?.longitude,
+      location,
       photoRaincatch,
       photoAround: uploadedFiles?.files[1],
     });
@@ -65,8 +71,10 @@ export default function ReportNew() {
         <styles.Form onSubmit={handleSubmit}>
           <styles.Section>
             <styles.SectionTitle>발생 지역</styles.SectionTitle>
-            <styles.SectionDiv>지도</styles.SectionDiv>
-            <styles.Address>서울특별시 동작구 노량진로 10</styles.Address>
+            <styles.SectionDiv>
+              <styles.Map ref={mapRef} />
+            </styles.SectionDiv>
+            <styles.Address>{location}</styles.Address>
           </styles.Section>
 
           <styles.Section>
