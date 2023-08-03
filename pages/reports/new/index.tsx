@@ -82,27 +82,19 @@ export default function ReportNew() {
             <styles.ImagesDiv>
               {uploadedFiles?.urls.length !== 0 ? (
                 <ShapedImage
-                  size="12.5rem"
                   src={uploadedFiles?.urls[0] || ''}
                   alt="첨부된 사진"
                 />
               ) : (
-                <ImageUploadButton
-                  size="12.5rem"
-                  onClick={() => setShowPhotoModal(true)}
-                />
+                <ImageUploadButton onClick={() => setShowPhotoModal(true)} />
               )}
               {uploadedFiles?.urls.length === 2 ? (
                 <ShapedImage
-                  size="12.5rem"
                   src={uploadedFiles?.urls[1] || ''}
                   alt="첨부된 사진"
                 />
               ) : (
-                <ImageUploadButton
-                  size="12.5rem"
-                  onClick={() => setShowPhotoModal(true)}
-                />
+                <ImageUploadButton onClick={() => setShowPhotoModal(true)} />
               )}
             </styles.ImagesDiv>
           </styles.Section>
@@ -110,7 +102,7 @@ export default function ReportNew() {
           <styles.Section>
             <styles.SectionTitle>위치 설명</styles.SectionTitle>
             <Textarea
-              rows={8}
+              rows={6}
               placeholder="위치를 쉽게 찾을 수 있도록 빗물받이 주변 건물 등을 알려주세요."
               onChange={(value) =>
                 setReportForm({ ...reportForm, description: value })

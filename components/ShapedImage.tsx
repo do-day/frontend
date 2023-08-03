@@ -2,12 +2,12 @@ import Image from 'next/image';
 import * as styles from '@/components/styles/ShapedImage.style';
 
 interface Props {
-  size: string;
+  size?: string;
   src: string;
   alt: string;
 }
 
-export default function ShapedImage({ size, src, alt }: Props) {
+export default function ShapedImage({ size = '100%', src, alt }: Props) {
   return (
     <styles.ImageWrapper size={size}>
       <Image

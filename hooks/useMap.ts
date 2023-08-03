@@ -39,7 +39,7 @@ export default function useMap(mapRef: RefObject<HTMLDivElement>) {
     if (!map) return;
 
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async (position) => {
+      navigator.geolocation.getCurrentPosition((position) => {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         setPosition({ latitude, longitude });

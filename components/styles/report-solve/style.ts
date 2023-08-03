@@ -18,7 +18,7 @@ export const SectionTitle = styled.h2`
 
 export const SectionDiv = styled.div`
   width: 100%;
-  height: 9.5rem;
+  height: 11.5rem;
 `;
 
 export const Map = styled.div`

@@ -73,24 +73,16 @@ export default function ReportDetail() {
           <styles.Section>
             <styles.SectionTitle>첨부된 사진</styles.SectionTitle>
             <styles.ImagesDiv>
-              <ShapedImage
-                size={`${report.photoAround ? '12.5rem' : '22rem'}`}
-                src={report.photoRaincatch}
-                alt="첨부된 사진"
-              />
+              <ShapedImage src={report.photoRaincatch} alt="첨부된 사진" />
               {report.photoAround && (
-                <ShapedImage
-                  size="12.5rem"
-                  src={report.photoAround}
-                  alt="첨부된 사진"
-                />
+                <ShapedImage src={report.photoAround} alt="첨부된 사진" />
               )}
             </styles.ImagesDiv>
           </styles.Section>
 
           <styles.Section>
             <styles.SectionTitle>위치 설명</styles.SectionTitle>
-            <Textarea rows={8} disabled value={report?.description}></Textarea>
+            <Textarea rows={6} disabled value={report?.description}></Textarea>
           </styles.Section>
 
           <Button type="button" onClick={handleClickSolve}>

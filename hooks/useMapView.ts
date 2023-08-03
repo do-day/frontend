@@ -37,7 +37,7 @@ export default function useMapView(
     if (!map) return;
 
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async (position) => {
+      navigator.geolocation.getCurrentPosition((position) => {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         setCurrentPosition({ latitude, longitude });
