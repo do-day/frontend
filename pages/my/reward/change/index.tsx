@@ -24,10 +24,10 @@ export default function MyRewardChange() {
 
   const changeRewardMutation = useMutation((amount: Number) =>
     axios.post(`/reward/convert/${memberId}`, { amount: amount }),
-  ); // useMutate 정의
+  );
 
   const handleClickChange = () => {
-    changeRewardMutation.mutate(amount); // 데이터 저장
+    changeRewardMutation.mutate(amount);
   };
 
   const AllMoneyBtn = () => {
