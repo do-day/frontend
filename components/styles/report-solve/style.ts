@@ -18,7 +18,13 @@ export const SectionTitle = styled.h2`
 
 export const SectionDiv = styled.div`
   width: 100%;
-  height: 9.5rem;
+  height: 11.5rem;
+`;
+
+export const Map = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
 `;
 
 export const Address = styled.p`
@@ -52,7 +58,6 @@ export const ImagesDiv = styled.div`
 export const ButtonDiv = styled.div`
   display: flex;
   gap: 1rem;
-  margin-top: 0.5rem;
 `;
 
 export const ModalWrapper = styled.div`

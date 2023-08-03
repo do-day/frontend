@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Button = styled.button<{ size: string }>`
   width: ${(props) => props.size};
-  height: ${(props) => props.size};
+  height: 50vw;
   max-height: 10.5rem;
   position: relative;
   display: flex;
