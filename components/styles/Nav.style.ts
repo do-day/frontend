@@ -25,8 +25,8 @@ export const MainBox = styled.div`
 export const SubMenuBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding-top: 1rem;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
   padding-left: 1rem;
   font-weight: normal;
 `;
