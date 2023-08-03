@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { BiCopyAlt } from 'react-icons/bi';
+import useMapView from '@/hooks/useMapView';
+import { getReport } from '@/api/report';
 import { createSolve } from '@/api/solve';
 import Container from '@/components/Container';
 import Header from '@/components/Header';
@@ -16,8 +18,6 @@ import { SolveForm } from '@/types';
 import * as styles from '@/components/styles/report-solve/style';
 
 export default function SolveNew() {
-  // TODO: 지도 API 연동 후 기본값 수정
-  const [address, setAddress] = useState('서울특별시 동작구 노량진로 10');
   const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [solveForm, setSolveForm] = useState<SolveForm>({
@@ -29,8 +29,8 @@ export default function SolveNew() {
   });
 
   const router = useRouter();
-  // TODO: solveId가 없으면 잘못된 접근이므로 404 페이지로 이동
-  const solveId = router.query.solveId;
+  // TODO: reportId나 solveId가 없으면 잘못된 접근이므로 404 페이지로 이동
+  const { reportId, solveId } = router.query;
   // TODO: 로그인 정보 확인해서 memberId 가져오기
   const memberId = '1';
 
@@ -40,6 +40,15 @@ export default function SolveNew() {
     () => setShowPhotoModal(false),
   );
 
+  const { data: report } = useQuery({
+    queryKey: ['report', reportId],
+    queryFn: () => getReport(Number(reportId)),
+    enabled: !!reportId,
+  });
+
+  const mapRef = useRef<HTMLDivElement>(null);
+  const {} = useMapView(mapRef, report?.latitude, report?.longitude);
+
   const submitSolveMutation = useMutation({
     mutationFn: createSolve,
     onSuccess: () => {
@@ -48,7 +57,7 @@ export default function SolveNew() {
   });
 
   const handleClickCopy = async () => {
-    await navigator.clipboard.writeText(address);
+    await navigator.clipboard.writeText(report?.location ?? '');
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -62,7 +71,13 @@ export default function SolveNew() {
     submitSolveMutation.mutate({
       solutionId: Number(solveId),
       memberId: Number(memberId),
-      solveForm: { ...solveForm, photo: uploadedFiles?.files[0] },
+      solveForm: {
+        ...solveForm,
+        location: report?.location,
+        latitude: report?.latitude,
+        longitude: report?.longitude,
+        photo: uploadedFiles?.files[0],
+      },
     });
   };
 
@@ -74,9 +89,11 @@ export default function SolveNew() {
         <styles.Form onSubmit={handleSubmit}>
           <styles.Section>
             <styles.SectionTitle>발생 지역</styles.SectionTitle>
-            <styles.SectionDiv>지도</styles.SectionDiv>
+            <styles.SectionDiv>
+              <styles.Map ref={mapRef} />
+            </styles.SectionDiv>
             <styles.CopyButton type="button" onClick={handleClickCopy}>
-              <styles.Address>{address}</styles.Address>
+              <styles.Address>{report?.location}</styles.Address>
               <BiCopyAlt />
             </styles.CopyButton>
           </styles.Section>
@@ -86,15 +103,11 @@ export default function SolveNew() {
             <styles.ImagesDiv>
               {uploadedFiles?.urls.length ? (
                 <ShapedImage
-                  size="22rem"
                   src={uploadedFiles?.urls[0] || ''}
                   alt="첨부된 사진"
                 />
               ) : (
-                <ImageUploadButton
-                  size="22rem"
-                  onClick={() => setShowPhotoModal(true)}
-                />
+                <ImageUploadButton onClick={() => setShowPhotoModal(true)} />
               )}
             </styles.ImagesDiv>
           </styles.Section>
@@ -102,7 +115,7 @@ export default function SolveNew() {
           <styles.Section>
             <styles.SectionTitle>허위 신고 제보</styles.SectionTitle>
             <Textarea
-              rows={8}
+              rows={6}
               placeholder="신고가 거짓일 경우 알려주세요."
               onChange={(value) =>
                 setSolveForm({ ...solveForm, falseReport: value })

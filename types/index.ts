@@ -41,9 +41,9 @@ export type Solve = {
 };
 
 export type SolveForm = {
-  latitude: number;
-  longitude: number;
-  location: string;
+  latitude?: number;
+  longitude?: number;
+  location?: string;
   photo: File | null;
   falseReport?: string;
 };

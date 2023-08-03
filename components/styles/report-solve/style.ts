@@ -62,7 +62,7 @@ export const ButtonDiv = styled.div`
 
 export const ModalWrapper = styled.div`
   text-align: center;
-  padding: 1rem;
+  padding: 1.25rem;
 `;
 
 export const ModalTitle = styled.h2`
@@ -82,9 +82,11 @@ export const ModalList = styled.ul`
   padding-left: 2rem;
   list-style: disc;
   text-align: left;
+  line-height: 1.5;
   color: var(--color-dark-gray);
 `;
 
 export const ButtonWrapper = styled.div`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 `;

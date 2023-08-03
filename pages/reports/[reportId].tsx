@@ -49,7 +49,10 @@ export default function ReportDetail() {
     if (buttonText === '해결하기') {
       applySolveMutation.mutate();
     } else {
-      router.push({ pathname: ROUTES.SOLVES.NEW, query: { solveId } });
+      router.push({
+        pathname: ROUTES.SOLVES.NEW,
+        query: { reportId, solveId },
+      });
     }
   };
 
