@@ -10,7 +10,7 @@ export const Input = styled.input<{
   justify-content: between;
   align-items: center;
   font-weight: var(--font-bold);
-  color: var(--color-white);
+  color: var(--color-black);
   background-color: var(--color-light-gray);
   border-radius: var(--border-radius);
   border: none;
