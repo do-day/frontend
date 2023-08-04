@@ -5,6 +5,7 @@ import Button from '@/components/Button';
 import * as styles from '@/components/styles/RejectModal.style';
 import { useMutation } from '@tanstack/react-query';
 import { rejectReport, rejectSolve } from '@/api/admin';
+import Textarea from './Textarea';
 
 interface RMProps {
   reportId?: number;
@@ -35,13 +36,13 @@ const RejectModal = ({ onClose, reportId, solutionId }: RMProps) => {
       rejectReportMutation.mutate({
         reportId,
         adminId: 1,
-        content: content,
+        content,
       });
     } else if (solutionId !== undefined) {
       rejectSolveMutation.mutate({
         solutionId,
         adminId: 1,
-        content: content,
+        content,
       });
     }
   };
@@ -54,12 +55,11 @@ const RejectModal = ({ onClose, reportId, solutionId }: RMProps) => {
             <styles.Modal onClick={onClose}>
               <styles.ModalView onClick={(e) => e.stopPropagation()}>
                 <styles.ModalText>반려사유</styles.ModalText>
-                <styles.ModalContent
+                <Textarea
                   placeholder="반려 사유를 입력해 주세요."
                   rows={6}
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                ></styles.ModalContent>
+                  onChange={(value) => setContent(value)}
+                ></Textarea>
                 <styles.ModalButtonBox>
                   <Button onClick={onClose} secondary>
                     취소하기
