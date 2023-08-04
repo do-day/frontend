@@ -64,8 +64,3 @@ export type TotalReward = {
   nowReward?: number;
   totalReward?: number;
 };
-
-export type rejectReport = {
-  adminId: number;
-  content: string;
-};
