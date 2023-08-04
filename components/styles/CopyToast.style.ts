@@ -9,7 +9,10 @@ export const ToastBox = styled.div<{
   width: ${(props) => (props.fitContent ? 'fit-content' : '90%')};
   height: 3rem;
   padding: 0.5rem 1rem;
-  position: absolute;
+  position: fixed;
+  margin: auto;
+  display: flex;
+  align-items: center;
   top: 80%;
   color: var(--color-black);
   font-size: var(--font-small);
@@ -26,12 +29,11 @@ export const ToastBox = styled.div<{
   transform: ${(props) => (props.isFading ? 'opacity 1s' : '')};
 `;
 
-export const Ment = styled.div`
-  flex: 1 1 0%;
-`;
+export const Ment = styled.div``;
 
 export const FlexBox = styled.div`
   display: flex;
-  justify-content: between;
+  justify-content: center;
+  margin: auto;
   align-items: center;
 `;
