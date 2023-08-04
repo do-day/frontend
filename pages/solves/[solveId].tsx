@@ -49,7 +49,6 @@ export default function SolveDetail() {
               rows={solve?.content ? 3 : 10}
               disabled
               value={solve?.falseReport}
-              placeholder={solve?.falseReport ? '' : '내용이 없습니다.'}
             ></Textarea>
           </styles.Section>
 

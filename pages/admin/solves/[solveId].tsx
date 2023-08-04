@@ -13,7 +13,7 @@ import { postSolutionApprove } from '@/api/admin';
 
 export default function AdminSolveDetail() {
   // TODO: props로 넘어온 값 사용
-  const solutionId = '10';
+  const solutionId = 10;
   const address = '서울특별시 동작구 노량진로 10';
   const image = '/example1.png';
   const content =
@@ -84,7 +84,10 @@ export default function AdminSolveDetail() {
           <Modal text={'승인 완료'} isReport={false} />
         ) : (
           // TODO: solveId 변경
-          <RejectModal onClose={() => setIsOpen(false)} solutionId="10" />
+          <RejectModal
+            onClose={() => setIsOpen(false)}
+            solutionId={solutionId}
+          />
         ))}
     </>
   );

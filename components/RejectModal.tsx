@@ -7,8 +7,8 @@ import { useMutation } from '@tanstack/react-query';
 import { rejectReport, rejectSolve } from '@/api/admin';
 
 interface RMProps {
-  reportId?: string;
-  solutionId?: string;
+  reportId?: number;
+  solutionId?: number;
   onClose: () => void;
 }
 
@@ -23,28 +23,28 @@ const RejectModal = ({ onClose, reportId, solutionId }: RMProps) => {
     },
   });
 
-  const hanldeSubmit = () => {
-    if (reportId !== undefined) {
-      rejectReportMutation.mutate({
-        reportId: Number(reportId),
-        adminId: 1,
-        content: content,
-      });
-    } else {
-      rejectSolveMutation.mutate({
-        solutionId: Number(solutionId),
-        adminId: 1,
-        content: content,
-      });
-    }
-  };
-
   const rejectSolveMutation = useMutation({
     mutationFn: rejectSolve,
     onSuccess: () => {
       setIsReject(true);
     },
   });
+
+  const hanldeSubmit = () => {
+    if (reportId !== undefined) {
+      rejectReportMutation.mutate({
+        reportId,
+        adminId: 1,
+        content: content,
+      });
+    } else if (solutionId !== undefined) {
+      rejectSolveMutation.mutate({
+        solutionId,
+        adminId: 1,
+        content: content,
+      });
+    }
+  };
 
   return (
     <>
