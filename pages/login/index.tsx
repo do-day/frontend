@@ -19,7 +19,7 @@ export default function Login() {
         <styles.LoginTitleBox>아이디</styles.LoginTitleBox>
         <Input />
         <styles.LoginTitleBox>비밀번호</styles.LoginTitleBox>
-        <Input />
+        <Input type="password" />
         <styles.ButtonBox>
           <Button>로그인</Button>
         </styles.ButtonBox>

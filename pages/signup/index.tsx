@@ -11,7 +11,7 @@ export default function Login() {
         <styles.LoginTitleBox>휴대폰 번호(ID)</styles.LoginTitleBox>
         <Input />
         <styles.LoginTitleBox>비밀번호</styles.LoginTitleBox>
-        <Input />
+        <Input type="password" />
         <styles.ButtonBox>
           <Button>회원가입</Button>
         </styles.ButtonBox>
