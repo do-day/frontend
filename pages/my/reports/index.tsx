@@ -25,7 +25,9 @@ export default function MyReportsHome() {
       <Container>
         <Tab list={list} link={link} />
         {reports?.map((report: Report) => {
-          return <ReportList key={report.reportId} report={report} />;
+          return (
+            <ReportList key={report.reportId} report={report} isAdmin={false} />
+          );
         })}
       </Container>
     </>

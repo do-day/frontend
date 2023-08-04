@@ -21,6 +21,7 @@ export const getAdminSolves = async (): Promise<Solve[]> => {
   return res.data;
 };
 
+
 export const postReportReject = async ({
   reportId,
   adminId,
