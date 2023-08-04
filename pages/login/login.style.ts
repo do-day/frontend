@@ -13,12 +13,7 @@ export const Container = styled.main`
 export const LogoWrapper = styled.div`
   max-width: 30rem;
   margin: 0 auto;
-  padding: 1rem 4rem;
-`;
-
-export const SmallLogoWrapper = styled.div`
-  max-width: 7.5rem;
-  margin: 0 auto;
+  padding: 1rem 2rem;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -34,4 +29,14 @@ export const AdminLoginButton = styled.button`
   background-color: transparent;
   text-decoration: underline;
   margin-top: 1rem;
+`;
+
+export const CenterBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const LoginTitleBox = styled.div`
+  color: var(--color-dark-gray);
+  margin-right: auto;
 `;
