@@ -2,13 +2,15 @@ import * as styles from '@/components/styles/CopyToast.style';
 import { useEffect, useState } from 'react';
 
 interface Props {
+  text: string;
   style?: React.CSSProperties;
   rounded?: boolean;
   fitContent?: boolean;
   setCopy: (copy: boolean) => void;
 }
 
-export default function CopyToast({
+export default function Toast({
+  text,
   style,
   rounded = false,
   fitContent = false,
@@ -39,7 +41,7 @@ export default function CopyToast({
       isFading={isFading}
     >
       <styles.FlexBox>
-        <styles.Ment>복사가 완료되었습니다.</styles.Ment>
+        <styles.Ment>{text}</styles.Ment>
       </styles.FlexBox>
     </styles.ToastBox>
   );

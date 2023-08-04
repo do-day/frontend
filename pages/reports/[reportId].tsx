@@ -13,7 +13,7 @@ import ShapedImage from '@/components/ShapedImage';
 import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/report-solve/style';
 import { Solve } from '@/types';
-import CopyToast from '@/components/CopyToast';
+import Toast from '@/components/Toast';
 import { useDebounce } from '@/utils';
 
 export default function ReportDetail() {
@@ -47,7 +47,7 @@ export default function ReportDetail() {
   const handleClickCopy = async () => {
     try {
       await navigator.clipboard.writeText(report?.location ?? '');
-      setCopy(true); // 클립보드 복사 성공시 setCopy(true)로 변경
+      setCopy(!copy);
     } catch (error) {
       console.error('클립보드 복사 에러:', error);
       // 복사 실패 시 예외 처리
@@ -105,7 +105,11 @@ export default function ReportDetail() {
           <Button type="button" onClick={handleClickSolve}>
             {buttonText}
           </Button>
-          {copy ? <CopyToast setCopy={setCopy} /> : ''}
+          {copy ? (
+            <Toast setCopy={setCopy} text="복사가 완료되었습니다." />
+          ) : (
+            ''
+          )}
         </Container>
       )}
     </>
