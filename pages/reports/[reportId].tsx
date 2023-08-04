@@ -14,6 +14,7 @@ import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/report-solve/style';
 import { Solve } from '@/types';
 import CopyToast from '@/components/CopyToast';
+import { useDebounce } from '@/utils';
 
 export default function ReportDetail() {
   // TODO: 이미 해결중인 신고인지 확인 후 초기값 설정
@@ -48,6 +49,11 @@ export default function ReportDetail() {
     await navigator.clipboard.writeText(report?.location ?? '');
   };
 
+  const debounceCopy = useDebounce<React.MouseEventHandler<HTMLButtonElement>>(
+    handleClickCopy,
+    500,
+  );
+
   const handleClickSolve = () => {
     if (buttonText === '해결하기') {
       applySolveMutation.mutate();
@@ -70,7 +76,7 @@ export default function ReportDetail() {
             <styles.SectionDiv>
               <styles.Map ref={mapRef} />
             </styles.SectionDiv>
-            <styles.CopyButton type="button" onClick={handleClickCopy}>
+            <styles.CopyButton type="button" onClick={debounceCopy}>
               <styles.Address>{report.location}</styles.Address>
               <BiCopyAlt />
             </styles.CopyButton>
