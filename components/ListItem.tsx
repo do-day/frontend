@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import ShapedImage from '@/components/ShapedImage';
+import Image from 'next/image';
 import Tag from '@/components/Tag';
 import { formatDate } from '@/utils';
 import { State } from '@/types';
@@ -23,7 +23,9 @@ export default function ListItem({
   return (
     <Link href={href}>
       <styles.ListBox>
-        <ShapedImage src={thumbnail} alt="썸네일" size="5rem" />
+        <styles.ImageBox>
+          <Image src={thumbnail} alt="썸네일" width={300} height={300} />
+        </styles.ImageBox>
         <styles.RightBox>
           <Tag state={state || 'UNRESOLVED'} />
           <styles.ListTitle>{title}</styles.ListTitle>
