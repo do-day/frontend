@@ -3,7 +3,8 @@ export type State =
   | 'UNRESOLVED'
   | 'RESOLVING'
   | 'RESOLVED'
-  | 'REJECTED';
+  | 'REJECTED'
+  | 'CONFIRMED';
 
 export type Report = {
   reportId: number;

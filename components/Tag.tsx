@@ -9,9 +9,10 @@ const Tag = ({ state }: TProps) => {
   const bundle = {
     UNAPPROVAL: '승인 전',
     UNRESOLVED: '미해결',
-    RESOLVING: '해결중',
+    RESOLVING: '해결 중',
     RESOLVED: '해결완료',
     REJECTED: '반려',
+    CONFIRMED: '승인완료',
   };
   return (
     <ListTagBox>
@@ -38,7 +39,9 @@ export const TagBox = styled.div<{ state: State }>`
       ? 'var(--color--resolving)'
       : props.state === 'RESOLVED'
       ? 'var(--color--resolved)'
-      : 'var(--color--rejected)'};
+      : props.state === 'REJECTED'
+      ? 'var(--color--rejected)'
+      : 'var(--color--confirmed)'};
 
   border-radius: var(--border-rounded);
 `;
