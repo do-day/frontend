@@ -4,7 +4,7 @@ import Modal from '@/components/Modal';
 import Button from '@/components/Button';
 import * as styles from '@/components/styles/RejectModal.style';
 import { useMutation } from '@tanstack/react-query';
-import { postReportReject, postSolutionReject } from '@/api/admin';
+import { rejectReport, rejectSolve } from '@/api/admin';
 
 interface RMProps {
   reportId?: string;
@@ -17,7 +17,7 @@ const RejectModal = ({ onClose, reportId, solutionId }: RMProps) => {
   const [content, setContent] = useState('');
 
   const rejectReportMutation = useMutation({
-    mutationFn: postReportReject,
+    mutationFn: rejectReport,
     onSuccess: () => {
       setIsReject(true);
     },
@@ -31,7 +31,7 @@ const RejectModal = ({ onClose, reportId, solutionId }: RMProps) => {
         content: content,
       });
     } else {
-      rejectSolutionMutation.mutate({
+      rejectSolveMutation.mutate({
         solutionId: Number(solutionId),
         adminId: 1,
         content: content,
@@ -39,8 +39,8 @@ const RejectModal = ({ onClose, reportId, solutionId }: RMProps) => {
     }
   };
 
-  const rejectSolutionMutation = useMutation({
-    mutationFn: postSolutionReject,
+  const rejectSolveMutation = useMutation({
+    mutationFn: rejectSolve,
     onSuccess: () => {
       setIsReject(true);
     },
