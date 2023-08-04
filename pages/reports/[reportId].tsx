@@ -45,8 +45,13 @@ export default function ReportDetail() {
   });
 
   const handleClickCopy = async () => {
-    setCopy(!copy);
-    await navigator.clipboard.writeText(report?.location ?? '');
+    try {
+      await navigator.clipboard.writeText(report?.location ?? '');
+      setCopy(true); // 클립보드 복사 성공시 setCopy(true)로 변경
+    } catch (error) {
+      console.error('클립보드 복사 에러:', error);
+      // 복사 실패 시 예외 처리
+    }
   };
 
   const debounceCopy = useDebounce<React.MouseEventHandler<HTMLButtonElement>>(
