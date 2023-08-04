@@ -70,7 +70,8 @@ export default function AdminSolveDetail() {
         (type === '승인' ? (
           <Modal text={'승인 완료'} />
         ) : (
-          <RejectModal onClose={() => setIsOpen(false)} />
+          // TODO: solveId 변경
+          <RejectModal onClose={() => setIsOpen(false)} solutionId="10" />
         ))}
     </>
   );

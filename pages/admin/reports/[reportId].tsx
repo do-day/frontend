@@ -78,7 +78,8 @@ export default function AdminReportDetail() {
         (type === '승인' ? (
           <Modal text={'승인 완료'} />
         ) : (
-          <RejectModal onClose={() => setIsOpen(false)} />
+          // TODO: reportID 값 변경하기
+          <RejectModal onClose={() => setIsOpen(false)} reportId={'10'} />
         ))}
     </>
   );

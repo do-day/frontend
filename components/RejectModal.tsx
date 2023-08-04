@@ -3,17 +3,48 @@ import { createPortal } from 'react-dom';
 import Modal from '@/components/Modal';
 import Button from '@/components/Button';
 import * as styles from '@/components/styles/RejectModal.style';
+import { useMutation } from '@tanstack/react-query';
+import { postReportReject, postSolutionReject } from '@/api/admin';
 
 interface RMProps {
+  reportId?: string;
+  solutionId?: string;
   onClose: () => void;
 }
 
-const RejectModal = ({ onClose }: RMProps) => {
+const RejectModal = ({ onClose, reportId, solutionId }: RMProps) => {
   const [isReject, setIsReject] = useState(false);
+  const [content, setContent] = useState('');
+
+  const rejectReportMutation = useMutation({
+    mutationFn: postReportReject,
+    onSuccess: () => {
+      setIsReject(true);
+    },
+  });
 
   const hanldeSubmit = () => {
-    setIsReject(true);
+    if (reportId !== undefined) {
+      rejectReportMutation.mutate({
+        reportId: Number(reportId),
+        adminId: 1,
+        content: content,
+      });
+    } else {
+      rejectSolutionMutation.mutate({
+        solutionId: Number(solutionId),
+        adminId: 1,
+        content: content,
+      });
+    }
   };
+
+  const rejectSolutionMutation = useMutation({
+    mutationFn: postSolutionReject,
+    onSuccess: () => {
+      setIsReject(true);
+    },
+  });
 
   return (
     <>
@@ -26,6 +57,8 @@ const RejectModal = ({ onClose }: RMProps) => {
                 <styles.ModalContent
                   placeholder="반려 사유를 입력해 주세요."
                   rows={6}
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
                 ></styles.ModalContent>
                 <styles.ModalButtonBox>
                   <Button onClick={onClose} secondary>
