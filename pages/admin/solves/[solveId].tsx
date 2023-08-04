@@ -81,7 +81,7 @@ export default function AdminSolveDetail() {
       </Container>
       {isOpen &&
         (type === '승인' ? (
-          <Modal text={'승인 완료'} isReport="no" />
+          <Modal text={'승인 완료'} isReport={false} />
         ) : (
           // TODO: solveId 변경
           <RejectModal onClose={() => setIsOpen(false)} solutionId="10" />

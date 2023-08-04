@@ -7,19 +7,19 @@ import * as styles from '@/components/styles/Modal.style';
 
 interface MProps {
   text: string;
-  isReport?: string;
+  isReport?: boolean;
 }
 
-const Modal = ({ text, isReport = 'yes' }: MProps) => {
+const Modal = ({ text, isReport = true }: MProps) => {
   const router = useRouter();
   const ment = useRef<string>();
   const link = useRef<string>('');
 
   const type = text.slice(0, 2);
   if (type === '승인' || type === '반려') {
-    ment.current = isReport === 'yes' ? '신고 목록으로' : '해결 목록으로';
+    ment.current = isReport === true ? '신고 목록으로' : '해결 목록으로';
     link.current =
-      isReport === 'yes' ? `${ROUTES.ADMIN.REPORTS}` : `${ROUTES.ADMIN.SOLVES}`;
+      isReport === true ? `${ROUTES.ADMIN.REPORTS}` : `${ROUTES.ADMIN.SOLVES}`;
   } else {
     ment.current =
       type === '보고'

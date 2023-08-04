@@ -71,7 +71,7 @@ const RejectModal = ({ onClose, reportId, solutionId }: RMProps) => {
           ) : (
             <Modal
               text={'반려 완료'}
-              isReport={reportId === undefined ? 'no' : 'yes'}
+              isReport={reportId === undefined ? false : true}
             />
           )}
         </>,
