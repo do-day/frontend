@@ -1,9 +1,9 @@
 import * as styles from '@/components/styles/RewardList.style';
 import { Reward } from '@/types';
-import { formatonlyDate } from '@/utils';
+import { formatOnlyDate } from '@/utils';
 
 const RewardList = ({ date, location, price, rewardId, type }: Reward) => {
-  const rewardDate = formatonlyDate(date);
+  const rewardDate = formatOnlyDate(date);
 
   return (
     <styles.RewardList>

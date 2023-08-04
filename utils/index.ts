@@ -1,16 +1,16 @@
 export const formatDate = (dateStr: string) => {
-  const date = new Date(dateStr);
-
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-
-  return `${year}년 ${month}월 ${day}일 ${hours}:${minutes}`;
+  const date = new Date(dateStr).toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hourCycle: 'h23',
+  });
+  return date;
 };
 
-export const formatonlyDate = (rewardDate?: string) => {
+export const formatOnlyDate = (rewardDate?: string) => {
   if (rewardDate === undefined) return;
 
   const month = rewardDate.slice(5, 7);
