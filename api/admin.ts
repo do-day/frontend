@@ -71,3 +71,23 @@ export const postSolutionReject = async ({
     throw new Error(res.statusText);
   }
 };
+
+export const postReportApprove = async ({ reportId }: { reportId: number }) => {
+  const res = await axios.post(`/report/approval/${reportId}`);
+  if (res.status !== 200) {
+    throw new Error(res.statusText);
+  }
+};
+
+export const postSolutionApprove = async ({
+  solutionId,
+  adminId,
+}: {
+  solutionId: number;
+  adminId: number;
+}) => {
+  const res = await axios.post(`/solution/approval/${solutionId}/${adminId}`);
+  if (res.status !== 200) {
+    throw new Error(res.statusText);
+  }
+};
