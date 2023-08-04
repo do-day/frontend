@@ -1,5 +1,10 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { BiCopyAlt } from 'react-icons/bi';
+import useMapView from '@/hooks/useMapView';
+import { postSolutionApprove } from '@/api/admin';
+import { getSolve } from '@/api/solve';
 import Container from '@/components/Container';
 import Header from '@/components/Header';
 import Button from '@/components/Button';
@@ -8,29 +13,33 @@ import ShapedImage from '@/components/ShapedImage';
 import Modal from '@/components/Modal';
 import RejectModal from '@/components/RejectModal';
 import * as styles from '@/components/styles/report-solve/style';
-import { useMutation } from '@tanstack/react-query';
-import { postSolutionApprove } from '@/api/admin';
 
 export default function AdminSolveDetail() {
-  // TODO: props로 넘어온 값 사용
-  const solutionId = 10;
-  const address = '서울특별시 동작구 노량진로 10';
-  const image = '/example1.png';
-  const content =
-    '대방역 3번 출구 앞 버스 정류장 쪽 빗물받이에 담배꽁초가 많아요.';
-
-  const handleClickCopy = async () => {
-    await navigator.clipboard.writeText(address);
-  };
-
+  const router = useRouter();
+  const solveId = router.query.solveId;
   const [isOpen, setIsOpen] = useState(false);
   const [type, setType] = useState<string>('');
+
+  const { data: solve } = useQuery({
+    queryKey: ['solve', solveId],
+    queryFn: () => getSolve(Number(solveId)),
+    enabled: !!solveId,
+  });
+
+  const mapRef = useRef<HTMLDivElement>(null);
+  const {} = useMapView(mapRef, solve?.latitude, solve?.longitude);
+
+  const handleClickCopy = async () => {
+    await navigator.clipboard.writeText(solve?.location ?? '');
+  };
+
   const handleClickAcceptBtn = () => {
     approveSolutionMutation.mutate({
-      solutionId: Number(solutionId),
+      solutionId: Number(solveId),
       adminId: 1,
     });
   };
+
   const handleClickRejectBtn = () => {
     setIsOpen(!isOpen);
     setType('반려');
@@ -47,48 +56,52 @@ export default function AdminSolveDetail() {
   return (
     <>
       <Header title="해결 내용 확인" hasBackButton />
+      {solve && (
+        <>
+          <Container>
+            <styles.Section>
+              <styles.SectionTitle>발생 지역</styles.SectionTitle>
+              <styles.SectionDiv>
+                <styles.Map ref={mapRef} />
+              </styles.SectionDiv>
+              <styles.CopyButton type="button" onClick={handleClickCopy}>
+                <styles.Address>{solve.location}</styles.Address>
+                <BiCopyAlt />
+              </styles.CopyButton>
+            </styles.Section>
 
-      <Container>
-        <styles.Section>
-          <styles.SectionTitle>발생 지역</styles.SectionTitle>
-          <styles.SectionDiv>지도</styles.SectionDiv>
-          <styles.CopyButton type="button" onClick={handleClickCopy}>
-            <styles.Address>{address}</styles.Address>
-            <BiCopyAlt />
-          </styles.CopyButton>
-        </styles.Section>
+            <styles.Section>
+              <styles.SectionTitle>첨부된 사진</styles.SectionTitle>
+              <styles.ImagesDiv>
+                <ShapedImage src={solve.photo} alt="첨부된 사진" />
+              </styles.ImagesDiv>
+            </styles.Section>
 
-        <styles.Section>
-          <styles.SectionTitle>첨부된 사진</styles.SectionTitle>
-          <styles.ImagesDiv>
-            <ShapedImage size="22rem" src={image} alt="첨부된 사진" />
-          </styles.ImagesDiv>
-        </styles.Section>
+            <styles.Section>
+              <styles.SectionTitle>허위 신고 제보</styles.SectionTitle>
+              <Textarea rows={6} disabled value={solve.falseReport}></Textarea>
+            </styles.Section>
 
-        <styles.Section>
-          <styles.SectionTitle>허위 신고 제보</styles.SectionTitle>
-          <Textarea rows={8} disabled value={content}></Textarea>
-        </styles.Section>
-
-        <styles.ButtonDiv>
-          <Button onClick={handleClickAcceptBtn} type="button">
-            승인하기
-          </Button>
-          <Button onClick={handleClickRejectBtn} type="button" secondary>
-            반려하기
-          </Button>
-        </styles.ButtonDiv>
-      </Container>
-      {isOpen &&
-        (type === '승인' ? (
-          <Modal text={'승인 완료'} isReport={false} />
-        ) : (
-          // TODO: solveId 변경
-          <RejectModal
-            onClose={() => setIsOpen(false)}
-            solutionId={solutionId}
-          />
-        ))}
+            <styles.ButtonDiv>
+              <Button onClick={handleClickAcceptBtn} type="button">
+                승인하기
+              </Button>
+              <Button onClick={handleClickRejectBtn} type="button" secondary>
+                반려하기
+              </Button>
+            </styles.ButtonDiv>
+          </Container>
+          {isOpen &&
+            (type === '승인' ? (
+              <Modal text={'승인 완료'} isReport={false} />
+            ) : (
+              <RejectModal
+                onClose={() => setIsOpen(false)}
+                solutionId={Number(solveId)}
+              />
+            ))}
+        </>
+      )}
     </>
   );
 }
