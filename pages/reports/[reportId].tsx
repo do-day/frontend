@@ -13,11 +13,13 @@ import ShapedImage from '@/components/ShapedImage';
 import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/report-solve/style';
 import { Solve } from '@/types';
+import CopyToast from '@/components/CopyToast';
 
 export default function ReportDetail() {
   // TODO: 이미 해결중인 신고인지 확인 후 초기값 설정
   const [buttonText, setButtonText] = useState('해결하기');
   const [solveId, setSolveId] = useState<number>(0);
+  const [copy, setCopy] = useState(false);
 
   const router = useRouter();
   const reportId = router.query.reportId;
@@ -42,6 +44,7 @@ export default function ReportDetail() {
   });
 
   const handleClickCopy = async () => {
+    setCopy(!copy);
     await navigator.clipboard.writeText(report?.location ?? '');
   };
 
@@ -91,6 +94,7 @@ export default function ReportDetail() {
           <Button type="button" onClick={handleClickSolve}>
             {buttonText}
           </Button>
+          {copy ? <CopyToast setCopy={setCopy} /> : ''}
         </Container>
       )}
     </>
