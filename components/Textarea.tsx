@@ -22,7 +22,7 @@ export default function Textarea({
   return (
     <styles.Textarea
       rows={rows}
-      placeholder={placeholder}
+      placeholder={!placeholder && !value ? '내용이 없습니다.' : placeholder}
       disabled={disabled}
       value={value}
       onChange={handleChange}
