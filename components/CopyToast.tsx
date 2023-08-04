@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import * as styles from '@/components/styles/CopyToast.style';
 import { useEffect, useState } from 'react';
 
