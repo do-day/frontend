@@ -8,9 +8,12 @@ import ShapedImage from '@/components/ShapedImage';
 import Modal from '@/components/Modal';
 import RejectModal from '@/components/RejectModal';
 import * as styles from '@/components/styles/report-solve/style';
+import { useMutation } from '@tanstack/react-query';
+import { postReportApprove } from '@/api/admin';
 
 export default function AdminReportDetail() {
   // TODO: props로 넘어온 값 사용
+  const reportId = '10';
   const address = '서울특별시 동작구 노량진로 10';
   const images = ['/example1.png', '/example2.png'];
   const content =
@@ -23,14 +26,23 @@ export default function AdminReportDetail() {
   };
 
   const handleClickAcceptBtn = () => {
-    setIsOpen(!isOpen);
-    setType('승인');
+    approveReportMutation.mutate({
+      reportId: Number(reportId),
+    });
   };
 
   const handleClickRejectBtn = () => {
     setIsOpen(!isOpen);
     setType('반려');
   };
+
+  const approveReportMutation = useMutation({
+    mutationFn: postReportApprove,
+    onSuccess: () => {
+      setIsOpen(!isOpen);
+      setType('승인');
+    },
+  });
 
   return (
     <>
@@ -78,7 +90,8 @@ export default function AdminReportDetail() {
         (type === '승인' ? (
           <Modal text={'승인 완료'} />
         ) : (
-          <RejectModal onClose={() => setIsOpen(false)} />
+          // TODO: reportID 값 변경하기
+          <RejectModal onClose={() => setIsOpen(false)} reportId={'10'} />
         ))}
     </>
   );

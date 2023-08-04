@@ -8,9 +8,12 @@ import ShapedImage from '@/components/ShapedImage';
 import Modal from '@/components/Modal';
 import RejectModal from '@/components/RejectModal';
 import * as styles from '@/components/styles/report-solve/style';
+import { useMutation } from '@tanstack/react-query';
+import { postSolutionApprove } from '@/api/admin';
 
 export default function AdminSolveDetail() {
   // TODO: props로 넘어온 값 사용
+  const solutionId = '10';
   const address = '서울특별시 동작구 노량진로 10';
   const image = '/example1.png';
   const content =
@@ -23,13 +26,23 @@ export default function AdminSolveDetail() {
   const [isOpen, setIsOpen] = useState(false);
   const [type, setType] = useState<string>('');
   const handleClickAcceptBtn = () => {
-    setIsOpen(!isOpen);
-    setType('승인');
+    approveSolutionMutation.mutate({
+      solutionId: Number(solutionId),
+      adminId: 1,
+    });
   };
   const handleClickRejectBtn = () => {
     setIsOpen(!isOpen);
     setType('반려');
   };
+
+  const approveSolutionMutation = useMutation({
+    mutationFn: postSolutionApprove,
+    onSuccess: () => {
+      setIsOpen(!isOpen);
+      setType('승인');
+    },
+  });
 
   return (
     <>
@@ -70,7 +83,8 @@ export default function AdminSolveDetail() {
         (type === '승인' ? (
           <Modal text={'승인 완료'} />
         ) : (
-          <RejectModal onClose={() => setIsOpen(false)} />
+          // TODO: solveId 변경
+          <RejectModal onClose={() => setIsOpen(false)} solutionId="10" />
         ))}
     </>
   );
