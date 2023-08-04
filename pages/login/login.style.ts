@@ -40,3 +40,7 @@ export const LoginTitleBox = styled.div`
   color: var(--color-dark-gray);
   margin-right: auto;
 `;
+
+export const ButtonBox = styled.div`
+  margin-top: 3rem;
+`;
