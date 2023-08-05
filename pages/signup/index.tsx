@@ -25,7 +25,6 @@ export default function Signup() {
   const { id, saveId } = useMember();
 
   useEffect(() => {
-    console.log('id', id);
     if (!id) return;
     router.push(ROUTES.MAIN);
   }, [id, router]);
@@ -86,7 +85,7 @@ export default function Signup() {
     });
   };
 
-  if (id) return null;
+  if (id > 0) return null;
 
   return (
     <>

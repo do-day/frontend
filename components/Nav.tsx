@@ -35,7 +35,7 @@ const Nav = ({ setIsOpen }: NProps) => {
           <Link href={ROUTES.MAIN}>
             <styles.MainBox>메인</styles.MainBox>
           </Link>
-          {id && (
+          {id > 0 && (
             <>
               <styles.MainBox>
                 마이페이지

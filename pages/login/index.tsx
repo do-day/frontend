@@ -60,7 +60,7 @@ export default function Login() {
     router.replace(ROUTES.ADMIN.REPORTS);
   };
 
-  if (id) return null;
+  if (id > 0) return null;
 
   return (
     <>

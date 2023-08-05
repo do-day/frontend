@@ -3,13 +3,13 @@ import { getLocalStorage, removeLocalStorage, setLocalStorage } from '@/utils';
 import { LOCAL_STORAGE_KEY } from '@/constants';
 
 interface MemberContextValues {
-  id: number | null;
+  id: number;
   saveId: (id: number) => void;
   resetId: () => void;
 }
 
 const defaultMember: MemberContextValues = {
-  id: Number(getLocalStorage(LOCAL_STORAGE_KEY) || 0) || null,
+  id: Number(getLocalStorage(LOCAL_STORAGE_KEY) || 0),
   saveId: (id: number) => {},
   resetId: () => {},
 };
@@ -28,7 +28,7 @@ const MemberProvider = ({ children }: { children: React.ReactNode }) => {
 
   const resetId = () => {
     removeLocalStorage(LOCAL_STORAGE_KEY);
-    setId(null);
+    setId(0);
   };
 
   const contextValue: MemberContextValues = {

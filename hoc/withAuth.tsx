@@ -14,7 +14,7 @@ export default function withAuth(
     const router = useRouter();
 
     useEffect(() => {
-      if (id) return;
+      if (id > 0) return;
       router.replace(ROUTES.LOGIN, {
         query: { redirect: router.asPath },
       });
@@ -22,7 +22,7 @@ export default function withAuth(
 
     return (
       <>
-        {id &&
+        {id > 0 &&
           (isAdmin && String(id) !== process.env.NEXT_PUBLIC_ADMIN_ID ? (
             <Custom404 />
           ) : (

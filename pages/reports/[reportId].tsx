@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMember } from '@/contexts/member';
 import useMapView from '@/hooks/useMapView';
 import { getReport } from '@/api/report';
 import { applySolve } from '@/api/solve';
@@ -21,8 +22,7 @@ export default function ReportDetail() {
 
   const router = useRouter();
   const reportId = router.query.reportId;
-  // TODO: 로그인 정보 확인해서 memberId 가져오기
-  const memberId = '1';
+  const { id } = useMember();
 
   const { data: report } = useQuery({
     queryKey: ['report', reportId],
@@ -34,7 +34,7 @@ export default function ReportDetail() {
   const {} = useMapView(mapRef, report?.latitude, report?.longitude);
 
   const applySolveMutation = useMutation({
-    mutationFn: () => applySolve(Number(reportId), Number(memberId)),
+    mutationFn: () => applySolve(Number(reportId), id),
     onSuccess: ({ solutionId }: Solve) => {
       setSolveId(solutionId);
       setButtonText('보고하러 가기');
@@ -42,6 +42,10 @@ export default function ReportDetail() {
   });
 
   const handleClickSolve = () => {
+    if (!id) {
+      router.push(ROUTES.LOGIN);
+      return;
+    }
     if (buttonText === '해결하기') {
       applySolveMutation.mutate();
     } else {

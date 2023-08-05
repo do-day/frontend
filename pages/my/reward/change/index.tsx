@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import withAuth from '@/hoc/withAuth';
+import { useMember } from '@/contexts/member';
 import { getTotalReward } from '@/api/reward';
 import { changeReward } from '@/api/reward';
 import Container from '@/components/Container';
@@ -12,11 +13,11 @@ import * as styles from '@/pages/my/reward/change/change.style';
 function MyRewardChange() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [amount, setAmount] = useState<number>(0);
-  const memberId = '1';
+  const { id } = useMember();
 
   const { data: total } = useQuery({
-    queryKey: ['total', memberId],
-    queryFn: () => getTotalReward(Number(memberId)),
+    queryKey: ['total', String(id)],
+    queryFn: () => getTotalReward(id),
   });
 
   const changeRewardMutation = useMutation({
@@ -25,7 +26,7 @@ function MyRewardChange() {
 
   const handleClickChange = () => {
     changeRewardMutation.mutate({
-      memberId: Number(memberId),
+      memberId: id,
       amount: amount,
     });
 
