@@ -6,27 +6,17 @@ export const Container = styled.main`
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   text-align: center;
 `;
 
-export const ButtonWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-`;
-
-export const AdminLoginButton = styled.button`
-  color: var(--color-gray);
-  background-color: transparent;
-  text-decoration: underline;
-  margin-top: 1rem;
+export const TitleBox = styled.div`
+  font-weight: 700;
+  font-size: var(--font-x-large);
+  margin: 4rem 0;
 `;
 
 export const CenterBox = styled.div`
-  margin-top: 8rem;
+  margin-top: 10rem;
   display: flex;
   flex-direction: column;
 `;
