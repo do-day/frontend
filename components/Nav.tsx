@@ -1,5 +1,7 @@
 import { createPortal } from 'react-dom';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useMember } from '@/contexts/member';
 import Backdrop from '@/components/Backdrop';
 import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/Nav.style';
@@ -9,8 +11,16 @@ interface NProps {
 }
 
 const Nav = ({ setIsOpen }: NProps) => {
+  const { resetId } = useMember();
+  const router = useRouter();
+
   const handleOnClose = () => {
     setIsOpen(false);
+  };
+
+  const handleClickLogout = () => {
+    resetId();
+    router.push(ROUTES.MAIN);
   };
 
   return (
@@ -58,7 +68,9 @@ const Nav = ({ setIsOpen }: NProps) => {
               </styles.SubMenuBox>
             </styles.MainBox>
           )}
-          <styles.LogOutButton>로그아웃</styles.LogOutButton>
+          <styles.LogOutButton onClick={handleClickLogout}>
+            로그아웃
+          </styles.LogOutButton>
         </styles.Nav>,
         document.getElementById('modal-root') as HTMLElement,
       )}
