@@ -6,7 +6,7 @@ import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Header from '@/components/Header';
-import { ROUTES } from '@/constants';
+import { LOCAL_STORAGE_KEY, ROUTES } from '@/constants';
 import * as styles from '@/components/styles/login-signup/style';
 
 export default function Signup() {
@@ -27,7 +27,7 @@ export default function Signup() {
         userIdRef.current?.focus();
       } else {
         router.replace(ROUTES.WELCOME);
-        // TODO: 로컬스토리지에 회원 정보 저장
+        localStorage.setItem(LOCAL_STORAGE_KEY, String(data.result.id));
       }
     },
   });
