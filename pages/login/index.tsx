@@ -31,11 +31,12 @@ export default function Login() {
   const loginMutation = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
+      if (data.code === 404) {
+        setMessage('아이디 또는 비밀번호가 일치하지 않습니다.');
+        return;
+      }
       saveId(data.result.id);
       router.replace(redirect ? redirect : ROUTES.MAIN);
-    },
-    onError: () => {
-      setMessage('아이디 또는 비밀번호가 일치하지 않습니다.');
     },
   });
 

@@ -22,12 +22,7 @@ export default function Signup() {
   const userIdRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordCheckRef = useRef<HTMLInputElement>(null);
-  const { id, saveId } = useMember();
-
-  useEffect(() => {
-    if (!id) return;
-    router.push(ROUTES.MAIN);
-  }, [id, router]);
+  const { saveId } = useMember();
 
   useEffect(() => {
     if (signupForm.password !== signupForm.passwordCheck) {
@@ -84,8 +79,6 @@ export default function Signup() {
       password: signupForm.password,
     });
   };
-
-  if (id > 0) return null;
 
   return (
     <>
