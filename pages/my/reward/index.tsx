@@ -5,7 +5,7 @@ import RewardList from '@/components/RewardList';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
-import * as styles from '@/pages/my/reward/reward.style';
+import * as styles from '@/components/styles/reward.style';
 import { ROUTES } from '@/constants';
 import { useQuery } from '@tanstack/react-query';
 import { getTotalReward, getReward } from '@/api/reward';
