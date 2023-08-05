@@ -49,6 +49,11 @@ export default function Login() {
     loginMutation.mutate(loginForm);
   };
 
+  const handleClickAdminLogin = () => {
+    saveId(Number(process.env.NEXT_PUBLIC_ADMIN_ID));
+    router.replace(ROUTES.ADMIN.REPORTS);
+  };
+
   return (
     <>
       <Header title="로그인" />
@@ -85,7 +90,9 @@ export default function Login() {
             </styles.ButtonBox>
           </styles.CenterBox>
           <styles.AdminLoginBox>
-            <styles.AdminLoginButton>관리자 로그인</styles.AdminLoginButton>
+            <styles.AdminLoginButton onClick={handleClickAdminLogin}>
+              관리자 로그인
+            </styles.AdminLoginButton>
           </styles.AdminLoginBox>
         </styles.Form>
       </Container>
