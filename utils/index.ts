@@ -1,3 +1,5 @@
+import secureLocalStorage from 'react-secure-storage';
+
 export const formatDate = (dateStr: string) => {
   const date = new Date(dateStr).toLocaleDateString('ko-KR', {
     year: 'numeric',
@@ -22,4 +24,12 @@ export const formatOnlyDate = (rewardDate?: string) => {
 export const validateInput = (str: string) => {
   const regex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,10}$/;
   return regex.test(str);
+};
+
+export const setLocalStorage = (key: string, value: string) => {
+  secureLocalStorage.setItem(key, value);
+};
+
+export const getLocalStorage = (key: string) => {
+  return secureLocalStorage.getItem(key);
 };
