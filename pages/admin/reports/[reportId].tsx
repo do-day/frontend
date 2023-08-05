@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import withAuth from '@/hoc/withAuth';
 import useMapView from '@/hooks/useMapView';
 import { postReportApprove } from '@/api/admin';
 import { getReport } from '@/api/report';
@@ -14,7 +15,7 @@ import RejectModal from '@/components/RejectModal';
 import Address from '@/components/Address';
 import * as styles from '@/components/styles/report-solve/style';
 
-export default function AdminReportDetail() {
+function AdminReportDetail() {
   const [isOpen, setIsOpen] = useState(false);
   const [type, setType] = useState<string>('');
   const router = useRouter();
@@ -102,3 +103,5 @@ export default function AdminReportDetail() {
     </>
   );
 }
+
+export default withAuth(AdminReportDetail, true);

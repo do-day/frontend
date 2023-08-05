@@ -1,3 +1,4 @@
+import withAuth from '@/hoc/withAuth';
 import Tab from '@/components/Tab';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
@@ -7,7 +8,7 @@ import { getAdminSolves } from '@/api/admin';
 import { Solve } from '@/types';
 import SolveList from '@/components/SolveList';
 
-export default function AdminSolvesHome() {
+function AdminSolvesHome() {
   const list = ['신고 목록 확인', '해결 목록 확인'];
   const link = [ROUTES.ADMIN.REPORTS, ROUTES.ADMIN.SOLVES];
 
@@ -30,3 +31,5 @@ export default function AdminSolvesHome() {
     </>
   );
 }
+
+export default withAuth(AdminSolvesHome, true);

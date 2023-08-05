@@ -8,8 +8,9 @@ import { ROUTES } from '@/constants';
 import { useQuery } from '@tanstack/react-query';
 import { getTotalReward, getReward } from '@/api/reward';
 import { Reward } from '@/types';
+import withAuth from '@/hoc/withAuth';
 
-export default function MyRewardHome() {
+function MyRewardHome() {
   const router = useRouter();
 
   // TODO: memberId를 로그인 정보에서 가져오기
@@ -68,3 +69,5 @@ export default function MyRewardHome() {
     </>
   );
 }
+
+export default withAuth(MyRewardHome);

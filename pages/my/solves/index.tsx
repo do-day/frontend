@@ -6,8 +6,9 @@ import Header from '@/components/Header';
 import Container from '@/components/Container';
 import { ROUTES } from '@/constants';
 import { Solve } from '@/types';
+import withAuth from '@/hoc/withAuth';
 
-export default function MySolvesHome() {
+function MySolvesHome() {
   const list = ['나의 신고 목록', '나의 해결 목록'];
   const link = [ROUTES.MY.REPORTS, ROUTES.MY.SOLVES];
 
@@ -31,3 +32,5 @@ export default function MySolvesHome() {
     </>
   );
 }
+
+export default withAuth(MySolvesHome);

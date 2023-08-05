@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { BiCopyAlt } from 'react-icons/bi';
+import withAuth from '@/hoc/withAuth';
 import useMapView from '@/hooks/useMapView';
 import { getReport } from '@/api/report';
 import { createSolve } from '@/api/solve';
@@ -18,7 +18,7 @@ import Address from '@/components/Address';
 import { SolveForm } from '@/types';
 import * as styles from '@/components/styles/report-solve/style';
 
-export default function SolveNew() {
+function SolveNew() {
   const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [solveForm, setSolveForm] = useState<SolveForm>({
@@ -56,10 +56,6 @@ export default function SolveNew() {
       setIsOpen(true);
     },
   });
-
-  const handleClickCopy = async () => {
-    await navigator.clipboard.writeText(report?.location ?? '');
-  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -158,3 +154,5 @@ export default function SolveNew() {
     </>
   );
 }
+
+export default withAuth(SolveNew);

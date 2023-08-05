@@ -1,3 +1,4 @@
+import withAuth from '@/hoc/withAuth';
 import ReportList from '@/components/ReportList';
 import Tab from '@/components/Tab';
 import Header from '@/components/Header';
@@ -7,7 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getAdminReports } from '@/api/admin';
 import { Report } from '@/types';
 
-export default function AdminReportsHome() {
+function AdminReportsHome() {
   const list = ['신고 목록 확인', '해결 목록 확인'];
   const link = [ROUTES.ADMIN.REPORTS, ROUTES.ADMIN.SOLVES];
 
@@ -30,3 +31,5 @@ export default function AdminReportsHome() {
     </>
   );
 }
+
+export default withAuth(AdminReportsHome, true);

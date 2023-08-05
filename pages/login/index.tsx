@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useMutation } from '@tanstack/react-query';
@@ -18,15 +18,21 @@ export default function Login() {
   });
   const [message, setMessage] = useState('');
   const router = useRouter();
+  const redirect = router.query.redirect as string;
   const userIdRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const { saveId } = useMember();
+  const { id, saveId } = useMember();
+
+  useEffect(() => {
+    if (!id) return;
+    router.push(ROUTES.MAIN);
+  }, [id, router]);
 
   const loginMutation = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
       saveId(data.result.id);
-      router.replace(ROUTES.MAIN);
+      router.replace(redirect ? redirect : ROUTES.MAIN);
     },
     onError: () => {
       setMessage('아이디 또는 비밀번호가 일치하지 않습니다.');
@@ -53,6 +59,8 @@ export default function Login() {
     saveId(Number(process.env.NEXT_PUBLIC_ADMIN_ID));
     router.replace(ROUTES.ADMIN.REPORTS);
   };
+
+  if (id) return null;
 
   return (
     <>

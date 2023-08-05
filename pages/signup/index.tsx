@@ -22,7 +22,21 @@ export default function Signup() {
   const userIdRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordCheckRef = useRef<HTMLInputElement>(null);
-  const { saveId } = useMember();
+  const { id, saveId } = useMember();
+
+  useEffect(() => {
+    console.log('id', id);
+    if (!id) return;
+    router.push(ROUTES.MAIN);
+  }, [id, router]);
+
+  useEffect(() => {
+    if (signupForm.password !== signupForm.passwordCheck) {
+      setMessage('비밀번호가 일치하지 않습니다.');
+    } else {
+      setMessage('');
+    }
+  }, [signupForm.password, signupForm.passwordCheck]);
 
   const signupMutation = useMutation({
     mutationFn: signup,
@@ -36,14 +50,6 @@ export default function Signup() {
       }
     },
   });
-
-  useEffect(() => {
-    if (signupForm.password !== signupForm.passwordCheck) {
-      setMessage('비밀번호가 일치하지 않습니다.');
-    } else {
-      setMessage('');
-    }
-  }, [signupForm.password, signupForm.passwordCheck]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -80,6 +86,8 @@ export default function Signup() {
     });
   };
 
+  if (id) return null;
+
   return (
     <>
       <Header title="회원가입" />
@@ -111,7 +119,7 @@ export default function Signup() {
               <Input
                 type="password"
                 label="비밀번호 확인"
-                id="password"
+                id="passwordCheck"
                 value={signupForm.passwordCheck}
                 onChange={(e) =>
                   setSignupForm({

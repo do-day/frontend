@@ -9,8 +9,9 @@ import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import Address from '@/components/Address';
 import * as styles from '@/components/styles/report-solve/style';
+import withAuth from '@/hoc/withAuth';
 
-export default function SolveDetail() {
+function SolveDetail() {
   const router = useRouter();
   const solveId = router.query.solveId;
 
@@ -64,3 +65,5 @@ export default function SolveDetail() {
     </>
   );
 }
+
+export default withAuth(SolveDetail);
