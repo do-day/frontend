@@ -18,3 +18,8 @@ export const formatOnlyDate = (rewardDate?: string) => {
 
   return `${month}.${day}`;
 };
+
+export const validateInput = (str: string) => {
+  const regex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,10}$/;
+  return regex.test(str);
+};

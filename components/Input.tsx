@@ -6,11 +6,12 @@ interface Props {
   label?: string;
   id?: string;
   value: string;
+  placeholder?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function Input(
-  { type = 'text', label, id, value, onChange }: Props,
+  { type = 'text', label, id, value, placeholder, onChange }: Props,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
   return (
@@ -20,6 +21,7 @@ function Input(
         type={type}
         id={id ? id : ''}
         value={value}
+        placeholder={placeholder}
         onChange={onChange}
         ref={ref}
       ></styles.Input>

@@ -8,6 +8,7 @@ import Input from '@/components/Input';
 import Header from '@/components/Header';
 import { LOCAL_STORAGE_KEY, ROUTES } from '@/constants';
 import * as styles from '@/components/styles/login-signup/style';
+import { validateInput } from '@/utils';
 
 export default function Signup() {
   const [signupForm, setSignupForm] = useState({
@@ -15,9 +16,11 @@ export default function Signup() {
     password: '',
     passwordCheck: '',
   });
-  const userIdRef = useRef<HTMLInputElement>(null);
   const [message, setMessage] = useState('');
   const router = useRouter();
+  const userIdRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const passwordCheckRef = useRef<HTMLInputElement>(null);
 
   const signupMutation = useMutation({
     mutationFn: signup,
@@ -44,16 +47,31 @@ export default function Signup() {
     e.preventDefault();
     if (!signupForm.userId) {
       setMessage('아이디를 입력해주세요.');
+      userIdRef.current?.focus();
       return;
     }
     if (!signupForm.password) {
       setMessage('비밀번호를 입력해주세요.');
+      passwordRef.current?.focus();
       return;
     }
     if (!signupForm.passwordCheck) {
       setMessage('비밀번호 확인을 입력해주세요.');
+      passwordCheckRef.current?.focus();
       return;
     }
+
+    if (!validateInput(signupForm.userId)) {
+      setMessage('아이디는 4자 이상 10자 이하의 영문, 숫자 조합입니다.');
+      userIdRef.current?.focus();
+      return;
+    }
+    if (!validateInput(signupForm.password)) {
+      setMessage('비밀번호는 4자 이상 10자 이하의 영문, 숫자 조합입니다.');
+      passwordRef.current?.focus();
+      return;
+    }
+
     signupMutation.mutate({
       userId: signupForm.userId,
       password: signupForm.password,
@@ -71,6 +89,7 @@ export default function Signup() {
                 label="아이디"
                 id="userId"
                 value={signupForm.userId}
+                placeholder={'4자 이상 10자 이하의 영문, 숫자 조합'}
                 onChange={(e) =>
                   setSignupForm({ ...signupForm, userId: e.target.value })
                 }
@@ -81,9 +100,11 @@ export default function Signup() {
                 label="비밀번호"
                 id="password"
                 value={signupForm.password}
+                placeholder={'4자 이상 10자 이하의 영문, 숫자 조합'}
                 onChange={(e) =>
                   setSignupForm({ ...signupForm, password: e.target.value })
                 }
+                ref={passwordRef}
               />
               <Input
                 type="password"
@@ -96,6 +117,7 @@ export default function Signup() {
                     passwordCheck: e.target.value,
                   })
                 }
+                ref={passwordCheckRef}
               />
               <styles.Message>{message}</styles.Message>
             </styles.InputBox>
