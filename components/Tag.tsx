@@ -32,16 +32,16 @@ export const TagBox = styled.div<{ state: State }>`
   color: var(--color-white);
   background-color: ${(props) =>
     props.state === 'UNAPPROVAL'
-      ? 'var(--color--unapproval)'
+      ? 'var(--color-unapproval)'
       : props.state === 'UNRESOLVED'
-      ? 'var(--color--unresolved)'
+      ? 'var(--color-unresolved)'
       : props.state === 'RESOLVING'
-      ? 'var(--color--resolving)'
+      ? 'var(--color-resolving)'
       : props.state === 'RESOLVED'
-      ? 'var(--color--resolved)'
+      ? 'var(--color-resolved)'
       : props.state === 'REJECTED'
-      ? 'var(--color--rejected)'
-      : 'var(--color--confirmed)'};
+      ? 'var(--color-rejected)'
+      : 'var(--color-confirmed)'};
 
   border-radius: var(--border-rounded);
 `;

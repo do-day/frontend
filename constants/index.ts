@@ -1,10 +1,14 @@
 export const SERVICE_NAME = 'DODAY';
 
+export const LOCAL_STORAGE_KEY = 'doday-id';
+
 export const API_PREFIX = process.env.NEXT_PUBLIC_API_PREFIX;
 
 export const ROUTES = {
   MAIN: '/',
   LOGIN: '/login',
+  SIGNUP: '/signup',
+  WELCOME: '/welcome',
   REPORTS: {
     NEW: '/reports/new',
     REPORT: (reportId: number) => `/reports/${reportId}`,

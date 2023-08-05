@@ -3,16 +3,16 @@
   --color-sub: #6fcbf8;
   --color-white: #fff;
   --color-light-gray: #eee;
+  --color-copy-gray: #efefef;
   --color-gray: #bdbdbd;
   --color-dark-gray: #777;
   --color-backdrop: rgba(0, 0, 0, 0.5);
-  --color--unresolved: #a4a4a4;
-  --color--resolving: #4cb7ea;
-  --color--resolved: #7ac06f;
-  --color--rejected: #f57970;
-  --color--unapproval: #b18ad9;
-  --color--confirmed: #fbc057;
-  --color-toast: rgba(0, 0, 0, 0.6);
+  --color-unresolved: #a4a4a4;
+  --color-resolving: #4cb7ea;
+  --color-resolved: #7ac06f;
+  --color-rejected: #f57970;
+  --color-unapproval: #b18ad9;
+  --color-confirmed: #fbc057;
   --font-bold: 600;
   --font-x-small: 0.75rem;
   --font-small: 0.875rem;
@@ -47,6 +47,7 @@ body {
   background-color: var(--color-white);
   font-family: sans-serif;
   font-size: 1rem;
+  text-underline-offset: 0.1rem;
 }
 
 ol,

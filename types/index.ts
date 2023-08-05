@@ -65,3 +65,17 @@ export type TotalReward = {
   nowReward?: number;
   totalReward?: number;
 };
+
+export type MemberForm = {
+  userId: string;
+  password: string;
+};
+
+export type MemberResult = {
+  code: number;
+  isSuccess: boolean;
+  message: string;
+  result: {
+    id: number;
+  };
+};
