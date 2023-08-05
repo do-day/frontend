@@ -10,12 +10,6 @@ export const Container = styled.main`
   text-align: center;
 `;
 
-export const LogoWrapper = styled.div`
-  max-width: 30rem;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-`;
-
 export const ButtonWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -32,6 +26,7 @@ export const AdminLoginButton = styled.button`
 `;
 
 export const CenterBox = styled.div`
+  margin-top: 8rem;
   display: flex;
   flex-direction: column;
 `;

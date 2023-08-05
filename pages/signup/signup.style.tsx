@@ -16,6 +16,7 @@ export const TitleBox = styled.div`
 `;
 
 export const CenterBox = styled.div`
+  margin-top: 10rem;
   display: flex;
   flex-direction: column;
 `;
