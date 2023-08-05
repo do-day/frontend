@@ -6,9 +6,9 @@ import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Header from '@/components/Header';
+import { setLocalStorage, validateInput } from '@/utils';
 import { LOCAL_STORAGE_KEY, ROUTES } from '@/constants';
 import * as styles from '@/components/styles/login-signup/style';
-import { validateInput } from '@/utils';
 
 export default function Signup() {
   const [signupForm, setSignupForm] = useState({
@@ -30,7 +30,7 @@ export default function Signup() {
         userIdRef.current?.focus();
       } else {
         router.replace(ROUTES.WELCOME);
-        localStorage.setItem(LOCAL_STORAGE_KEY, String(data.result.id));
+        setLocalStorage(LOCAL_STORAGE_KEY, String(data.result.id));
       }
     },
   });
