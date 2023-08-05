@@ -1,22 +1,15 @@
-import * as styles from '@/components/styles/CopyToast.style';
 import { useEffect, useState } from 'react';
+import * as styles from '@/components/styles/Toast.style';
+import { createPortal } from 'react-dom';
 
 interface Props {
   text: string;
-  style?: React.CSSProperties;
-  rounded?: boolean;
-  fitContent?: boolean;
   setCopy: (copy: boolean) => void;
 }
 
-export default function Toast({
-  text,
-  style,
-  rounded = false,
-  fitContent = false,
-  setCopy,
-}: Props) {
+export default function Toast({ text, setCopy }: Props) {
   const [isFading, setIsFading] = useState(false);
+
   useEffect(() => {
     let mounted = true;
     setTimeout(() => {
@@ -34,15 +27,15 @@ export default function Toast({
   }, []);
 
   return (
-    <styles.ToastBox
-      style={style}
-      rounded={rounded}
-      fitContent={fitContent}
-      isFading={isFading}
-    >
-      <styles.FlexBox>
-        <styles.Ment>{text}</styles.Ment>
-      </styles.FlexBox>
-    </styles.ToastBox>
+    <>
+      {createPortal(
+        <styles.ToastBox isFading={isFading}>
+          <styles.FlexBox>
+            <styles.Ment>{text}</styles.Ment>
+          </styles.FlexBox>
+        </styles.ToastBox>,
+        document.getElementById('modal-root') as HTMLElement,
+      )}
+    </>
   );
 }

@@ -17,8 +17,8 @@ export default function Address({ address, isCopyable = false }: Props) {
       await navigator.clipboard.writeText(address);
       setCopy(!copy);
     } catch (error) {
+      // TODO: 복사 실패 시 예외 처리
       console.error('클립보드 복사 에러:', error);
-      // 복사 실패 시 예외 처리
     }
   };
 
@@ -37,7 +37,7 @@ export default function Address({ address, isCopyable = false }: Props) {
         <styles.Address>{address}</styles.Address>
         <BiCopyAlt />
       </styles.CopyButton>
-      {copy && <Toast setCopy={setCopy} text="복사가 완료되었습니다." />}
+      {copy && <Toast setCopy={setCopy} text="주소가 복사되었습니다." />}
     </>
   );
 }
