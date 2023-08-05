@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
+import { useMember } from '@/contexts/member';
 import { signup } from '@/api/member';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Header from '@/components/Header';
-import { setLocalStorage, validateInput } from '@/utils';
-import { LOCAL_STORAGE_KEY, ROUTES } from '@/constants';
+import { validateInput } from '@/utils';
+import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/login-signup/style';
 
 export default function Signup() {
@@ -21,6 +22,7 @@ export default function Signup() {
   const userIdRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordCheckRef = useRef<HTMLInputElement>(null);
+  const { saveId } = useMember();
 
   const signupMutation = useMutation({
     mutationFn: signup,
@@ -29,8 +31,8 @@ export default function Signup() {
         setMessage('이미 존재하는 아이디입니다.');
         userIdRef.current?.focus();
       } else {
+        saveId(data.result.id);
         router.replace(ROUTES.WELCOME);
-        setLocalStorage(LOCAL_STORAGE_KEY, String(data.result.id));
       }
     },
   });

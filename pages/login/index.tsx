@@ -2,13 +2,13 @@ import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useMutation } from '@tanstack/react-query';
+import { useMember } from '@/contexts/member';
 import { login } from '@/api/member';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Header from '@/components/Header';
-import { setLocalStorage } from '@/utils';
-import { LOCAL_STORAGE_KEY, ROUTES } from '@/constants';
+import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/login-signup/style';
 
 export default function Login() {
@@ -20,11 +20,12 @@ export default function Login() {
   const router = useRouter();
   const userIdRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const { saveId } = useMember();
 
   const loginMutation = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      setLocalStorage(LOCAL_STORAGE_KEY, String(data.result.id));
+      saveId(data.result.id);
       router.replace(ROUTES.MAIN);
     },
     onError: () => {
