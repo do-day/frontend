@@ -8,7 +8,7 @@ import Container from '@/components/Container';
 import Header from '@/components/Header';
 import Button from '@/components/Button';
 import Modal from '@/components/Modal';
-import * as styles from '@/pages/my/reward/change/change.style';
+import * as styles from '@/components/styles/change.style';
 
 function MyRewardChange() {
   const [isOpen, setIsOpen] = useState<boolean>(false);

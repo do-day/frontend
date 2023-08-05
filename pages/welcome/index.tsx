@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
 import { ROUTES } from '@/constants';
-import * as styles from '@/pages/welcome/welcome.style';
+import * as styles from '@/components/styles/welcome.style';
 
 export default function Welcome() {
   const router = useRouter();
