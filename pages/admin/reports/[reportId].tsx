@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { BiCopyAlt } from 'react-icons/bi';
 import useMapView from '@/hooks/useMapView';
 import { postReportApprove } from '@/api/admin';
 import { getReport } from '@/api/report';
@@ -12,6 +11,7 @@ import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import Modal from '@/components/Modal';
 import RejectModal from '@/components/RejectModal';
+import Address from '@/components/Address';
 import * as styles from '@/components/styles/report-solve/style';
 
 export default function AdminReportDetail() {
@@ -28,10 +28,6 @@ export default function AdminReportDetail() {
 
   const mapRef = useRef<HTMLDivElement>(null);
   const {} = useMapView(mapRef, report?.latitude, report?.longitude);
-
-  const handleClickCopy = async () => {
-    await navigator.clipboard.writeText(report?.location ?? '');
-  };
 
   const handleClickAcceptBtn = () => {
     approveReportMutation.mutate({
@@ -64,10 +60,7 @@ export default function AdminReportDetail() {
               <styles.SectionDiv>
                 <styles.Map ref={mapRef} />
               </styles.SectionDiv>
-              <styles.CopyButton type="button" onClick={handleClickCopy}>
-                <styles.Address>{report.location}</styles.Address>
-                <BiCopyAlt />
-              </styles.CopyButton>
+              <Address address={report.location} isCopyable />
             </styles.Section>
 
             <styles.Section>
@@ -94,6 +87,7 @@ export default function AdminReportDetail() {
               </Button>
             </styles.ButtonDiv>
           </Container>
+
           {isOpen &&
             (type === '승인' ? (
               <Modal text={'승인 완료'} />

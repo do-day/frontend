@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { BiCopyAlt } from 'react-icons/bi';
 import useMapView from '@/hooks/useMapView';
 import { postSolutionApprove } from '@/api/admin';
 import { getSolve } from '@/api/solve';
@@ -12,6 +11,7 @@ import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import Modal from '@/components/Modal';
 import RejectModal from '@/components/RejectModal';
+import Address from '@/components/Address';
 import * as styles from '@/components/styles/report-solve/style';
 
 export default function AdminSolveDetail() {
@@ -28,10 +28,6 @@ export default function AdminSolveDetail() {
 
   const mapRef = useRef<HTMLDivElement>(null);
   const {} = useMapView(mapRef, solve?.latitude, solve?.longitude);
-
-  const handleClickCopy = async () => {
-    await navigator.clipboard.writeText(solve?.location ?? '');
-  };
 
   const handleClickAcceptBtn = () => {
     approveSolutionMutation.mutate({
@@ -64,10 +60,7 @@ export default function AdminSolveDetail() {
               <styles.SectionDiv>
                 <styles.Map ref={mapRef} />
               </styles.SectionDiv>
-              <styles.CopyButton type="button" onClick={handleClickCopy}>
-                <styles.Address>{solve.location}</styles.Address>
-                <BiCopyAlt />
-              </styles.CopyButton>
+              <Address address={solve.location} isCopyable />
             </styles.Section>
 
             <styles.Section>

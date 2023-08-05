@@ -11,6 +11,7 @@ import ShapedImage from '@/components/ShapedImage';
 import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
 import Modal from '@/components/Modal';
+import Address from '@/components/Address';
 import { ReportForm } from '@/types';
 import * as styles from '@/components/styles/report-solve/style';
 
@@ -74,7 +75,7 @@ export default function ReportNew() {
             <styles.SectionDiv>
               <styles.Map ref={mapRef} />
             </styles.SectionDiv>
-            <styles.Address>{location}</styles.Address>
+            <Address address={location} />
           </styles.Section>
 
           <styles.Section>
