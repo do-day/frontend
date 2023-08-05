@@ -5,6 +5,7 @@ export const API_PREFIX = process.env.NEXT_PUBLIC_API_PREFIX;
 export const ROUTES = {
   MAIN: '/',
   LOGIN: '/login',
+  SIGNUP: '/signup',
   REPORTS: {
     NEW: '/reports/new',
     REPORT: (reportId: number) => `/reports/${reportId}`,

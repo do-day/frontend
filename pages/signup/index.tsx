@@ -1,24 +1,22 @@
-import Image from 'next/image';
+import Container from '@/components/Container';
 import Button from '@/components/Button';
-import * as styles from '@/pages/signup/signup.style';
 import Input from '@/components/Input';
 import Header from '@/components/Header';
+import * as styles from '@/components/styles/login-signup/style';
 
 export default function Login() {
   return (
     <>
       <Header title="회원가입" />
-      <styles.Container>
+      <Container>
         <styles.CenterBox>
-          <styles.LoginTitleBox>아이디</styles.LoginTitleBox>
-          <Input />
-          <styles.LoginTitleBox>비밀번호</styles.LoginTitleBox>
-          <Input type="password" />
+          <Input label="아이디" id="id" />
+          <Input type="password" label="비밀번호" id="password" />
           <styles.ButtonBox>
-            <Button>회원가입</Button>
+            <Button>로그인</Button>
           </styles.ButtonBox>
         </styles.CenterBox>
-      </styles.Container>
+      </Container>
     </>
   );
 }
