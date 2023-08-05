@@ -7,12 +7,12 @@
   --color-gray: #bdbdbd;
   --color-dark-gray: #777;
   --color-backdrop: rgba(0, 0, 0, 0.5);
-  --color--unresolved: #a4a4a4;
-  --color--resolving: #4cb7ea;
-  --color--resolved: #7ac06f;
-  --color--rejected: #f57970;
-  --color--unapproval: #b18ad9;
-  --color--confirmed: #fbc057;
+  --color-unresolved: #a4a4a4;
+  --color-resolving: #4cb7ea;
+  --color-resolved: #7ac06f;
+  --color-rejected: #f57970;
+  --color-unapproval: #b18ad9;
+  --color-confirmed: #fbc057;
   --font-bold: 600;
   --font-x-small: 0.75rem;
   --font-small: 0.875rem;

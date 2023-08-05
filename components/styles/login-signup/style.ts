@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.div`
+export const Form = styled.form`
   width: 100%;
   height: 100%;
   display: flex;
@@ -12,7 +12,16 @@ export const CenterBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding-top: 2rem;
+  padding-top: 1rem;
+`;
+
+export const InputBox = styled.div``;
+
+export const Message = styled.p`
+  height: 1rem;
+  font-size: var(--font-small);
+  color: var(--color-rejected);
+  margin
 `;
 
 export const ButtonBox = styled.div`

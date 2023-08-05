@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const InputWrapper = styled.div`
   text-align: left;
   color: var(--color-dark-gray);
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 `;
 
 export const Label = styled.label``;

@@ -11,10 +11,12 @@ export default function Login() {
     <>
       <Header title="로그인" />
       <Container>
-        <styles.Wrapper>
+        <styles.Form>
           <styles.CenterBox>
-            <Input label="아이디" id="id" />
-            <Input type="password" label="비밀번호" id="password" />
+            <styles.InputBox>
+              <Input label="아이디" id="id" />
+              <Input type="password" label="비밀번호" id="password" />
+            </styles.InputBox>
             <styles.ButtonBox>
               <Button>로그인</Button>
               <styles.SignupBox>
@@ -25,7 +27,7 @@ export default function Login() {
           <styles.AdminLoginBox>
             <styles.AdminLoginButton>관리자 로그인</styles.AdminLoginButton>
           </styles.AdminLoginBox>
-        </styles.Wrapper>
+        </styles.Form>
       </Container>
     </>
   );

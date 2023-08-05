@@ -6,6 +6,7 @@ export const ROUTES = {
   MAIN: '/',
   LOGIN: '/login',
   SIGNUP: '/signup',
+  WELCOME: '/welcome',
   REPORTS: {
     NEW: '/reports/new',
     REPORT: (reportId: number) => `/reports/${reportId}`,
