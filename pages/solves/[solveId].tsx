@@ -7,6 +7,7 @@ import Container from '@/components/Container';
 import Header from '@/components/Header';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
+import Address from '@/components/Address';
 import * as styles from '@/components/styles/report-solve/style';
 
 export default function SolveDetail() {
@@ -33,29 +34,29 @@ export default function SolveDetail() {
             <styles.SectionDiv>
               <styles.Map ref={mapRef} />
             </styles.SectionDiv>
-            <styles.Address>{solve?.location}</styles.Address>
+            <Address address={solve.location} />
           </styles.Section>
 
           <styles.Section>
             <styles.SectionTitle>첨부된 사진</styles.SectionTitle>
             <styles.ImagesDiv>
-              <ShapedImage src={solve?.photo || ''} alt="첨부된 사진" />
+              <ShapedImage src={solve.photo || ''} alt="첨부된 사진" />
             </styles.ImagesDiv>
           </styles.Section>
 
           <styles.Section>
             <styles.SectionTitle>허위 신고 제보</styles.SectionTitle>
             <Textarea
-              rows={solve?.content ? 3 : 10}
+              rows={solve.content ? 3 : 10}
               disabled
-              value={solve?.falseReport}
+              value={solve.falseReport}
             ></Textarea>
           </styles.Section>
 
-          {solve?.content && (
+          {solve.content && (
             <styles.Section>
               <styles.SectionTitle>반려 사유</styles.SectionTitle>
-              <Textarea rows={3} disabled value={solve?.content}></Textarea>
+              <Textarea rows={3} disabled value={solve.content}></Textarea>
             </styles.Section>
           )}
         </Container>

@@ -14,6 +14,7 @@ import ShapedImage from '@/components/ShapedImage';
 import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
 import Modal from '@/components/Modal';
+import Address from '@/components/Address';
 import { SolveForm } from '@/types';
 import * as styles from '@/components/styles/report-solve/style';
 
@@ -92,10 +93,7 @@ export default function SolveNew() {
             <styles.SectionDiv>
               <styles.Map ref={mapRef} />
             </styles.SectionDiv>
-            <styles.CopyButton type="button" onClick={handleClickCopy}>
-              <styles.Address>{report?.location}</styles.Address>
-              <BiCopyAlt />
-            </styles.CopyButton>
+            {report && <Address address={report.location} isCopyable />}
           </styles.Section>
 
           <styles.Section>

@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { BiCopyAlt } from 'react-icons/bi';
 import useMapView from '@/hooks/useMapView';
 import { getReport } from '@/api/report';
 import { applySolve } from '@/api/solve';
@@ -10,17 +9,15 @@ import Header from '@/components/Header';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
+import Address from '@/components/Address';
 import { ROUTES } from '@/constants';
-import * as styles from '@/components/styles/report-solve/style';
 import { Solve } from '@/types';
-import Toast from '@/components/Toast';
-import { useDebounce } from '@/utils';
+import * as styles from '@/components/styles/report-solve/style';
 
 export default function ReportDetail() {
   // TODO: 이미 해결중인 신고인지 확인 후 초기값 설정
   const [buttonText, setButtonText] = useState('해결하기');
   const [solveId, setSolveId] = useState<number>(0);
-  const [copy, setCopy] = useState(false);
 
   const router = useRouter();
   const reportId = router.query.reportId;
@@ -44,21 +41,6 @@ export default function ReportDetail() {
     },
   });
 
-  const handleClickCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(report?.location ?? '');
-      setCopy(!copy);
-    } catch (error) {
-      console.error('클립보드 복사 에러:', error);
-      // 복사 실패 시 예외 처리
-    }
-  };
-
-  const debounceCopy = useDebounce<React.MouseEventHandler<HTMLButtonElement>>(
-    handleClickCopy,
-    500,
-  );
-
   const handleClickSolve = () => {
     if (buttonText === '해결하기') {
       applySolveMutation.mutate();
@@ -81,10 +63,7 @@ export default function ReportDetail() {
             <styles.SectionDiv>
               <styles.Map ref={mapRef} />
             </styles.SectionDiv>
-            <styles.CopyButton type="button" onClick={debounceCopy}>
-              <styles.Address>{report.location}</styles.Address>
-              <BiCopyAlt />
-            </styles.CopyButton>
+            <Address address={report.location} isCopyable />
           </styles.Section>
 
           <styles.Section>
@@ -105,11 +84,6 @@ export default function ReportDetail() {
           <Button type="button" onClick={handleClickSolve}>
             {buttonText}
           </Button>
-          {copy ? (
-            <Toast setCopy={setCopy} text="복사가 완료되었습니다." />
-          ) : (
-            ''
-          )}
         </Container>
       )}
     </>
