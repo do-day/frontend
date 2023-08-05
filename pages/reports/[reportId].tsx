@@ -14,7 +14,7 @@ import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/report-solve/style';
 import { Solve } from '@/types';
 import Toast from '@/components/Toast';
-import { useDebounce } from '@/utils';
+import { useDebounce } from '@/hooks/useDebounce';
 
 export default function ReportDetail() {
   // TODO: 이미 해결중인 신고인지 확인 후 초기값 설정
