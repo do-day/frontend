@@ -1,4 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
+import withAuth from '@/hoc/withAuth';
+import { useMember } from '@/contexts/member';
 import { getMySolves } from '@/api/solve';
 import SolveList from '@/components/SolveList';
 import Tab from '@/components/Tab';
@@ -7,16 +9,14 @@ import Container from '@/components/Container';
 import { ROUTES } from '@/constants';
 import { Solve } from '@/types';
 
-export default function MySolvesHome() {
+function MySolvesHome() {
   const list = ['나의 신고 목록', '나의 해결 목록'];
   const link = [ROUTES.MY.REPORTS, ROUTES.MY.SOLVES];
-
-  // TODO: 로그인 정보에서 memberId 가져오기
-  const memberId = '1';
+  const { id } = useMember();
 
   const { data: solves } = useQuery({
-    queryKey: ['solves', memberId],
-    queryFn: () => getMySolves(Number(memberId)),
+    queryKey: ['solves', String(id)],
+    queryFn: () => getMySolves(id),
   });
 
   return (
@@ -31,3 +31,5 @@ export default function MySolvesHome() {
     </>
   );
 }
+
+export default withAuth(MySolvesHome);

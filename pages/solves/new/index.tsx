@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { BiCopyAlt } from 'react-icons/bi';
+import withAuth from '@/hoc/withAuth';
+import { useMember } from '@/contexts/member';
 import useMapView from '@/hooks/useMapView';
 import { getReport } from '@/api/report';
 import { createSolve } from '@/api/solve';
@@ -18,7 +19,7 @@ import Address from '@/components/Address';
 import { SolveForm } from '@/types';
 import * as styles from '@/components/styles/report-solve/style';
 
-export default function SolveNew() {
+function SolveNew() {
   const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [solveForm, setSolveForm] = useState<SolveForm>({
@@ -32,8 +33,7 @@ export default function SolveNew() {
   const router = useRouter();
   // TODO: reportId나 solveId가 없으면 잘못된 접근이므로 404 페이지로 이동
   const { reportId, solveId } = router.query;
-  // TODO: 로그인 정보 확인해서 memberId 가져오기
-  const memberId = '1';
+  const { id } = useMember();
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadedFiles, onFileChange, onClickFileUpload] = useUploadImages(
@@ -57,10 +57,6 @@ export default function SolveNew() {
     },
   });
 
-  const handleClickCopy = async () => {
-    await navigator.clipboard.writeText(report?.location ?? '');
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -71,7 +67,7 @@ export default function SolveNew() {
 
     submitSolveMutation.mutate({
       solutionId: Number(solveId),
-      memberId: Number(memberId),
+      memberId: id,
       solveForm: {
         ...solveForm,
         location: report?.location,
@@ -158,3 +154,5 @@ export default function SolveNew() {
     </>
   );
 }
+
+export default withAuth(SolveNew);

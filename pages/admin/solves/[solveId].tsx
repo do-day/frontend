@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import withAuth from '@/hoc/withAuth';
 import useMapView from '@/hooks/useMapView';
 import { postSolutionApprove } from '@/api/admin';
 import { getSolve } from '@/api/solve';
@@ -14,7 +15,7 @@ import RejectModal from '@/components/RejectModal';
 import Address from '@/components/Address';
 import * as styles from '@/components/styles/report-solve/style';
 
-export default function AdminSolveDetail() {
+function AdminSolveDetail() {
   const router = useRouter();
   const solveId = router.query.solveId;
   const [isOpen, setIsOpen] = useState(false);
@@ -98,3 +99,5 @@ export default function AdminSolveDetail() {
     </>
   );
 }
+
+export default withAuth(AdminSolveDetail, true);

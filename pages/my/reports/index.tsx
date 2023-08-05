@@ -1,4 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
+import withAuth from '@/hoc/withAuth';
+import { useMember } from '@/contexts/member';
 import { getMyReports } from '@/api/report';
 import ReportList from '@/components/ReportList';
 import Tab from '@/components/Tab';
@@ -7,16 +9,14 @@ import Container from '@/components/Container';
 import { ROUTES } from '@/constants';
 import { Report } from '@/types';
 
-export default function MyReportsHome() {
+function MyReportsHome() {
   const list = ['나의 신고 목록', '나의 해결 목록'];
   const link = [ROUTES.MY.REPORTS, ROUTES.MY.SOLVES];
-
-  // TODO: memberId를 로그인 정보에서 가져오기
-  const memberId = '1';
+  const { id } = useMember();
 
   const { data: reports } = useQuery({
-    queryKey: ['reports', memberId],
-    queryFn: () => getMyReports(Number(memberId)),
+    queryKey: ['reports', String(id)],
+    queryFn: () => getMyReports(id),
   });
 
   return (
@@ -33,3 +33,5 @@ export default function MyReportsHome() {
     </>
   );
 }
+
+export default withAuth(MyReportsHome);

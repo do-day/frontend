@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
+import { useMember } from '@/contexts/member';
 import { signup } from '@/api/member';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Header from '@/components/Header';
-import { setLocalStorage, validateInput } from '@/utils';
-import { LOCAL_STORAGE_KEY, ROUTES } from '@/constants';
+import { validateInput } from '@/utils';
+import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/login-signup/style';
 
 export default function Signup() {
@@ -21,19 +22,7 @@ export default function Signup() {
   const userIdRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordCheckRef = useRef<HTMLInputElement>(null);
-
-  const signupMutation = useMutation({
-    mutationFn: signup,
-    onSuccess: (data) => {
-      if (data.code === 400) {
-        setMessage('이미 존재하는 아이디입니다.');
-        userIdRef.current?.focus();
-      } else {
-        router.replace(ROUTES.WELCOME);
-        setLocalStorage(LOCAL_STORAGE_KEY, String(data.result.id));
-      }
-    },
-  });
+  const { saveId } = useMember();
 
   useEffect(() => {
     if (signupForm.password !== signupForm.passwordCheck) {
@@ -43,20 +32,33 @@ export default function Signup() {
     }
   }, [signupForm.password, signupForm.passwordCheck]);
 
+  const signupMutation = useMutation({
+    mutationFn: signup,
+    onSuccess: (data) => {
+      if (data.code === 400) {
+        setMessage('이미 존재하는 아이디입니다.');
+        userIdRef.current?.focus();
+      } else {
+        saveId(data.result.id);
+        router.replace(ROUTES.WELCOME);
+      }
+    },
+  });
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!signupForm.userId) {
-      setMessage('아이디를 입력해주세요.');
+      setMessage('아이디를 입력해 주세요.');
       userIdRef.current?.focus();
       return;
     }
     if (!signupForm.password) {
-      setMessage('비밀번호를 입력해주세요.');
+      setMessage('비밀번호를 입력해 주세요.');
       passwordRef.current?.focus();
       return;
     }
     if (!signupForm.passwordCheck) {
-      setMessage('비밀번호 확인을 입력해주세요.');
+      setMessage('비밀번호 확인을 입력해 주세요.');
       passwordCheckRef.current?.focus();
       return;
     }
@@ -109,7 +111,7 @@ export default function Signup() {
               <Input
                 type="password"
                 label="비밀번호 확인"
-                id="password"
+                id="passwordCheck"
                 value={signupForm.passwordCheck}
                 onChange={(e) =>
                   setSignupForm({

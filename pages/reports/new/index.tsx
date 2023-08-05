@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
+import withAuth from '@/hoc/withAuth';
+import { useMember } from '@/contexts/member';
 import useMap from '@/hooks/useMap';
 import { createReport } from '@/api/report';
 import Container from '@/components/Container';
@@ -15,10 +17,10 @@ import Address from '@/components/Address';
 import { ReportForm } from '@/types';
 import * as styles from '@/components/styles/report-solve/style';
 
-export default function ReportNew() {
-  // TODO: memberId 받아오기
+function ReportNew() {
+  const { id } = useMember();
   const [reportForm, setReportForm] = useState<ReportForm>({
-    memberId: 1,
+    memberId: id,
     location: '',
     description: '',
     latitude: 0,
@@ -151,3 +153,5 @@ export default function ReportNew() {
     </>
   );
 }
+
+export default withAuth(ReportNew);

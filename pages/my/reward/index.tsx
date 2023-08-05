@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router';
+import withAuth from '@/hoc/withAuth';
+import { useMember } from '@/contexts/member';
 import RewardList from '@/components/RewardList';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
@@ -9,20 +11,18 @@ import { useQuery } from '@tanstack/react-query';
 import { getTotalReward, getReward } from '@/api/reward';
 import { Reward } from '@/types';
 
-export default function MyRewardHome() {
+function MyRewardHome() {
   const router = useRouter();
-
-  // TODO: memberId를 로그인 정보에서 가져오기
-  const memberId = '1';
+  const { id } = useMember();
 
   const { data: rewards } = useQuery({
-    queryKey: ['reward', memberId],
-    queryFn: () => getReward(Number(memberId)),
+    queryKey: ['reward', String(id)],
+    queryFn: () => getReward(id),
   });
 
   const { data: total } = useQuery({
-    queryKey: ['total', memberId],
-    queryFn: () => getTotalReward(Number(memberId)),
+    queryKey: ['total', String(id)],
+    queryFn: () => getTotalReward(Number(id)),
   });
 
   return (
@@ -68,3 +68,5 @@ export default function MyRewardHome() {
     </>
   );
 }
+
+export default withAuth(MyRewardHome);
