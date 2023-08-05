@@ -46,17 +46,17 @@ export default function Signup() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!signupForm.userId) {
-      setMessage('아이디를 입력해주세요.');
+      setMessage('아이디를 입력해 주세요.');
       userIdRef.current?.focus();
       return;
     }
     if (!signupForm.password) {
-      setMessage('비밀번호를 입력해주세요.');
+      setMessage('비밀번호를 입력해 주세요.');
       passwordRef.current?.focus();
       return;
     }
     if (!signupForm.passwordCheck) {
-      setMessage('비밀번호 확인을 입력해주세요.');
+      setMessage('비밀번호 확인을 입력해 주세요.');
       passwordCheckRef.current?.focus();
       return;
     }

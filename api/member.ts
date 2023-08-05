@@ -11,3 +11,11 @@ export const signup = async (signupForm: MemberForm): Promise<MemberResult> => {
   }
   return res.data;
 };
+
+export const login = async (loginForm: MemberForm): Promise<MemberResult> => {
+  const res = await axios.post('/login', loginForm);
+  if (res.status !== 200) {
+    throw new Error(res.statusText);
+  }
+  return res.data;
+};
