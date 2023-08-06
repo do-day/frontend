@@ -7,7 +7,8 @@ import Header from '@/components/Header';
 import Container from '@/components/Container';
 import ReportList from '@/components/ReportList';
 import { ROUTES } from '@/constants';
-import * as styles from '@/styles/main.style';
+import * as styles from '@/components/styles/main.style';
+
 
 export default function Home() {
   const { data: reports } = useQuery({
