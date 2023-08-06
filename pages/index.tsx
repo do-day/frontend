@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
-import { BiSearch, BiPencil } from 'react-icons/bi';
+import { BiPencil } from 'react-icons/bi';
 import { getReports } from '@/api/report';
 import ReportList from '@/components/ReportList';
 import Header from '@/components/Header';
@@ -23,13 +23,6 @@ export default function Home() {
         <styles.TopDescription>
           해결하고 싶은 신고를 선택해 주세요.
         </styles.TopDescription>
-
-        <styles.SearchBox>
-          <styles.SearchInput placeholder="검색"></styles.SearchInput>
-          <styles.SearchIconBtn type="submit">
-            <BiSearch />
-          </styles.SearchIconBtn>
-        </styles.SearchBox>
 
         {reports?.map((report) => (
           <ReportList report={report} key={report.reportId} />
