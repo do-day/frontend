@@ -52,7 +52,7 @@ export default function ReportDetail() {
     } else {
       router.push({
         pathname: ROUTES.SOLVES.NEW,
-        query: { reportId, solveId },
+        query: { solveId },
       });
     }
   };

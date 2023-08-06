@@ -8,7 +8,6 @@ interface Props {
 }
 
 const ReportList = ({ report, isAdmin = false }: Props) => {
-  // TODO: 로그인 정보 확인해서 admin 라우팅하기
   const href = isAdmin
     ? ROUTES.ADMIN.REPORT(report.reportId)
     : ROUTES.REPORTS.REPORT(report.reportId);
