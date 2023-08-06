@@ -1,16 +1,16 @@
 import { useRouter } from 'next/router';
+import { useQuery } from '@tanstack/react-query';
 import withAuth from '@/hoc/withAuth';
+import { getTotalReward, getReward } from '@/api/reward';
 import { useMember } from '@/contexts/member';
 import RewardList from '@/components/RewardList';
 import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
-import * as styles from '@/components/styles/reward.style';
 import { ROUTES } from '@/constants';
-import { useQuery } from '@tanstack/react-query';
-import { getTotalReward, getReward } from '@/api/reward';
 import { Reward } from '@/types';
+import * as styles from '@/components/styles/pages/reward.style';
 
 function MyRewardHome() {
   const router = useRouter();
