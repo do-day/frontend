@@ -1,11 +1,13 @@
-import Container from '@/components/Container';
 import styled from '@emotion/styled';
+import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
+import Container from '@/components/Container';
 import Button from '@/components/Button';
 
 export default function Custom404() {
   return (
     <>
+      <HeadMeta title="오류" />
       <Header />
       <Container>
         <CenterBox>

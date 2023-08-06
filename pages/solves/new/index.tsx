@@ -1,13 +1,13 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import withAuth from '@/hoc/withAuth';
 import { useMember } from '@/contexts/member';
 import useMapView from '@/hooks/useMapView';
-import { getReport } from '@/api/report';
-import { createSolve } from '@/api/solve';
-import Container from '@/components/Container';
+import { createSolve, getSolve } from '@/api/solve';
+import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
+import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import BottomModal from '@/components/BottomModal';
@@ -16,6 +16,7 @@ import ImageUploadButton from '@/components/ImageUploadButton';
 import useUploadImages from '@/hooks/useUploadImages';
 import Modal from '@/components/Modal';
 import Address from '@/components/Address';
+import { ROUTES } from '@/constants';
 import { SolveForm } from '@/types';
 import * as styles from '@/components/styles/report-solve/style';
 
@@ -31,8 +32,7 @@ function SolveNew() {
   });
 
   const router = useRouter();
-  // TODO: reportId나 solveId가 없으면 잘못된 접근이므로 404 페이지로 이동
-  const { reportId, solveId } = router.query;
+  const { solveId } = router.query;
   const { id } = useMember();
 
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -41,14 +41,19 @@ function SolveNew() {
     () => setShowPhotoModal(false),
   );
 
-  const { data: report } = useQuery({
-    queryKey: ['report', reportId],
-    queryFn: () => getReport(Number(reportId)),
-    enabled: !!reportId,
+  useEffect(() => {
+    if (solveId) return;
+    router.push(ROUTES.ERROR.NOT_FOUND);
+  }, [router, solveId]);
+
+  const { data: solve } = useQuery({
+    queryKey: ['solve', solveId],
+    queryFn: () => getSolve(Number(solveId)),
+    enabled: !!solveId,
   });
 
   const mapRef = useRef<HTMLDivElement>(null);
-  const {} = useMapView(mapRef, report?.latitude, report?.longitude);
+  const {} = useMapView(mapRef, solve?.latitude, solve?.longitude);
 
   const submitSolveMutation = useMutation({
     mutationFn: createSolve,
@@ -70,9 +75,9 @@ function SolveNew() {
       memberId: id,
       solveForm: {
         ...solveForm,
-        location: report?.location,
-        latitude: report?.latitude,
-        longitude: report?.longitude,
+        location: solve?.location,
+        latitude: solve?.latitude,
+        longitude: solve?.longitude,
         photo: uploadedFiles?.files[0],
       },
     });
@@ -80,6 +85,7 @@ function SolveNew() {
 
   return (
     <>
+      <HeadMeta title="보고하기" />
       <Header title="보고하기" hasBackButton />
 
       <Container>
@@ -89,7 +95,7 @@ function SolveNew() {
             <styles.SectionDiv>
               <styles.Map ref={mapRef} />
             </styles.SectionDiv>
-            {report && <Address address={report.location} isCopyable />}
+            {solve && <Address address={solve.location} isCopyable />}
           </styles.Section>
 
           <styles.Section>

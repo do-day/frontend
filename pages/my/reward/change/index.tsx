@@ -4,8 +4,9 @@ import withAuth from '@/hoc/withAuth';
 import { useMember } from '@/contexts/member';
 import { getTotalReward } from '@/api/reward';
 import { changeReward } from '@/api/reward';
-import Container from '@/components/Container';
+import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
+import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Modal from '@/components/Modal';
 import * as styles from '@/components/styles/change.style';
@@ -39,6 +40,7 @@ function MyRewardChange() {
 
   return (
     <>
+      <HeadMeta title="리워드 전환" />
       <Header title="리워드 전환" hasBackButton />
       <Container>
         <styles.TopBox>

@@ -1,6 +1,7 @@
 import withAuth from '@/hoc/withAuth';
 import ReportList from '@/components/ReportList';
 import Tab from '@/components/Tab';
+import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
 import { ROUTES } from '@/constants';
@@ -19,6 +20,7 @@ function AdminReportsHome() {
 
   return (
     <>
+      <HeadMeta title="신고 목록 확인" />
       <Header />
       <Container>
         <Tab list={list} link={link} />

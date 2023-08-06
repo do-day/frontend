@@ -1,15 +1,18 @@
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
+import withAuth from '@/hoc/withAuth';
 import useMapView from '@/hooks/useMapView';
 import { getSolve } from '@/api/solve';
-import Container from '@/components/Container';
+import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
+import Container from '@/components/Container';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import Address from '@/components/Address';
+import Button from '@/components/Button';
 import * as styles from '@/components/styles/report-solve/style';
-import withAuth from '@/hoc/withAuth';
+import { ROUTES } from '@/constants';
 
 function SolveDetail() {
   const router = useRouter();
@@ -26,6 +29,7 @@ function SolveDetail() {
 
   return (
     <>
+      <HeadMeta title="해결 상세보기" description={solve?.location} />
       <Header title="해결 상세보기" hasBackButton />
 
       {solve && (
@@ -37,23 +41,37 @@ function SolveDetail() {
             </styles.SectionDiv>
             <Address address={solve.location} />
           </styles.Section>
+          {solve.state === 'RESOLVING' ? (
+            <Button
+              type="button"
+              onClick={() =>
+                router.push({
+                  pathname: ROUTES.SOLVES.NEW,
+                  query: { solveId },
+                })
+              }
+            >
+              보고하러 가기
+            </Button>
+          ) : (
+            <>
+              <styles.Section>
+                <styles.SectionTitle>첨부된 사진</styles.SectionTitle>
+                <styles.ImagesDiv>
+                  <ShapedImage src={solve.photo || ''} alt="첨부된 사진" />
+                </styles.ImagesDiv>
+              </styles.Section>
 
-          <styles.Section>
-            <styles.SectionTitle>첨부된 사진</styles.SectionTitle>
-            <styles.ImagesDiv>
-              <ShapedImage src={solve.photo || ''} alt="첨부된 사진" />
-            </styles.ImagesDiv>
-          </styles.Section>
-
-          <styles.Section>
-            <styles.SectionTitle>허위 신고 제보</styles.SectionTitle>
-            <Textarea
-              rows={solve.content ? 3 : 10}
-              disabled
-              value={solve.falseReport}
-            ></Textarea>
-          </styles.Section>
-
+              <styles.Section>
+                <styles.SectionTitle>허위 신고 제보</styles.SectionTitle>
+                <Textarea
+                  rows={solve.content ? 3 : 10}
+                  disabled
+                  value={solve.falseReport}
+                ></Textarea>
+              </styles.Section>
+            </>
+          )}
           {solve.content && (
             <styles.Section>
               <styles.SectionTitle>반려 사유</styles.SectionTitle>

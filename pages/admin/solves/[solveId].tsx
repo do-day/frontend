@@ -5,8 +5,9 @@ import withAuth from '@/hoc/withAuth';
 import useMapView from '@/hooks/useMapView';
 import { postSolutionApprove } from '@/api/admin';
 import { getSolve } from '@/api/solve';
-import Container from '@/components/Container';
+import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
+import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
@@ -52,6 +53,7 @@ function AdminSolveDetail() {
 
   return (
     <>
+      <HeadMeta title="해결 내용 확인" description={solve?.location} />
       <Header title="해결 내용 확인" hasBackButton />
       {solve && (
         <>
