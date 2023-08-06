@@ -5,8 +5,9 @@ import { useMember } from '@/contexts/member';
 import useMapView from '@/hooks/useMapView';
 import { getReport } from '@/api/report';
 import { applySolve } from '@/api/solve';
-import Container from '@/components/Container';
+import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
+import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
@@ -58,6 +59,7 @@ export default function ReportDetail() {
 
   return (
     <>
+      <HeadMeta title="신고 상세보기" description={report?.location} />
       <Header title="신고 상세보기" hasBackButton />
 
       {report && (

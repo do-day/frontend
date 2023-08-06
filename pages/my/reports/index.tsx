@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import withAuth from '@/hoc/withAuth';
 import { useMember } from '@/contexts/member';
 import { getMyReports } from '@/api/report';
+import HeadMeta from '@/components/HeadMeta';
 import ReportList from '@/components/ReportList';
 import Tab from '@/components/Tab';
 import Header from '@/components/Header';
@@ -21,6 +22,7 @@ function MyReportsHome() {
 
   return (
     <>
+      <HeadMeta title="나의 신고 목록" />
       <Header />
       <Container>
         <Tab list={list} link={link} />

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useMutation } from '@tanstack/react-query';
 import { useMember } from '@/contexts/member';
 import { login } from '@/api/member';
+import HeadMeta from '@/components/HeadMeta';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
@@ -65,6 +66,7 @@ export default function Login() {
 
   return (
     <>
+      <HeadMeta title="로그인" />
       <Header title="로그인" />
       <Container>
         <styles.Form onSubmit={handleSubmit}>

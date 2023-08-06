@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useMutation } from '@tanstack/react-query';
 import { useMember } from '@/contexts/member';
 import { signup } from '@/api/member';
+import HeadMeta from '@/components/HeadMeta';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
@@ -82,6 +83,7 @@ export default function Signup() {
 
   return (
     <>
+      <HeadMeta title="회원가입" />
       <Header title="회원가입" />
       <Container>
         <styles.Form onSubmit={handleSubmit}>
