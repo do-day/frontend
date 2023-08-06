@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import withAuth from '@/hoc/withAuth';
 import { useMember } from '@/contexts/member';
 import { getMySolves } from '@/api/solve';
+import HeadMeta from '@/components/HeadMeta';
 import SolveList from '@/components/SolveList';
 import Tab from '@/components/Tab';
 import Header from '@/components/Header';
@@ -21,6 +22,7 @@ function MySolvesHome() {
 
   return (
     <>
+      <HeadMeta title="나의 해결 목록" />
       <Header />
       <Container>
         <Tab list={list} order={1} link={link} />

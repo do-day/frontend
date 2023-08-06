@@ -5,8 +5,9 @@ import withAuth from '@/hoc/withAuth';
 import useMapView from '@/hooks/useMapView';
 import { postReportApprove } from '@/api/admin';
 import { getReport } from '@/api/report';
-import Container from '@/components/Container';
+import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
+import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
@@ -51,6 +52,7 @@ function AdminReportDetail() {
 
   return (
     <>
+      <HeadMeta title="신고 내용 확인" description={report?.location} />
       <Header title="신고 내용 확인" hasBackButton />
 
       {report && (

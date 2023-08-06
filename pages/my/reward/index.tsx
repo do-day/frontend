@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import withAuth from '@/hoc/withAuth';
 import { useMember } from '@/contexts/member';
 import RewardList from '@/components/RewardList';
+import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
@@ -27,6 +28,7 @@ function MyRewardHome() {
 
   return (
     <>
+      <HeadMeta title="나의 리워드" />
       <Header />
       <Container>
         <styles.Section>

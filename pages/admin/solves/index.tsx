@@ -1,5 +1,6 @@
 import withAuth from '@/hoc/withAuth';
 import Tab from '@/components/Tab';
+import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
 import Container from '@/components/Container';
 import { ROUTES } from '@/constants';
@@ -19,6 +20,7 @@ function AdminSolvesHome() {
 
   return (
     <>
+      <HeadMeta title="해결 목록 확인" />
       <Header />
       <Container>
         <Tab list={list} order={1} link={link} />

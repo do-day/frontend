@@ -1,4 +1,5 @@
-export const SERVICE_NAME = 'DODAY';
+export const SERVICE_NAME = '두데이';
+export const SERVICE_URL = 'https://doday-nu.vercel.app';
 
 export const LOCAL_STORAGE_KEY = 'doday-id';
 

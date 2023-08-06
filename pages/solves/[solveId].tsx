@@ -3,8 +3,9 @@ import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
 import useMapView from '@/hooks/useMapView';
 import { getSolve } from '@/api/solve';
-import Container from '@/components/Container';
+import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
+import Container from '@/components/Container';
 import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import Address from '@/components/Address';
@@ -26,6 +27,7 @@ function SolveDetail() {
 
   return (
     <>
+      <HeadMeta title="해결 상세보기" description={solve?.location} />
       <Header title="해결 상세보기" hasBackButton />
 
       {solve && (

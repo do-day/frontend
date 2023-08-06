@@ -4,8 +4,9 @@ import withAuth from '@/hoc/withAuth';
 import { useMember } from '@/contexts/member';
 import useMap from '@/hooks/useMap';
 import { createReport } from '@/api/report';
-import Container from '@/components/Container';
+import HeadMeta from '@/components/HeadMeta';
 import Header from '@/components/Header';
+import Container from '@/components/Container';
 import Button from '@/components/Button';
 import Textarea from '@/components/Textarea';
 import BottomModal from '@/components/BottomModal';
@@ -68,6 +69,7 @@ function ReportNew() {
 
   return (
     <>
+      <HeadMeta title="신고하기" />
       <Header title="신고하기" hasBackButton />
 
       <Container>
