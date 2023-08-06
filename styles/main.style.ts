@@ -9,6 +9,7 @@ export const TopTitle = styled.h1`
 export const TopDescription = styled.p`
   font-size: var(--font-small);
   color: var(--color-dark-gray);
+  padding-bottom: 1.5rem;
 `;
 
 export const SearchBox = styled.form`
