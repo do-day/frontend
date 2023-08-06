@@ -9,7 +9,6 @@ import ReportList from '@/components/ReportList';
 import { ROUTES } from '@/constants';
 import * as styles from '@/components/styles/main.style';
 
-
 export default function Home() {
   const { data: reports } = useQuery({
     queryKey: ['reports', 'main'],
