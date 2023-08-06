@@ -3,6 +3,8 @@ export const SERVICE_URL = 'https://doday-nu.vercel.app';
 
 export const LOCAL_STORAGE_KEY = 'doday-id';
 
+export const DEFAULT_IMAGE = '/default-image.png';
+
 export const API_PREFIX = process.env.NEXT_PUBLIC_API_PREFIX;
 
 export const ROUTES = {
@@ -10,6 +12,9 @@ export const ROUTES = {
   LOGIN: '/login',
   SIGNUP: '/signup',
   WELCOME: '/welcome',
+  ERROR: {
+    NOT_FOUND: '/404',
+  },
   REPORTS: {
     NEW: '/reports/new',
     REPORT: (reportId: number) => `/reports/${reportId}`,

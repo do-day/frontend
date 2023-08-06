@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Tag from '@/components/Tag';
 import { formatDate } from '@/utils';
+import { DEFAULT_IMAGE } from '@/constants';
 import { State } from '@/types';
 import * as styles from '@/components/styles/ListItem.style';
 
@@ -24,7 +25,12 @@ export default function ListItem({
     <Link href={href}>
       <styles.ListBox>
         <styles.ImageBox>
-          <Image src={thumbnail} alt="썸네일" width={300} height={300} />
+          <Image
+            src={thumbnail || DEFAULT_IMAGE}
+            alt="썸네일"
+            width={300}
+            height={300}
+          />
         </styles.ImageBox>
         <styles.RightBox>
           <Tag state={state || 'UNRESOLVED'} />
