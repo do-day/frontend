@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import imageCompression from 'browser-image-compression';
 
 type Files = {
   files: File[];
@@ -20,14 +21,14 @@ export default function useUploadImages(
     urls: [],
   });
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
     if (!files) return;
 
     const fileArray = Array.from(files);
-    const urls = Array.from(files).map((file) => URL.createObjectURL(file));
+    const { compressedFiles, urls } = await compressImages(fileArray);
     setUploadedFiles({
-      files: [...uploadedFiles.files, ...fileArray],
+      files: [...uploadedFiles.files, ...compressedFiles],
       urls: [...uploadedFiles.urls, ...urls],
     });
     closeModal && closeModal();
@@ -40,3 +41,19 @@ export default function useUploadImages(
 
   return [uploadedFiles, handleFileChange, handleClickFileUpload];
 }
+
+const compressImages = async (files: File[]) => {
+  const options = {
+    maxSizeMB: 1,
+    maxWidthOrHeight: 1920,
+    useWebWorker: true,
+  };
+
+  const compressedFiles = await Promise.all(
+    files.map((file) => imageCompression(file, options)),
+  );
+  const urls = await Promise.all(
+    compressedFiles.map((file) => imageCompression.getDataUrlFromFile(file)),
+  );
+  return { compressedFiles, urls };
+};
