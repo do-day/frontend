@@ -34,7 +34,7 @@ function AdminSolveDetail() {
   const handleClickAcceptBtn = () => {
     approveSolutionMutation.mutate({
       solutionId: Number(solveId),
-      adminId: 1,
+      adminId: Number(process.env.NEXT_PUBLIC_ADMIN_ID),
     });
   };
 
