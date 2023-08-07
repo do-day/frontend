@@ -69,9 +69,17 @@ function AdminReportDetail() {
             <styles.Section>
               <styles.SectionTitle>첨부된 사진</styles.SectionTitle>
               <styles.ImagesDiv>
-                <ShapedImage src={report.photoRaincatch} alt="첨부된 사진" />
+                <ShapedImage
+                  src={report.photoRaincatch}
+                  alt="첨부된 사진"
+                  hasModal
+                />
                 {report.photoAround && (
-                  <ShapedImage src={report.photoAround} alt="첨부된 사진" />
+                  <ShapedImage
+                    src={report.photoAround}
+                    alt="첨부된 사진"
+                    hasModal
+                  />
                 )}
               </styles.ImagesDiv>
             </styles.Section>
