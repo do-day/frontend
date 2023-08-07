@@ -10,6 +10,7 @@ type Return = [
   uploadedFiles: Files,
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
   handleClickFileUpload: () => void,
+  deleteImage: (index: number) => void,
 ];
 
 export default function useUploadImages(
@@ -39,7 +40,13 @@ export default function useUploadImages(
     fileInputRef.current?.click();
   };
 
-  return [uploadedFiles, handleFileChange, handleClickFileUpload];
+  const deleteImage = (index: number) => {
+    const newFiles = uploadedFiles.files.filter((_, i) => i !== index);
+    const newUrls = uploadedFiles.urls.filter((_, i) => i !== index);
+    setUploadedFiles({ files: newFiles, urls: newUrls });
+  };
+
+  return [uploadedFiles, handleFileChange, handleClickFileUpload, deleteImage];
 }
 
 const compressImages = async (files: File[]) => {

@@ -36,10 +36,8 @@ function ReportNew() {
   const { location, position } = useMap(mapRef);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [uploadedFiles, onFileChange, onClickFileUpload] = useUploadImages(
-    fileInputRef,
-    () => setShowPhotoModal(false),
-  );
+  const [uploadedFiles, onFileChange, onClickFileUpload, deleteImage] =
+    useUploadImages(fileInputRef, () => setShowPhotoModal(false));
 
   const createReportMutation = useMutation({
     mutationFn: createReport,
@@ -89,6 +87,7 @@ function ReportNew() {
                 <ShapedImage
                   src={uploadedFiles?.urls[0] || ''}
                   alt="첨부된 사진"
+                  onClickDelete={() => deleteImage(0)}
                 />
               ) : (
                 <ImageUploadButton onClick={() => setShowPhotoModal(true)} />
@@ -97,6 +96,7 @@ function ReportNew() {
                 <ShapedImage
                   src={uploadedFiles?.urls[1] || ''}
                   alt="첨부된 사진"
+                  onClickDelete={() => deleteImage(1)}
                 />
               ) : (
                 <ImageUploadButton onClick={() => setShowPhotoModal(true)} />
