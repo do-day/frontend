@@ -36,10 +36,8 @@ function SolveNew() {
   const { id } = useMember();
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [uploadedFiles, onFileChange, onClickFileUpload] = useUploadImages(
-    fileInputRef,
-    () => setShowPhotoModal(false),
-  );
+  const [uploadedFiles, onFileChange, onClickFileUpload, deleteImage] =
+    useUploadImages(fileInputRef, () => setShowPhotoModal(false));
 
   useEffect(() => {
     if (solveId) return;
@@ -105,6 +103,7 @@ function SolveNew() {
                 <ShapedImage
                   src={uploadedFiles?.urls[0] || ''}
                   alt="첨부된 사진"
+                  onClickDelete={() => deleteImage(0)}
                 />
               ) : (
                 <ImageUploadButton onClick={() => setShowPhotoModal(true)} />

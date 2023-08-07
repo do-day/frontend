@@ -11,8 +11,8 @@ import Textarea from '@/components/Textarea';
 import ShapedImage from '@/components/ShapedImage';
 import Address from '@/components/Address';
 import Button from '@/components/Button';
-import * as styles from '@/components/styles/report-solve/style';
 import { ROUTES } from '@/constants';
+import * as styles from '@/components/styles/report-solve/style';
 
 function SolveDetail() {
   const router = useRouter();
@@ -58,7 +58,11 @@ function SolveDetail() {
               <styles.Section>
                 <styles.SectionTitle>첨부된 사진</styles.SectionTitle>
                 <styles.ImagesDiv>
-                  <ShapedImage src={solve.photo || ''} alt="첨부된 사진" />
+                  <ShapedImage
+                    src={solve.photo || ''}
+                    alt="첨부된 사진"
+                    hasModal
+                  />
                 </styles.ImagesDiv>
               </styles.Section>
 

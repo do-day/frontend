@@ -8,7 +8,9 @@ export const Modal = styled(Backdrop)`
   justify-content: center;
 `;
 
-export const ModalView = styled.div`
+export const Content = styled.div`
+  width: 90%;
+  max-width: 34rem;
   display: flex;
   flex-direction: column;
   background-color: var(--color-white);
@@ -16,14 +18,19 @@ export const ModalView = styled.div`
   padding: 1.25rem;
 `;
 
-export const ModalText = styled.h1`
-  font-size: var(--font-x-large);
-  font-weight: var(--font-bold);
-  padding: 1rem;
+export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  font-size: var(--font-large);
 `;
 
-export const ModalButtonBox = styled.div`
-  display: flex;
-  gap: 1rem;
-  padding-top: 1rem;
+export const Title = styled.h1`
+  text-align: left;
+  font-weight: var(--font-bold);
+`;
+
+export const CloseButton = styled.button`
+  background: none;
 `;

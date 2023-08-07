@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import imageCompression from 'browser-image-compression';
 
 type Files = {
   files: File[];
@@ -9,6 +10,7 @@ type Return = [
   uploadedFiles: Files,
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
   handleClickFileUpload: () => void,
+  deleteImage: (index: number) => void,
 ];
 
 export default function useUploadImages(
@@ -20,14 +22,14 @@ export default function useUploadImages(
     urls: [],
   });
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
     if (!files) return;
 
     const fileArray = Array.from(files);
-    const urls = Array.from(files).map((file) => URL.createObjectURL(file));
+    const { compressedFiles, urls } = await compressImages(fileArray);
     setUploadedFiles({
-      files: [...uploadedFiles.files, ...fileArray],
+      files: [...uploadedFiles.files, ...compressedFiles],
       urls: [...uploadedFiles.urls, ...urls],
     });
     closeModal && closeModal();
@@ -38,5 +40,27 @@ export default function useUploadImages(
     fileInputRef.current?.click();
   };
 
-  return [uploadedFiles, handleFileChange, handleClickFileUpload];
+  const deleteImage = (index: number) => {
+    const newFiles = uploadedFiles.files.filter((_, i) => i !== index);
+    const newUrls = uploadedFiles.urls.filter((_, i) => i !== index);
+    setUploadedFiles({ files: newFiles, urls: newUrls });
+  };
+
+  return [uploadedFiles, handleFileChange, handleClickFileUpload, deleteImage];
 }
+
+const compressImages = async (files: File[]) => {
+  const options = {
+    maxSizeMB: 1,
+    maxWidthOrHeight: 1920,
+    useWebWorker: true,
+  };
+
+  const compressedFiles = await Promise.all(
+    files.map((file) => imageCompression(file, options)),
+  );
+  const urls = await Promise.all(
+    compressedFiles.map((file) => imageCompression.getDataUrlFromFile(file)),
+  );
+  return { compressedFiles, urls };
+};

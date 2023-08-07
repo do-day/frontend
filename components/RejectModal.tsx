@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
-import Modal from '@/components/Modal';
-import Button from '@/components/Button';
-import * as styles from '@/components/styles/RejectModal.style';
 import { useMutation } from '@tanstack/react-query';
 import { rejectReport, rejectSolve } from '@/api/admin';
-import Textarea from './Textarea';
+import Modal from '@/components/Modal';
+import Button from '@/components/Button';
+import Textarea from '@/components/Textarea';
+import * as styles from '@/components/styles/RejectModal.style';
 
 interface RMProps {
   reportId?: number;
@@ -35,13 +35,13 @@ const RejectModal = ({ onClose, reportId, solutionId }: RMProps) => {
     if (reportId !== undefined) {
       rejectReportMutation.mutate({
         reportId,
-        adminId: 1,
+        adminId: Number(process.env.NEXT_PUBLIC_ADMIN_ID),
         content,
       });
     } else if (solutionId !== undefined) {
       rejectSolveMutation.mutate({
         solutionId,
-        adminId: 1,
+        adminId: Number(process.env.NEXT_PUBLIC_ADMIN_ID),
         content,
       });
     }
