@@ -1,13 +1,20 @@
 import Image from 'next/image';
+import { BiX } from 'react-icons/bi';
 import * as styles from '@/components/styles/ShapedImage.style';
 
 interface Props {
   size?: string;
   src: string;
   alt: string;
+  onClickDelete?: () => void;
 }
 
-export default function ShapedImage({ size = '100%', src, alt }: Props) {
+export default function ShapedImage({
+  size = '100%',
+  src,
+  alt,
+  onClickDelete,
+}: Props) {
   return (
     <styles.ImageWrapper size={size}>
       <Image
@@ -21,6 +28,11 @@ export default function ShapedImage({ size = '100%', src, alt }: Props) {
           objectFit: 'cover',
         }}
       />
+      {onClickDelete && (
+        <styles.DeleteButton type="button" onClick={onClickDelete}>
+          <BiX />
+        </styles.DeleteButton>
+      )}
     </styles.ImageWrapper>
   );
 }
