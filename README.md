@@ -25,9 +25,9 @@
 </p>
 
 <p align="center">
-<img width="300" alt="image" src="https://github.com/do-day/frontend/assets/72433681/b2d927d6-0c48-4894-8b83-766e70e74662">
-<img width="300" alt="image" src="https://github.com/do-day/frontend/assets/72433681/3479e47b-f86a-47e6-a57f-55af34247df6">
-<img width="300" alt="image" src="https://github.com/do-day/frontend/assets/72433681/9f148e77-b517-4e30-89a0-a1c5fee75e12">
+<img width="270" alt="image" src="https://github.com/do-day/frontend/assets/72433681/b2d927d6-0c48-4894-8b83-766e70e74662">
+<img width="270" alt="image" src="https://github.com/do-day/frontend/assets/72433681/3479e47b-f86a-47e6-a57f-55af34247df6">
+<img width="270" alt="image" src="https://github.com/do-day/frontend/assets/72433681/9f148e77-b517-4e30-89a0-a1c5fee75e12">
 </p>
 
 ## 소개
