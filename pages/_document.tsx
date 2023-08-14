@@ -4,14 +4,7 @@ import Script from 'next/script';
 export default function Document() {
   return (
     <Html lang="en">
-      <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link rel="manifest" href="/manifest.json" />
-        <link href="/favicon.ico" rel="icon" />
-        <link rel="apple-touch-icon" href="/logo192.png"></link>
-        <meta name="theme-color" content="#0083cd" />
-      </Head>
+      <Head />
       <body>
         <Script
           strategy="beforeInteractive"
