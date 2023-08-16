@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Image from 'next/image';
 import { BiChevronLeft, BiMenu } from 'react-icons/bi';
 import Nav from '@/components/Nav';
-import * as styles from '@/components/styles/Header.style';
-import Link from 'next/link';
 import { ROUTES } from '@/constants';
+import * as styles from '@/components/styles/Header.style';
 
 interface Props {
   title?: string;
@@ -24,6 +24,7 @@ export default function Header({ title, hasBackButton = false }: Props) {
     <styles.Header>
       <styles.Button
         onClick={hasBackButton ? () => router.back() : HanldeOnClickBtn}
+        aria-label={hasBackButton ? '뒤로가기' : '메뉴'}
       >
         {hasBackButton ? <BiChevronLeft /> : <BiMenu />}
       </styles.Button>
