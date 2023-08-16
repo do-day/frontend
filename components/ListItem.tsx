@@ -30,6 +30,7 @@ export default function ListItem({
             alt="썸네일"
             width={300}
             height={300}
+            priority
           />
         </styles.ImageBox>
         <styles.RightBox>
