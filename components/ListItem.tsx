@@ -28,8 +28,9 @@ export default function ListItem({
           <Image
             src={thumbnail || DEFAULT_IMAGE}
             alt="썸네일"
-            width={300}
-            height={300}
+            width={150}
+            height={150}
+            sizes="150px"
             priority
           />
         </styles.ImageBox>
