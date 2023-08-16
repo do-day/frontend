@@ -37,7 +37,11 @@ export default function ShapedImage({
         onClick={hasModal ? () => setShowModal(true) : undefined}
       />
       {onClickDelete && (
-        <styles.DeleteButton type="button" onClick={onClickDelete}>
+        <styles.DeleteButton
+          type="button"
+          onClick={onClickDelete}
+          aria-label="사진 삭제하기"
+        >
           <BiX />
         </styles.DeleteButton>
       )}

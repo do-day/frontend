@@ -16,7 +16,7 @@ export default function BottomModal({ children, onClose }: Props) {
       )}
       {createPortal(
         <styles.Modal>
-          <styles.CloseBar onClick={onClose} />
+          <styles.CloseBar onClick={onClose} aria-label="닫기" />
           {children}
         </styles.Modal>,
         document.getElementById('modal-root') as HTMLElement,

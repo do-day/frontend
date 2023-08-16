@@ -5,9 +5,9 @@
   --color-light-gray: #eee;
   --color-copy-gray: #efefef;
   --color-gray: #bdbdbd;
-  --color-dark-gray: #777;
+  --color-dark-gray: #757575;
   --color-backdrop: rgba(0, 0, 0, 0.5);
-  --color-unresolved: #a4a4a4;
+  --color-unresolved: #757575;
   --color-resolving: #4cb7ea;
   --color-resolved: #7ac06f;
   --color-rejected: #f57970;

@@ -16,7 +16,7 @@ export default function ImageModal({ src, onClose }: Props) {
           <styles.Content>
             <styles.Header>
               <styles.Title>전체보기</styles.Title>
-              <styles.CloseButton onClick={onClose}>
+              <styles.CloseButton onClick={onClose} aria-label="닫기">
                 <BiX />
               </styles.CloseButton>
             </styles.Header>
