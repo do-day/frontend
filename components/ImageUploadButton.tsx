@@ -8,7 +8,12 @@ interface Props {
 
 export default function ImageUploadButton({ size = '100%', onClick }: Props) {
   return (
-    <styles.Button type="button" size={size} onClick={onClick}>
+    <styles.Button
+      type="button"
+      size={size}
+      onClick={onClick}
+      aria-label="사진 첨부하기"
+    >
       <BiPlus />
     </styles.Button>
   );

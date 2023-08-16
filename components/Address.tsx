@@ -33,7 +33,11 @@ export default function Address({ address, isCopyable = false }: Props) {
 
   return (
     <>
-      <styles.CopyButton type="button" onClick={debounceCopy}>
+      <styles.CopyButton
+        type="button"
+        onClick={debounceCopy}
+        aria-label="복사하기"
+      >
         <styles.Address>{address}</styles.Address>
         <BiCopyAlt />
       </styles.CopyButton>
